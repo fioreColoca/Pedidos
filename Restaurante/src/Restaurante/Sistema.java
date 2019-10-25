@@ -34,20 +34,6 @@ public class Sistema {
 		}
 		return false;
 	}
-
-
-	/*public Boolean buscarUsuario(String email, String password) {
-		Iterator<Usuario> it = usuarios.iterator();
-
-		while (it.hasNext()) {// devuelve true si tiene otro elemento y entra hasta que sea false
-
-			Usuario usuario = it.next();
-			if (usuario.getEmail().equals(email) && usuario.getPassword().equals(password)) {
-				return true;
-			}
-		}
-		return false;
-	}*/ 
 	
 	public Boolean buscarUsuario(String email,String password) {
 		for (Usuario usuarios:usuarios) {
