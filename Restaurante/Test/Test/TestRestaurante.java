@@ -14,7 +14,7 @@ import Restaurante.Usuario;
 public class TestRestaurante {
 	@Test
 	public void registrarUsuarioValido() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		Boolean valorEsperado = true;
 		Boolean valorObtenido = sistema.crearNuevoUsuario(usuario1);
@@ -24,9 +24,9 @@ public class TestRestaurante {
 	@Test
 	public void registrarUsuarioNoValido() {
 		Sistema sistema = new Sistema("Serena cafeteria");
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "mm.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "mm.com", "123qwer4");
 		sistema.crearNuevoUsuario(usuario1);
-		Usuario usuario2 = new Usuario("djaskd", "daskd", "mm.com", "123qwer4");
+		Usuario usuario2 = new Usuario(123,"djaskd", "daskd", "mm.com", "123qwer4");
 		Boolean valorEsperado = false;
 		Boolean valorObtenido = sistema.crearNuevoUsuario(usuario2);
 		Assert.assertEquals(valorEsperado, valorObtenido);
@@ -34,7 +34,7 @@ public class TestRestaurante {
 	@Test 
 	public void registrarUsuarioNoValido2() {
 		Sistema sistema = new Sistema("Serena cafeteria");
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "mm.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "mm.com", "123qwer4");
 		sistema.crearNuevoUsuario(usuario1);
 		Boolean valorEsperado = false;
 		Boolean valorObtenido = sistema.crearNuevoUsuario(usuario1);
@@ -43,7 +43,7 @@ public class TestRestaurante {
 
 	@Test
 	public void passwordAceptada() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Boolean valorEsperado = true;
 		Boolean valorObtenido = usuario1.validarPassowrd();
 		Assert.assertEquals(valorEsperado, valorObtenido);
@@ -52,7 +52,7 @@ public class TestRestaurante {
 
 	@Test
 	public void passwordNegado() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123");
 		Boolean valorEsperado = false;
 		Boolean valorObtenido = usuario1.validarPassowrd();
 		Assert.assertEquals(valorEsperado, valorObtenido);
@@ -60,7 +60,7 @@ public class TestRestaurante {
 
 	@Test
 	public void loguearUsuarioValido() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.loguearUsuario("hjaksdhjak.com", "123qwer4");
@@ -71,7 +71,7 @@ public class TestRestaurante {
 
 	@Test
 	public void loguearUsuarioNoValido() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.crearNuevoUsuario(usuario1);
@@ -82,7 +82,7 @@ public class TestRestaurante {
 
 	@Test
 	public void buscarUsuario() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.loguearUsuario("hjaksdhjak.com", "123qwer4");
@@ -94,7 +94,7 @@ public class TestRestaurante {
 
 	@Test
 	public void buscarUsuarioNoEncontrado() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.loguearUsuario("hjaksdhjak.com", "123qwer4");
@@ -105,7 +105,7 @@ public class TestRestaurante {
 
 	@Test
 	public void eliminarUsuarioEncontrado() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.loguearUsuario("hjaksdhjak.com", "123qwer4");
@@ -116,7 +116,7 @@ public class TestRestaurante {
 
 	@Test
 	public void eliminarUsuarioNoEncontrado() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.loguearUsuario("hjaksdhjak.com", "123qwer4");
@@ -127,7 +127,7 @@ public class TestRestaurante {
 
 	@Test
 	public void verificarEliminacionDeUsuario() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.loguearUsuario("hjaksdhjak.com", "123qwer4");
@@ -139,7 +139,7 @@ public class TestRestaurante {
 
 	@Test
 	public void verificarNoEliminacionDeUsuarioo() {
-		Usuario usuario1 = new Usuario("djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
+		Usuario usuario1 = new Usuario(123,"djaskd", "daskd", "hjaksdhjak.com", "123qwer4");
 		Sistema sistema = new Sistema("Serena cafeteria");
 		sistema.crearNuevoUsuario(usuario1);
 		sistema.loguearUsuario("hjaksdhjak.com", "123qwer4");
