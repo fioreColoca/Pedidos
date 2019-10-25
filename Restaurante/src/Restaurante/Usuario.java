@@ -56,7 +56,7 @@ public class Usuario {
 	public Boolean validarPassowrd() {
 		if (password.length() > 7) {
 			for (int i = 0; i < password.length(); i++) {
-				int numero = Character.getNumericValue(password.charAt(i));
+				Integer numero= Character.getNumericValue(password.charAt(i));
 				if (Character.isDigit(password.charAt(i))) {
 					return true;
 
