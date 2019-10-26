@@ -57,4 +57,8 @@ public class Sistema {
 		return false;
 
 	}
+	
+	LinkedList<Producto> productos = new LinkedList<Producto>();
+	
+	
 }
