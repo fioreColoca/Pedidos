@@ -7,6 +7,7 @@ public abstract class Usuario {
 	private String email;
 	private String password;
 
+
 	public Usuario(Integer Id, String nombre, String apellido, String email, String password) {
 		this.Id = Id;
 		this.nombre = nombre;
@@ -66,5 +67,7 @@ public abstract class Usuario {
 		}
 		return false;
 	}
+	
+
 	
 }

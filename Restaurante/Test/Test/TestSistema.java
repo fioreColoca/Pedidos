@@ -6,7 +6,7 @@ import org.junit.Test;
 import Restaurante.Cliente;
 import Restaurante.Sistema;
 
-public class TestRestaurante {
+public class TestSistema {
 
 	@Test
 	public void passwordAceptada() {
