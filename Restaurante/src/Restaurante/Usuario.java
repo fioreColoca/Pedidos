@@ -1,6 +1,6 @@
 package Restaurante;
 
-public class Usuario {
+public abstract class Usuario {
 	private Integer Id;
 	private String nombre;
 	private String apellido;
@@ -34,9 +34,11 @@ public class Usuario {
 	public String getPassword() {
 		return this.password;
 	}
+
 	public void setId(Integer Id) {
 		this.Id = Id;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -53,16 +55,16 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Boolean validarPassowrd() {
-		if (password.length() > 7) {
-			for (int i = 0; i < password.length(); i++) {
-				Integer numero= Character.getNumericValue(password.charAt(i));
-				if (Character.isDigit(password.charAt(i))) {
-					return true;
+	public Boolean validarPassword(String password) {
 
+		if (password.length() >= 8) {
+			for (int i = 0; i < password.length(); i++) {
+				if (Character.isDigit(password.charAt(i)) == true) {
+					return true;
 				}
 			}
 		}
 		return false;
 	}
+	
 }
