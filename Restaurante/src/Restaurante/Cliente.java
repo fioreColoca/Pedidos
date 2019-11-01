@@ -2,9 +2,19 @@ package Restaurante;
 
 public class Cliente extends Usuario {
 
-	public Cliente(Integer Id, String nombre, String apellido, String email, String password) {
-		super(Id, nombre, apellido, email, password);
+	Integer numeroMesa;
+	Boolean atendido;
+	public Cliente (String nombre, String apellido, String email, String password,Integer numeroMesa) {
+		super( nombre, apellido, email, password);
+		this.numeroMesa=numeroMesa;
 	}
+
+	public void atenderCliente() {
+		atendido=true;
+	}
+	 public void noAtenderCliente() {
+		atendido=false;
+	 }
 
 
 }
