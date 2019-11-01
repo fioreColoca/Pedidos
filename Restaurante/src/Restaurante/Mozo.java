@@ -2,7 +2,7 @@ package Restaurante;
 
 public class Mozo extends Usuario {
 	
-	Cliente2 cliente;
+	Cliente cliente;
 	Boolean enServicio=false;
 	Boolean conOtroCliente=false;;
 	
@@ -10,14 +10,14 @@ public class Mozo extends Usuario {
 		super( nombre, apellido, email, password);
 		this.enServicio=enServicio;
 	}
-	public void llamarMozo(Cliente2 usuario) {
+	public void llamarMozo(Cliente usuario) {
 		if(enServicio==true && conOtroCliente==false){
 			conOtroCliente=true;
 			cliente=usuario;
 		}
 	}
 	
-	public void candelarLLamado (Cliente2 usuario) {
+	public void candelarLLamado (Cliente usuario) {
 		if ( cliente.equals(usuario)) {
 			cliente=null;
 			conOtroCliente=false;
@@ -30,10 +30,10 @@ public class Mozo extends Usuario {
 	public void enServicio() {
 		enServicio=true;
 	}
-	public Cliente2 getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente2 cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 	public Boolean getEnServicio() {
