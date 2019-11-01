@@ -2,9 +2,11 @@ package Restaurante;
 
 public class Administrador extends Usuario {
 
-	public Administrador(Integer Id, String nombre, String apellido, String email, String password) {
-		super(Id, nombre, apellido, email, password);
+	String tipoDeAdm;
+	
+	public Administrador (String nombre, String apellido, String email, String password,String tipoDeAdm) {
+		super( nombre, apellido, email, password);
+		this.tipoDeAdm=tipoDeAdm;
 	}
-
 
 }
