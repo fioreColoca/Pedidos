@@ -1,5 +1,7 @@
 package Restaurante;
 
+import java.util.ArrayList;
+
 public abstract class Usuario {
 	private Integer Id;
 	private String nombre;
@@ -67,6 +69,9 @@ public abstract class Usuario {
 		}
 		return false;
 	}
+	
+	
+	
 	
 
 	

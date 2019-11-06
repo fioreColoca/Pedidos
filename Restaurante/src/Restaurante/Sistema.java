@@ -1,17 +1,18 @@
 package Restaurante;
 
+
 import java.util.Iterator;
 import java.util.LinkedList;
-
 
 public class Sistema {
 	private String nombreDeSistema;
 
-	public Sistema(String nombre) {
-		this.nombreDeSistema = nombre;
+	public Sistema(String nombreDeSistema) {
+		this.nombreDeSistema = nombreDeSistema;
 	}
 
 	LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+	LinkedList<Usuario> usuariosLogueados = new LinkedList<Usuario>();
 
 	public Boolean crearNuevoUsuario(Usuario usuario) {
 		if (!usuarios.contains(usuario)) { // Se Asegura que no este la cuenta agregada anteriormente..
@@ -24,24 +25,49 @@ public class Sistema {
 		}
 		return false;
 	}
-	
+
 	public Boolean loguearUsuario(String email, String password) {
 
 		for (int i = 0; i < usuarios.size(); i++) {
 			if (usuarios.get(i).getEmail().equals(email) && usuarios.get(i).getPassword().equals(password)) {
+				Usuario usuario = usuarios.get(i);
+				this.usuariosLogueados.add(usuario);
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	public Boolean buscarUsuario(String nombre, String apellido) {
-		for (Usuario usuarios:usuarios) {
-			if (usuarios.getNombre().contentEquals(nombre) && usuarios.getApellido().contentEquals(apellido))
+
+	public Boolean cerrarSesiondeUsuario(Usuario usuario) {
+		Iterator<Usuario> it = usuariosLogueados.iterator();
+
+		while (it.hasNext()) {
+
+			Usuario usuarioAuxiliar = it.next();
+			if (usuarioAuxiliar.equals(usuario)) {
+				usuariosLogueados.remove(usuario);
 				return true;
-		} return false;
+			}
+		}
+		return false;
+
 	}
-	
+
+	public Boolean buscarUsuarioLogueado(Integer Id) {
+		for (Usuario usuarios : usuariosLogueados) {
+			if (usuarios.getId().equals(Id))
+				return true;
+		}
+		return false;
+	}
+
+	public Boolean buscarUsuario(Integer Id) {
+		for (Usuario usuarios : usuarios) {
+			if (usuarios.getId().equals(Id))
+				return true;
+		}
+		return false;
+	}
 
 	public Boolean EliminarUsuario(Integer Id) {
 		Iterator<Usuario> it = usuarios.iterator();
@@ -57,8 +83,5 @@ public class Sistema {
 		return false;
 
 	}
-	
-	LinkedList<Producto> productos = new LinkedList<Producto>();
-	
-	
+
 }
