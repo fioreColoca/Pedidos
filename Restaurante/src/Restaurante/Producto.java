@@ -1,24 +1,24 @@
 package Restaurante;
 
 public class Producto {
-	private String producto;
+	private Categoria categoria;
 	private String descripcion;
 	private Double precio;
 	private Integer idProducto;
 	
-	public Producto (String producto,String descripcion,Double precio,Integer idProducto) {
-		this.producto=producto;
+	public Producto (Categoria categoria,String descripcion,Double precio,Integer idProducto) {
+		this.categoria=categoria;
 		this.descripcion=descripcion;
 		this.precio=precio;
 		this.idProducto=idProducto;
 	}
 
-	public String getProducto() {
-		return producto;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setProducto(String producto) {
-		this.producto = producto;
+	public void setProducto(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	public String getDescripcion() {
