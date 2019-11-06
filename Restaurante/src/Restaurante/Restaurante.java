@@ -55,5 +55,10 @@ public class Restaurante {
 		}
 		return false;
 	}
+	
+	public int mostrarCarta() { //NI IDEA SI ESTA BIEN
+			return productos.size();
+		}
+	}
 
-}
+
