@@ -17,6 +17,7 @@ public class TestSistema {
 		Boolean valorObtenido = c1.validarPassword("123luciamartinez");
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
+
 	}
 
 	@Test
@@ -97,7 +98,60 @@ public class TestSistema {
 	}
 
 	@Test
-	public void buscarUsuario() {
+	public void cerrarSesionDeUsuarioValido() {
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema("La Fragata");
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
+
+		Boolean valorEsperado = true;
+		Boolean valorActual = sistema.cerrarSesiondeUsuario(c1);
+
+		Assert.assertEquals(valorEsperado, valorActual);
+	}
+
+	@Test
+	public void cerrarSesionDeUsuarioNoValido() {
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema("La Fragata");
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luz");
+
+		Boolean valorEsperado = false;
+		Boolean valorActual = sistema.cerrarSesiondeUsuario(c1);
+
+		Assert.assertEquals(valorEsperado, valorActual);
+	}
+
+	@Test
+	public void buscarUsuarioLogueadoValido() {
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema("La Fragata");
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
+
+		Boolean valorEsperado = true;
+		Boolean valorActual = sistema.buscarUsuarioLogueado(123);
+
+		Assert.assertEquals(valorEsperado, valorActual);
+	}
+	
+	@Test
+	public void buscarUsuarioLogueadoNoValido() {
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema("La Fragata");
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luz");
+
+		Boolean valorEsperado = false;
+		Boolean valorActual = sistema.buscarUsuarioLogueado(123);
+
+		Assert.assertEquals(valorEsperado, valorActual);
+	}
+	
+
+	@Test
+	public void buscarUsuarioValido() {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -105,7 +159,7 @@ public class TestSistema {
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
 		Boolean valorEsperado = true;
-		Boolean valorObtenido = sistema.buscarUsuario("lucia", "martinez");
+		Boolean valorObtenido = sistema.buscarUsuario(123);
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 
@@ -120,7 +174,7 @@ public class TestSistema {
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
 		Boolean valorEsperado = false;
-		Boolean valorObtenido = sistema.buscarUsuario("luciamartinez@ho.com", "123luciz");
+		Boolean valorObtenido = sistema.buscarUsuario(12345678);
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
@@ -163,13 +217,13 @@ public class TestSistema {
 		sistema.EliminarUsuario(123);
 
 		Boolean valorEsperado = false;
-		Boolean valorObtenido = sistema.buscarUsuario("lucia", "martinez");
+		Boolean valorObtenido = sistema.buscarUsuario(123);
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
 	@Test
-	public void verificarNoEliminacionDeUsuario() {
+	public void verificarQueNoSeElimineElUsuario() {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -178,7 +232,7 @@ public class TestSistema {
 		sistema.EliminarUsuario(1234);
 
 		Boolean valorEsperado = true;
-		Boolean valorObtenido = sistema.buscarUsuario("lucia","martinez");
+		Boolean valorObtenido = sistema.buscarUsuario(123);
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 
