@@ -4,11 +4,13 @@ public class Producto {
 	private String producto;
 	private String descripcion;
 	private Double precio;
+	private Integer idProducto;
 	
-	public Producto (String producto,String descripcion,Double precio) {
+	public Producto (String producto,String descripcion,Double precio,Integer idProducto) {
 		this.producto=producto;
 		this.descripcion=descripcion;
 		this.precio=precio;
+		this.idProducto=idProducto;
 	}
 
 	public String getProducto() {
@@ -33,6 +35,14 @@ public class Producto {
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+		
+	}
+	public Integer getIdProducto() {
+		return idProducto;
+	}
+
+	public void setPrecio(Integer id) {
+		this.idProducto = id;
 	}
 	
 }
