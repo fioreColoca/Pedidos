@@ -135,7 +135,7 @@ public class TestSistema {
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
-	
+
 	@Test
 	public void buscarUsuarioLogueadoNoValido() {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -148,7 +148,6 @@ public class TestSistema {
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
-	
 
 	@Test
 	public void buscarUsuarioValido() {
