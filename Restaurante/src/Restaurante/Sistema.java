@@ -1,14 +1,14 @@
 package Restaurante;
 
-import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Sistema {
 	private String nombreDeSistema;
 
-	public Sistema(String nombre) {
-		this.nombreDeSistema = nombre;
+	public Sistema(String nombreDeSistema) {
+		this.nombreDeSistema = nombreDeSistema;
 	}
 
 	LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
