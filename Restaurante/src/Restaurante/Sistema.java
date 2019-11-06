@@ -52,7 +52,7 @@ public class Sistema {
 		return false;
 
 	}
-	
+
 	public Boolean buscarUsuarioLogueado(Integer Id) {
 		for (Usuario usuarios : usuariosLogueados) {
 			if (usuarios.getId().equals(Id))
@@ -68,7 +68,6 @@ public class Sistema {
 		}
 		return false;
 	}
-	
 
 	public Boolean EliminarUsuario(Integer Id) {
 		Iterator<Usuario> it = usuarios.iterator();
