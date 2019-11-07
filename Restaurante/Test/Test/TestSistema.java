@@ -8,6 +8,7 @@ import Restaurante2.Sistema;
 
 public class TestSistema {
 	
+	//1 Contraseña aceptada
 	@Test
 	public void passwordAceptada() {
 
@@ -19,7 +20,8 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 
 	}
-
+	
+	//2 Contraseña incorrecta
 	@Test
 	public void passwordNegado() {
 
@@ -31,6 +33,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//3 registrar Usuario válido
 	@Test
 	public void registrarUsuarioValido() {
 
@@ -43,6 +46,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//4 registrar Usuario no válido, email ya usado
 	@Test
 	public void registrarUsuarioNoValido() {
 
@@ -57,6 +61,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//5 Mismo objeto no puede ser registrado dos veces
 	@Test
 	public void registrarUsuarioNoValido2() {
 
@@ -70,6 +75,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//6 Loguar Usuario Valido
 	@Test
 	public void loguearUsuarioValido() {
 
@@ -83,6 +89,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//7 Loguear Usuario no válido
 	@Test
 	public void loguearUsuarioNoValido() {
 
@@ -97,6 +104,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//8 Cerrar sesion de Usuario valido
 	@Test
 	public void cerrarSesionDeUsuarioValido() {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -110,6 +118,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
 
+	//9 Cerrar sesion de Usuario no logueado
 	@Test
 	public void cerrarSesionDeUsuarioNoValido() {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -123,6 +132,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
 
+	//10 Buscar usuario existente y conectado
 	@Test
 	public void buscarUsuarioLogueadoValido() {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -136,6 +146,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
 
+	//11 Buscar usuario no existente y no  conectado
 	@Test
 	public void buscarUsuarioLogueadoNoValido() {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -149,6 +160,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
 
+	//12 Buscar usuario  existente
 	@Test
 	public void buscarUsuarioValido() {
 
@@ -164,6 +176,7 @@ public class TestSistema {
 
 	}
 
+	//12 Buscar usuario no  existente
 	@Test
 	public void buscarUsuarioNoEncontrado() {
 
@@ -178,6 +191,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//13 Eliminar Usuario existente
 	@Test
 	public void eliminarUsuarioEncontrado() {
 
@@ -192,6 +206,7 @@ public class TestSistema {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
+	//13 Eliminar Usuario no existente
 	@Test
 	public void eliminarUsuarioNoEncontrado() {
 
@@ -205,8 +220,7 @@ public class TestSistema {
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
-
-	@Test
+	//13 
 	public void verificarEliminacionDeUsuario() {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -220,7 +234,7 @@ public class TestSistema {
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
-
+	
 	@Test
 	public void verificarQueNoSeElimineElUsuario() {
 
@@ -238,7 +252,7 @@ public class TestSistema {
 	}
 	
 	@Test
-	
+	//15 Eliminar usuario sin loguear (no se puede)
 	public void verificarQueNoSeElimineUsuarioActualNoLogueado() {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Cliente c2 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -252,5 +266,36 @@ public class TestSistema {
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
+	//Eliminar usuario logueado actualmente
+	@Test
+	public void verificarEliminacionDeUsuario2() {
 
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema("La Fragata");
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
+		sistema.Eliminar(123, "123luciamartinez", c1);
+
+		Boolean valorEsperado = false;
+		Boolean valorObtenido = sistema.buscarUsuario(123,c1);
+
+		Assert.assertEquals(valorEsperado, valorObtenido);
+	}
+	
+	//Eliminar usuario logueado actualmente ingresando mal datos
+	@Test
+	public void verificarQueNoSeElimineElUsuario2() {
+
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema("La Fragata");
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
+		sistema.Eliminar(1234,"123luciamartinez", c1);
+
+		Boolean valorEsperado = true;
+		Boolean valorObtenido = sistema.buscarUsuario(123,c1);
+
+		Assert.assertEquals(valorEsperado, valorObtenido);
+
+	}
 }
