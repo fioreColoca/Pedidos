@@ -53,7 +53,7 @@ public class Sistema {
 
 	}
 //BUSCAR USUARIOS ONLINE
-	public Boolean buscarUsuarioLogueado(Integer Id,Usuario usuario,Usuario usuarioIngresado) {
+	public Boolean buscarUsuarioLogueado(Integer Id,Usuario usuarioBuscado,Usuario usuarioIngresado) {
 		for (Usuario  usuarioIngresado1  : usuariosLogueados) {
 		for (Usuario usuarios : usuariosLogueados) {
 			
@@ -96,5 +96,17 @@ public class Sistema {
 		
 		}return false;
 	}
+	// NUEVO ELIMINAR , YA QUE ESTE SÓLO ELIMINA AL USUARIO LOGUEADO
+	
+	public Boolean Eliminar (Integer Id,String password,Usuario usuarioIngresado) {
+		if (usuarios.contains(usuarioIngresado)) {
+			if(usuarioIngresado.getPassword()==password && usuarioIngresado.getId()==Id) {
+			usuarios.remove(usuarioIngresado);
+			return true;
+			}
+		}return false;
+	}
+	
+
 	
 }
