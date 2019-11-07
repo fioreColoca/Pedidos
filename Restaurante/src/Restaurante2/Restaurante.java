@@ -1,9 +1,22 @@
 package Restaurante2;
 
-import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Set;
+import java.util.TreeSet;
+
 
 public class Restaurante {
+	public Restaurante() {
+		this.productosSet  = new TreeSet<>();
+	} // NO FUNCIONA
+	LinkedList<Producto> productos = new LinkedList<Producto>();
+	private Set<Producto> productosSet; // NO FUNCIONA 
+	
+	public Set<Producto> getProductosSet() {
+		return productosSet;
+	} //NO FUNCIONA
+	
+	
 
 	private String nombre2;
 	private Integer cuit2;
@@ -13,53 +26,6 @@ public class Restaurante {
 		this.cuit2=cuit2;
 	}
 	
-	LinkedList<Producto> productos = new LinkedList<Producto>();
-
-	public Boolean agregarProductor(Producto P, Administrador A, Sistema S, String email, String password) throws SistemaException {
-		if (S.loguearUsuario(email, password)) {
-			if (!productos.contains(P)) {
-				this.productos.add(P);
-				return true;
-			}
-			return false;
-		}
-		return false;
-	}
-
-	public Boolean eliminarProducto(Integer IdProducto, Administrador a) {
-		Iterator<Producto> it = productos.iterator();
-
-		while (it.hasNext()) {
-			Producto producto = it.next();
-			if (producto.getIdProducto().equals(IdProducto)) {
-				productos.remove(producto);
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	public Boolean buscarProducto(Integer id) {
-		for (Producto p : productos) {
-			if (p.getIdProducto().equals(id))
-				return true;
-		}
-		return false;
-	}
-
-	public Boolean modificarPrecio(Double nuevoPrecio, Integer id) {
-		for (Producto p : productos) {
-			if (p.getIdProducto().equals(id))
-				p.setPrecio(nuevoPrecio);
-			return true;
-		}
-		return false;
-	}
-	
-	public int mostrarCarta() { //NI IDEA SI ESTA BIEN
-			return productos.size();
-		}
-	}
+}
 
 
