@@ -131,7 +131,7 @@ public class TestSistema {
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
 		Boolean valorEsperado = true;
-		Boolean valorActual = sistema.buscarUsuarioLogueado(123,c1);
+		Boolean valorActual = sistema.buscarUsuarioLogueado(123, c1, c1);
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
@@ -144,7 +144,7 @@ public class TestSistema {
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luz");
 
 		Boolean valorEsperado = false;
-		Boolean valorActual = sistema.buscarUsuarioLogueado(144, c1);
+		Boolean valorActual = sistema.buscarUsuarioLogueado(144, c1,c1);
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
