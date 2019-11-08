@@ -1,6 +1,6 @@
 package Restaurante2;
 
-public class Producto implements Comparable<Producto>{
+public class Producto /*implements  Comparable<Producto>*/ {
 	private Categoria categoria;
 	private String descripcion;
 	private Double precio;
@@ -49,8 +49,8 @@ public class Producto implements Comparable<Producto>{
 	public String toString() {
 		return "Producto [categoria=" + categoria + ", descripcion=" + descripcion + ", precio=" + precio
 				+ ", idProducto=" + idProducto + "]";
-	}
-
+	}	
+/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -94,6 +94,6 @@ public class Producto implements Comparable<Producto>{
 	@Override
 	public int compareTo(Producto Producto){
 		return this.idProducto.compareTo(Producto.getIdProducto());
-	}
+	}*/
 	
 }
