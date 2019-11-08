@@ -3,6 +3,7 @@ package Restaurante2;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+
 public class Administrador extends Usuario {
 
 	public Administrador(Integer Id, String nombre, String apellido, String email, String password) {
@@ -19,9 +20,9 @@ public class Administrador extends Usuario {
 		return false;
 	}
 	//Otra manera de hacerlo//
-	public void agregarProductosSet(Producto P, Restaurante nombreRestaurante) {
+	/*public void agregarProductosSet(Producto P, Restaurante nombreRestaurante) {
 		nombreRestaurante.productos.add(P);
-	}
+	}*/
 
 	//Eliminar//
 
@@ -33,7 +34,7 @@ public class Administrador extends Usuario {
 			if (producto.getIdProducto().equals(IdProducto)) {
 				R.productos.remove(producto);
 				return true;
-			}return false;
+			}
 			}return false;
 		}
 	
@@ -45,7 +46,34 @@ public class Administrador extends Usuario {
 		return false;
 	}
 	
+	public Boolean modificarPrecio(Double nuevoPrecio, Integer id,Restaurante R) {
+		for (Producto p : R.productos) {
+			if (p.getIdProducto().equals(id))
+				if (nuevoPrecio < 3000 && nuevoPrecio > 0) {
+				p.setPrecio(nuevoPrecio);
+			return true;
+				} return false;
+		}
+		return false;
+	}
+	/*public void finalizarPedido(Pedido p) {
+		if(p.getEstado().equals(Estado.CANCELADO)) {
+		}else {
+			p.setEstado(Estado.FINALIZADO);	
+		}
+		
+	}
 	
+	public void cancelarPedido(Pedido p) {
+	p.setEstado(Estado.CANCELADO);
+	}
+
+	public void pedidoEnProceso (Pedido p) {
+		if(p.getEstado().equals(Estado.CANCELADO)) {
+		}else {
+			p.setEstado(Estado.PROCESO);
+		}
+	} AYUDA JDKLJAS */ 
 	/*public Boolean eliminarProducto(Integer IdProducto, Administrador a) {
 		Iterator<Producto> it = productos.iterator();
 
