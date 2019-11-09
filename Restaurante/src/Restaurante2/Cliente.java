@@ -1,5 +1,6 @@
 package Restaurante2;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Cliente extends Usuario {
@@ -18,7 +19,7 @@ public class Cliente extends Usuario {
 				this.PedidosHistorial.add(p);
 				return true;
 			}
-			return false;
+
 		}
 		return false;
 	}
@@ -29,31 +30,43 @@ public class Cliente extends Usuario {
 			if (Pedido == null) {
 			} else {
 				acumuladorPrecio += p.getPrecio();
-				Pedido.remove(p);
+
 			}
 
 		}
 		return acumuladorPrecio;
 	}
-	
+
+	/*public void pagar(Restaurante R) { //NO FUNCIONA
+		Iterator<Producto> it = Pedido.iterator();
+
+		while (it.hasNext()) {
+
+			Producto producto = it.next();
+			if (producto.equals(null)) {
+			}Pedido.remove();
+		}
+	}*/
+
+
 	public Boolean eliminarPedido(Integer IdProducto) {
 		for (Producto P : Pedido) {
 			if (Pedido == null) {
 				return false;
-			}else {
+			} else {
 				Pedido.remove(P);
 				return true;
 			}
-		}return false;
+		}
+		return false;
 	}
-	//NI IDEA:C
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public void mostrarPedido() {
+		for (Producto P : Pedido) {
+			if (P == null) {
+			}
+			System.out.println(P.hashCode() + "-------" + P.toString());
+		}
+	}
 
 }
