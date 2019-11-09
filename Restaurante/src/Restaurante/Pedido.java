@@ -1,5 +1,7 @@
 package Restaurante;
 
+import java.util.LinkedList;
+
 public class Pedido {
 	
 	private LinkedList<Producto> pedidos = new LinkedList<>();
