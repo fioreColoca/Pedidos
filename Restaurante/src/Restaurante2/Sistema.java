@@ -96,7 +96,7 @@ public class Sistema {
 		
 		}return false;
 	}
-	// NUEVO ELIMINAR , YA QUE ESTE SÓLO ELIMINA AL USUARIO LOGUEADO
+	// NUEVO ELIMINAR , YA QUE ESTE Sï¿½LO ELIMINA AL USUARIO LOGUEADO
 	
 	public Boolean Eliminar (Integer Id,String password,Usuario usuarioIngresado) {
 		if (usuarios.contains(usuarioIngresado)) {
