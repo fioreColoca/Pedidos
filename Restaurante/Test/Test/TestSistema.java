@@ -11,6 +11,7 @@ import Restaurante.SistemaException1;
 import Restaurante.SistemaException2;
 
 public class TestSistema {
+	//FALTAN EXCEPTION PONER EN E TRUE O FALSE
 
 	@Test
 	public void passwordAceptada() {
