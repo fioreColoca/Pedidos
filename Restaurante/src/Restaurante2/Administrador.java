@@ -3,28 +3,27 @@ package Restaurante2;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-
 public class Administrador extends Usuario {
 
 	public Administrador(Integer Id, String nombre, String apellido, String email, String password) {
 		super(Id, nombre, apellido, email, password);
 	}
-	 //Lo puse aca asi son metodos q hace solo el administrador//
-	
+	// Lo puse aca asi son metodos q hace solo el administrador//
 
 	public Boolean agregarProductos(Producto P, Restaurante nombreRestaurante) {
-			if (!nombreRestaurante.productos.contains(P)) {
-				nombreRestaurante.productos.add(P);
-				return true;
-			}
+		if (!nombreRestaurante.productos.contains(P)) {
+			nombreRestaurante.productos.add(P);
+			return true;
+		}
 		return false;
 	}
-	//Otra manera de hacerlo//
-	/*public void agregarProductosSet(Producto P, Restaurante nombreRestaurante) {
-		nombreRestaurante.productos.add(P);
-	}*/
+	// Otra manera de hacerlo//
+	/*
+	 * public void agregarProductosSet(Producto P, Restaurante nombreRestaurante) {
+	 * nombreRestaurante.productos.add(P); }
+	 */
 
-	//Eliminar//
+	// Eliminar//
 
 	public Boolean eliminarProducto(Integer IdProducto, Restaurante R) {
 		Iterator<Producto> it = R.productos.iterator();
@@ -35,78 +34,44 @@ public class Administrador extends Usuario {
 				R.productos.remove(producto);
 				return true;
 			}
-			}return false;
 		}
-	
-	public Boolean buscarProducto(Integer id,Restaurante R) {
+		return false;
+	}
+
+	public Boolean buscarProducto(Integer id, Restaurante R) {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(id))
 				return true;
 		}
 		return false;
 	}
-	
-	public Boolean modificarPrecio(Double nuevoPrecio, Integer id,Restaurante R) {
+
+	public Boolean modificarPrecio(Double nuevoPrecio, Integer id, Restaurante R) {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(id))
 				if (nuevoPrecio < 3000 && nuevoPrecio > 0) {
-				p.setPrecio(nuevoPrecio);
-			return true;
-				} return false;
+					p.setPrecio(nuevoPrecio);
+					return true;
+				}
+			return false;
 		}
 		return false;
 	}
-	/*public void finalizarPedido(Pedido p) {
-		if(p.getEstado().equals(Estado.CANCELADO)) {
-		}else {
-			p.setEstado(Estado.FINALIZADO);	
-		}
-		
-	}
-	
-	public void cancelarPedido(Pedido p) {
-	p.setEstado(Estado.CANCELADO);
+
+	public void finalizarPedido(Pedido p) {
+		p.setEstado(EstadoPedido.FINALIZADO);
 	}
 
-	public void pedidoEnProceso (Pedido p) {
-		if(p.getEstado().equals(Estado.CANCELADO)) {
-		}else {
-			p.setEstado(Estado.PROCESO);
-		}
-	} AYUDA JDKLJAS */ 
-	/*public Boolean eliminarProducto(Integer IdProducto, Administrador a) {
-		Iterator<Producto> it = productos.iterator();
+	public void pedidoEnProceso(Pedido p) {
+		p.setEstado(EstadoPedido.PROCESANDO);
+	}// DUDANDO COMO METER ESTO EN EL MAIN
 
-		while (it.hasNext()) {
-			Producto producto = it.next();
-			if (producto.getIdProducto().equals(IdProducto)) {
-				productos.remove(producto);
-				return true;
+	public void mostrarListadoPedidosPendientes(Restaurante r1) {
+		for (Producto P : r1.productos) {
+			if (P == null) {
 			}
-		}
-		return false;
+			System.out.println(P.hashCode() + "-------" + P.toString());
 
-	}
-	
-
-	public Boolean buscarProducto(Integer id) {
-		for (Producto p : productos) {
-			if (p.getIdProducto().equals(id))
-				return true;
 		}
-		return false;
 	}
-
-	public Boolean modificarPrecio(Double nuevoPrecio, Integer id) {
-		for (Producto p : productos) {
-			if (p.getIdProducto().equals(id))
-				p.setPrecio(nuevoPrecio);
-			return true;
-		}
-		return false;
-	}
-	
-	public int mostrarCarta() { //NI IDEA SI ESTA BIEN
-			return productos.size();
-		}*/
 }
