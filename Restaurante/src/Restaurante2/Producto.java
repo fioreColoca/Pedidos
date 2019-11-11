@@ -1,6 +1,6 @@
 package Restaurante2;
 
-public class Producto /*implements  Comparable<Producto>*/ {
+public class Producto implements  Comparable<Producto> {
 	private Categoria categoria;
 	private String descripcion;
 	private Double precio;
@@ -50,7 +50,7 @@ public class Producto /*implements  Comparable<Producto>*/ {
 		return "Producto [categoria=" + categoria + ", descripcion=" + descripcion + ", precio=" + precio
 				+ ", idProducto=" + idProducto + "]";
 	}	
-/*
+	//identificacion unica
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -90,10 +90,12 @@ public class Producto /*implements  Comparable<Producto>*/ {
 			return false;
 		return true;
 	}
-
+	//ORDENA EL LISTADO SEGUN EL ID,NO PUEDE HABER ID REPETIDOS
 	@Override
-	public int compareTo(Producto Producto){
-		return this.idProducto.compareTo(Producto.getIdProducto());
-	}*/
+	public int compareTo(Producto idPedido){
+		return this.idProducto.compareTo(idPedido.getIdProducto());
+	}
+
+	
 	
 }
