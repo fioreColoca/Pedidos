@@ -23,10 +23,16 @@ public class TestRestaurante {
 			Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 			Restaurante r1 = new Restaurante("Cafeteria", 123456);
 			Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
+			Producto p2 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 4);
+			a1.agregarProductos(p2,r1);
 			
 			Boolean valorObtenido=a1.agregarProductos(p1,r1);
 			Boolean valorEsperado=true;
 			Assert.assertEquals(valorEsperado, valorObtenido);
+			r1.mostrarCarta();
+			
+			System.out.println("-----");
+
 		}
 		// 2 Ingresar productos fallo
 		@Test
