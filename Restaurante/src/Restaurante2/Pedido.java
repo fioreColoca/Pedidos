@@ -1,10 +1,11 @@
 package Restaurante2;
 
 import java.util.LinkedList;
+import java.util.TreeSet;
 
 public class Pedido {
 
-	private LinkedList<Producto> pedidos = new LinkedList<>();
+	private TreeSet<Producto> pedidos = new TreeSet<Producto>();
 
 	private Cliente cliente;
 	private Restaurante restaurante;
@@ -49,11 +50,11 @@ public class Pedido {
 		this.estado = estado;
 	}
 
-	public LinkedList<Producto> getPedidos() {
+	public TreeSet <Producto> getPedidos() {
 		return pedidos;
 	}
 
-	public void setPedidos(LinkedList<Producto> pedidos) {
+	public void setPedidos(TreeSet<Producto> pedidos) {
 		this.pedidos = pedidos;
 	}
 
