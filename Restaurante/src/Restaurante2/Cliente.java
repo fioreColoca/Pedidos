@@ -37,17 +37,16 @@ public class Cliente extends Usuario {
 		return acumuladorPrecio;
 	}
 
-	/*public void pagar(Restaurante R) { //NO FUNCIONA
+	/*public void pagar(Restaurante R,  Integer numeroDePedido) { //NO FUNCIONA
 		Iterator<Producto> it = Pedido.iterator();
 
 		while (it.hasNext()) {
 
 			Producto producto = it.next();
-			if (producto.equals(null)) {
+			if (producto.equals(Pedido.getNumeroDePedido)) {
 			}Pedido.remove();
 		}
-	}*/
-
+	}NO SE COMO HACERLO*/
 
 	public Boolean eliminarPedido(Integer IdProducto) {
 		for (Producto P : Pedido) {
