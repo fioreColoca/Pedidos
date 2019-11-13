@@ -5,12 +5,20 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Sistema {
-	private String nombreDeSistema;
+	
+	public static Sistema instance ;
+	
+	Usuario usuarioLogueado;
+	
+	public Sistema() {}
 
-	public Sistema(String nombreDeSistema) {
-		this.nombreDeSistema = nombreDeSistema;
+	public static Sistema getInstance() {
+		if (instance  == null) {
+			instance  = new Sistema();
+		}
+		
+		return instance;
 	}
-
 	LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 	LinkedList<Usuario> usuariosLogueados = new LinkedList<Usuario>();
 	
@@ -27,25 +35,27 @@ public class Sistema {
 	}
 
 //ABRIR SESION
+	
 	public Boolean loguearUsuario(String email, String password) {
 		for (int i = 0; i < usuarios.size(); i++) {
 			if (usuarios.get(i).getEmail().equals(email) && usuarios.get(i).getPassword().equals(password)) {
 				Usuario usuario = usuarios.get(i);
 				this.usuariosLogueados.add(usuario);
+				usuarioLogueado = usuario;
 				return true;
 			}
 		} return false;
 	}
 
 //CERRAR SESION
-	public Boolean cerrarSesiondeUsuario(Usuario usuario) {
+	public Boolean cerrarSesiondeUsuario() {
 		Iterator<Usuario> it = usuariosLogueados.iterator();
 
 		while (it.hasNext()) {
 
 			Usuario usuarioAuxiliar = it.next();
-			if (usuarioAuxiliar.equals(usuario)) {
-				usuariosLogueados.remove(usuario);
+			if (usuarioAuxiliar.equals(usuarioLogueado)) {
+				usuariosLogueados.remove(usuarioLogueado);
 				return true;
 			}
 		}
@@ -53,8 +63,8 @@ public class Sistema {
 
 	}
 //BUSCAR USUARIOS ONLINE
-	public Boolean buscarUsuarioLogueado(Integer Id,Usuario usuarioBuscado,Usuario usuarioIngresado) {
-		for (Usuario  usuarioIngresado1  : usuariosLogueados) {
+	public Boolean buscarUsuarioLogueado(Integer Id,Usuario usuarioBuscado) {
+		for (Usuario  usuarioLogueado  : usuariosLogueados) {
 		for (Usuario usuarios : usuariosLogueados) {
 			
 			if (usuarios.getId().equals(Id))
@@ -66,6 +76,7 @@ public class Sistema {
 	
 //BUSCAR USUARIOS ONLINE/OFFLINE
 	public Boolean buscarUsuario(Integer Id,Usuario usuarioIngresado) {
+		for (Usuario  usuarioLogueado  : usuariosLogueados) {
 		for (Usuario  usuarioIngresado1  : usuariosLogueados) {
 			if  (usuarioIngresado1.equals(usuarioIngresado)) {
 		for (Usuario usuarios : usuarios) {
@@ -75,33 +86,16 @@ public class Sistema {
 				return false;
 			} return false;
 		}return  false;
+		} return false;
 	}
 //ELIMINAR USUARIO 
-	
-	public Boolean EliminarUsuario(Integer Id,String password,Usuario usuarioIngresado) {
-		for (Usuario  usuarioIngresado1  : usuariosLogueados) {
-			if  (usuarioIngresado1.equals(usuarioIngresado)) {
-			
-		Iterator<Usuario> it = usuarios.iterator();
 
-		while (it.hasNext()) {// devuelve true si tiene otro elemento y entra hasta que sea false
-
-			Usuario usuario = it.next();
-			if (usuario.getId().equals(Id) && usuario.getPassword().equals(usuario.getPassword())) {
-				usuarios.remove(usuario);
-				return true;
-			}
-		} 
-		}return false;
-		
-		}return false;
-	}
 	// NUEVO ELIMINAR , YA QUE ESTE S�LO ELIMINA AL USUARIO LOGUEADO
 	
-	public Boolean Eliminar (Integer Id,String password,Usuario usuarioIngresado) {
-		if (usuarios.contains(usuarioIngresado)) {
-			if(usuarioIngresado.getPassword()==password && usuarioIngresado.getId()==Id) {
-			usuarios.remove(usuarioIngresado);
+	public Boolean Eliminar (Integer Id,String password) {
+		if (usuarios.contains(usuarioLogueado)) {
+			if(usuarioLogueado.getPassword()==password && usuarioLogueado.getId()==Id) {
+			usuarios.remove(usuarioLogueado);
 			return true;
 			}
 		}return false;
