@@ -20,6 +20,7 @@ public class Producto implements  Comparable<Producto> {
 	public void setProducto(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	
 
 	public String getDescripcion() {
 		return descripcion;
