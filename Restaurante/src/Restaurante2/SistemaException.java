@@ -4,7 +4,8 @@ public class SistemaException extends Exception {
 
 	
 	public SistemaException() {
-		super("No  se ha encontrado el usuario");
+		super("No  se pudo crear el usuario");
 	}
 	
 }
+
