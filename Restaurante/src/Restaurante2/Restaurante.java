@@ -20,6 +20,7 @@ public class Restaurante {
 
 	private String nombre2;
 	private Integer cuit2;
+	
 
 	public Restaurante(String nombre2, int cuit2) {
 		this.nombre2 = nombre2;
