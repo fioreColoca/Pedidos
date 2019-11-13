@@ -12,6 +12,7 @@ public class Cliente extends Usuario {
 	LinkedList<Producto> PedidosHistorial = new LinkedList<Producto>();
 	LinkedList<Producto> Pedido = new LinkedList<Producto>();
 
+	// DONDE IRIA NOMBRE DE MESA ?????????????????
 	public Boolean pedirProducto(Integer idProducto, Restaurante R) {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(idProducto)) {
@@ -58,7 +59,7 @@ public class Cliente extends Usuario {
 			}
 		}
 		return false;
-	}
+	} // ????????????????????????????????????
 
 	public void mostrarPedido() {
 		for (Producto P : Pedido) {
