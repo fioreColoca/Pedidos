@@ -9,13 +9,14 @@ import Restaurante2.Cliente;
 import Restaurante2.Producto;
 import Restaurante2.Restaurante;
 import Restaurante2.Sistema;
+import Restaurante2.SistemaException;
 
 public class TestCliente {
 
 	@Test
-	public void pedirProducto() {
+	public void pedirProducto() throws SistemaException {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
@@ -35,9 +36,9 @@ public class TestCliente {
 	}
 
 	@Test
-	public void pedirProductoInexistente() {
+	public void pedirProductoInexistente() throws SistemaException {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
@@ -57,9 +58,9 @@ public class TestCliente {
 	}
 
 	@Test
-	public void pedirCuenta() {
+	public void pedirCuenta() throws SistemaException {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
@@ -104,9 +105,9 @@ public class TestCliente {
 	}*/
 
 	@Test
-	public void mostrarCuenta() {
+	public void mostrarCuenta() throws SistemaException {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
@@ -126,9 +127,9 @@ public class TestCliente {
 	}
 
 	@Test
-	public void eliminarPedido() {
+	public void eliminarPedido() throws SistemaException {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
