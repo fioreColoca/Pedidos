@@ -17,6 +17,7 @@ public abstract class Usuario {
 		this.password = password;
 	}
 
+	
 	public Integer getId() {
 		return this.Id;
 	}
