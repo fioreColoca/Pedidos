@@ -16,6 +16,7 @@ public class Administrador extends Usuario {
 			return true;
 		}
 		return false;
+
 	}
 	// Otra manera de hacerlo//
 	/*
