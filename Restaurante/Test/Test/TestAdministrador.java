@@ -43,7 +43,7 @@ public class TestAdministrador {
 
 	// 2 INGRESAR PRODUCTOS MAL
 
-	@Test
+	@Test(expected = AdministradorExceptionAgregarProducto.class)
 	public void admNoAgregarProductos() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario,
 			AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -52,12 +52,9 @@ public class TestAdministrador {
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Restaurante Cafeteria = new Restaurante("Cafeteria", 123456);
-		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 5000.0, 2);
+		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 2000.0, 2);
 		a1.agregarProductos(p1, Cafeteria);
-
-		Boolean valorObtenido = a1.agregarProductos(p1, Cafeteria);
-		Boolean valorEsperado = false;
-		Assert.assertEquals(valorEsperado, valorObtenido);
+		a1.agregarProductos(p1, Cafeteria);
 	}
 
 	// 3 ELIMINAR PRODUCTOS VALIDO
