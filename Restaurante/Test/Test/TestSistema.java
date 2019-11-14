@@ -110,7 +110,7 @@ public class TestSistema {
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
 		Boolean valorEsperado = true;
-		Boolean valorActual = sistema.cerrarSesiondeUsuario(c1);
+		Boolean valorActual = sistema.cerrarSesiondeUsuario();
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
@@ -123,7 +123,7 @@ public class TestSistema {
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luz");
 
 		Boolean valorEsperado = false;
-		Boolean valorActual = sistema.cerrarSesiondeUsuario(c1);
+		Boolean valorActual = sistema.cerrarSesiondeUsuario();
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
