@@ -40,4 +40,8 @@ public class Restaurante {
 		return false;
 
 	}
+	
+	 public EstadoPedido verEstado (Pedido pedido) { // HACER QUE EL PEDIDO TENGA UNA ID Y BUSCARLO POR ID 
+		 return pedido.getEstado();
+	 }
 }
