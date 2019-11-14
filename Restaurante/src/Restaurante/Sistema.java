@@ -58,7 +58,7 @@ public class Sistema {
 			if (usuarioAuxiliar.equals(usuarioLogueado)) {
 				usuariosLogueados.remove(usuarioLogueado);
 				return true;
-			}
+			}return true;
 		}
 		return false;
 	}
