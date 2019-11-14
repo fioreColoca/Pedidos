@@ -16,9 +16,7 @@ public class Pedido {
 		this.mesa = mesa;
 		this.restaurante = restaurante;
 		this.estado = EstadoPedido.INICIALIZANDO;
-	}
-
-	
+	}	
 
 	public Integer getMesa() {
 		return mesa;
