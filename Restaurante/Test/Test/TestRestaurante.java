@@ -1,7 +1,5 @@
 package Test;
 
-
-import org.junit.Assert;
 import org.junit.Test;
 
 import Restaurante2.Administrador;
@@ -10,13 +8,13 @@ import Restaurante2.Cliente;
 import Restaurante2.Producto;
 import Restaurante2.Restaurante;
 import Restaurante2.Sistema;
-import Restaurante2.SistemaException;
-import Restaurante2.productoException;
+import Restaurante2.SistemaExceptionNoCreaUsuario;
+import Restaurante2.SistemaExceptionNoEncuentraUsuario;
 
 public class TestRestaurante {
 		// 1 Ingresar productos
 		@Test
-		public void mostrarCarta() {
+		public void mostrarCarta() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 			Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 			Sistema sistema = new Sistema();
 			sistema.crearNuevoUsuario(c1);
