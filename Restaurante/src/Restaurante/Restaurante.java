@@ -14,7 +14,7 @@ public class Restaurante {
 	}
 	LinkedList<Producto> productos = new LinkedList<Producto>();
 
-	public Boolean agregarProductor(Producto P, Administrador A, Sistema S, String email, String password) throws SistemaException1 {
+	public Boolean agregarProductor(Producto P, Administrador A, Sistema S, String email, String password) throws SistemaExceptionNoEncuentraUsuario {
 		if (S.loguearUsuario(email, password)) {
 			if (!productos.contains(P)) {
 				this.productos.add(P);
