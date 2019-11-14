@@ -9,7 +9,6 @@ public abstract class Usuario {
 	private String email;
 	private String password;
 
-
 	public Usuario(Integer Id, String nombre, String apellido, String email, String password) {
 		this.Id = Id;
 		this.nombre = nombre;
@@ -58,7 +57,7 @@ public abstract class Usuario {
 		this.password = password;
 	}
 
-	public Boolean validarPassword(String password) {
+	public Boolean validarPassword(String password) throws UsuarioExceptionContraseñaIncorrecta {
 
 		if (password.length() >= 8) {
 			for (int i = 0; i < password.length(); i++) {
@@ -67,12 +66,7 @@ public abstract class Usuario {
 				}
 			}
 		}
-		return false;
+		throw new UsuarioExceptionContraseñaIncorrecta();
 	}
-	
-	
-	
-	
 
-	
 }
