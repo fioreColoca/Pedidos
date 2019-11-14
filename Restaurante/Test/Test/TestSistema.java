@@ -6,9 +6,9 @@ import org.junit.Test;
 import Restaurante.Administrador;
 import Restaurante.Cliente;
 import Restaurante.Sistema;
-import Restaurante.SistemaException;
-import Restaurante.SistemaException1;
-import Restaurante.SistemaException2;
+import Restaurante.SistemaExceptionNoCreaUsuario;
+import Restaurante.SistemaExceptionNoEncuentraUsuario;
+import Restaurante.SistemaExceptionNoEliminaUsuario;
 
 public class TestSistema {
 	//FALTAN EXCEPTION PONER EN E TRUE O FALSE
@@ -37,7 +37,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void registrarUsuarioValido() throws SistemaException {
+	public void registrarUsuarioValido() throws SistemaExceptionNoCreaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -49,7 +49,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void registrarUsuarioNoValido() throws SistemaException {
+	public void registrarUsuarioNoValido() throws SistemaExceptionNoCreaUsuario {
 
 		Sistema sistema = new Sistema("La Fragata");
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -63,7 +63,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void registrarUsuarioNoValido2() throws SistemaException {
+	public void registrarUsuarioNoValido2() throws SistemaExceptionNoCreaUsuario {
 
 		Sistema sistema = new Sistema("La Fragata");
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -76,7 +76,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void loguearUsuarioValido() throws SistemaException, SistemaException1 {
+	public void loguearUsuarioValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -89,7 +89,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void loguearUsuarioNoValido() throws SistemaException, SistemaException1 {
+	public void loguearUsuarioNoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -103,7 +103,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void cerrarSesionDeUsuarioValido() throws SistemaException, SistemaException1 {
+	public void cerrarSesionDeUsuarioValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
 		sistema.crearNuevoUsuario(c1);
@@ -116,7 +116,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void cerrarSesionDeUsuarioNoValido() throws SistemaException, SistemaException1 {
+	public void cerrarSesionDeUsuarioNoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
 		sistema.crearNuevoUsuario(c1);
@@ -129,7 +129,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void buscarUsuarioLogueadoValido() throws SistemaException, SistemaException1 {
+	public void buscarUsuarioLogueadoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
@@ -143,7 +143,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void buscarUsuarioLogueadoNoValido() throws SistemaException, SistemaException1 {
+	public void buscarUsuarioLogueadoNoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
@@ -157,7 +157,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void buscarUsuarioValido() throws SistemaException, SistemaException1 {
+	public void buscarUsuarioValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -173,7 +173,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void buscarUsuarioNoEncontrado() throws SistemaException, SistemaException1 {
+	public void buscarUsuarioNoEncontrado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -188,7 +188,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void eliminarUsuarioEncontrado() throws SistemaException, SistemaException1, SistemaException2 {
+	public void eliminarUsuarioEncontrado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -203,7 +203,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void eliminarUsuarioNoEncontrado() throws SistemaException, SistemaException1, SistemaException2 {
+	public void eliminarUsuarioNoEncontrado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -218,7 +218,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void verificarEliminacionDeUsuario() throws SistemaException, SistemaException1, SistemaException2 {
+	public void verificarEliminacionDeUsuario() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
@@ -234,7 +234,7 @@ public class TestSistema {
 	}
 
 	@Test
-	public void verificarQueNoSeElimineElUsuario() throws SistemaException, SistemaException1, SistemaException2 {
+	public void verificarQueNoSeElimineElUsuario() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema("La Fragata");
