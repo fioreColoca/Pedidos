@@ -12,72 +12,52 @@ public class Cliente extends Usuario {
 	}
 
 	LinkedList<Producto> PedidosHistorial = new LinkedList<Producto>();
-	LinkedList<Producto> Pedido = new LinkedList<Producto>();
 
 	// DONDE IRIA NOMBRE DE MESA ?????????????????
-	public Boolean pedirProducto(Integer idProducto, Restaurante R,Integer mesa ) throws ExceptionProductoInexistente {
+	
+	
+	
+	public Boolean pedirProducto(Integer idProducto,Pedido p1 ,Restaurante R ) {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(idProducto)) {
-				this.Pedido.add(p);
-				Pedido p1 = new Pedido (mesa,R);
-				
+				this.PedidosHistorial.add(p);
+				p1.pedirProducto(idProducto,R);
 				return true;
 			}
 		}
-		throw new ExceptionProductoInexistente();
+		return false;
 	}
-
-	public Double pedirCuenta(Restaurante R)  throws ClienteExceptionNoPedidos{
-		Double acumuladorPrecio = 0.0;
-		for (Producto p : Pedido) {
-			if (Pedido == null) {
-				throw new 	ClienteExceptionNoPedidos();
-			} else {
-				acumuladorPrecio += p.getPrecio();
-
-			}
-
-		}
-		return acumuladorPrecio;
-	}
-
-	/*public void pagar(Restaurante R,  Integer numeroDePedido) { //NO FUNCIONA
-		Iterator<Producto> it = Pedido.iterator();
-
-		while (it.hasNext()) {
-
-			Producto producto = it.next();
-			if (producto.equals(Pedido.getNumeroDePedido)) {
-			}Pedido.remove();
-		}
-	}NO SE COMO HACERLO*/
-
-	public void eliminarPedido()   {
-			Pedido.remove();
-			
-		}
 	
-
-
-
-	// ????????????????????????????????????
-
-	public void mostrarPedido() {
-		for (Producto P : Pedido) {
-			if (P == null) {
-			}
-			System.out.println(P.hashCode() + "-------" + P.toString());
-		}
+	public Double pedirCuenta(Pedido pedido,Restaurante R) {
+		return pedido.pedirCuenta(R) ;
+		
+	}
+	
+	public void pagar(Pedido pedido) {
+		 pedido.pagar();
+	}
+	
+	public void mostrarPedido(Pedido pedido) {
+		 pedido.mostrarPedido() ;
+		
+	}
+	
+	public void eliminarPedidoCompleto(Pedido pedido) {
+		pedido.eliminarPedido();
 	}
 	
 	public void verHistorial () {
 		for (Producto P : PedidosHistorial) {
-			if (P == null) {
-			}
 			System.out.println(P.hashCode() + "-------" + P.toString());
-
 		}
 	}
+	
+	
+	public Boolean  eliminarProducto (Pedido pedido,Integer idProducto) {
+		return pedido.eliminarProducto(idProducto);
+		
+	}
+
 	
 	
 }
