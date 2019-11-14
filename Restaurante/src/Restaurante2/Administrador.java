@@ -18,6 +18,7 @@ public class Administrador extends Usuario {
 			}
 			throw new AdministradorExceptionAgregarProducto();
 		}
+		
 
 		// ELIMINAR PRODUCTO
 
