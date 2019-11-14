@@ -40,7 +40,7 @@ public class TestSistema {
 	public void registrarUsuarioValido() throws SistemaExceptionNoCreaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 
 		Boolean valorEsperado = true;
 		Boolean valorObtenido = sistema.crearNuevoUsuario(c1);
@@ -51,7 +51,7 @@ public class TestSistema {
 	@Test
 	public void registrarUsuarioNoValido() throws SistemaExceptionNoCreaUsuario {
 
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		sistema.crearNuevoUsuario(c1);
 		Cliente c2 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
@@ -65,7 +65,7 @@ public class TestSistema {
 	@Test
 	public void registrarUsuarioNoValido2() throws SistemaExceptionNoCreaUsuario {
 
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		sistema.crearNuevoUsuario(c1);
 
@@ -79,7 +79,7 @@ public class TestSistema {
 	public void loguearUsuarioValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 
 		Boolean valorEsperado = true;
@@ -92,7 +92,7 @@ public class TestSistema {
 	public void loguearUsuarioNoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.crearNuevoUsuario(c1);
 
@@ -105,7 +105,7 @@ public class TestSistema {
 	@Test
 	public void cerrarSesionDeUsuarioValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
@@ -118,7 +118,7 @@ public class TestSistema {
 	@Test
 	public void cerrarSesionDeUsuarioNoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luz");
 
@@ -131,13 +131,13 @@ public class TestSistema {
 	@Test
 	public void buscarUsuarioLogueadoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
 		Boolean valorEsperado = true;
-		Boolean valorActual = sistema.buscarUsuarioLogueado(123, c1, admin);
+		Boolean valorActual = sistema.buscarUsuarioLogueado(123,admin);
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
@@ -145,13 +145,13 @@ public class TestSistema {
 	@Test
 	public void buscarUsuarioLogueadoNoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luz");
 
 		Boolean valorEsperado = false;
-		Boolean valorActual = sistema.buscarUsuarioLogueado(123, c1, admin);
+		Boolean valorActual = sistema.buscarUsuarioLogueado(123,admin);
 
 		Assert.assertEquals(valorEsperado, valorActual);
 	}
@@ -160,13 +160,13 @@ public class TestSistema {
 	public void buscarUsuarioValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
 		Boolean valorEsperado = true;
-		Boolean valorObtenido = sistema.buscarUsuario(123, admin);
+		Boolean valorObtenido = sistema.buscarUsuario(123,admin);
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 
@@ -176,13 +176,13 @@ public class TestSistema {
 	public void buscarUsuarioNoEncontrado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 
 		Boolean valorEsperado = false;
-		Boolean valorObtenido = sistema.buscarUsuario(12345678, admin);
+		Boolean valorObtenido = sistema.buscarUsuario(12345678,admin);
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
@@ -191,7 +191,7 @@ public class TestSistema {
 	public void eliminarUsuarioEncontrado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
@@ -206,7 +206,7 @@ public class TestSistema {
 	public void eliminarUsuarioNoEncontrado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
@@ -221,7 +221,7 @@ public class TestSistema {
 	public void verificarEliminacionDeUsuario() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
@@ -237,7 +237,7 @@ public class TestSistema {
 	public void verificarQueNoSeElimineElUsuario() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoEliminaUsuario {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		Sistema sistema = new Sistema("La Fragata");
+		Sistema sistema = new Sistema();
 		Administrador admin = new Administrador(1234, "roberto", "perez", "robetoperez@hotmail.com", "123roberto");
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
