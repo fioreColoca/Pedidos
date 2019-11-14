@@ -15,17 +15,16 @@ public class Cliente extends Usuario {
 	LinkedList<Producto> Pedido = new LinkedList<Producto>();
 
 	// DONDE IRIA NOMBRE DE MESA ?????????????????
-	public Boolean pedirProducto(Integer idProducto, Restaurante R) throws ExceptionProductoInexistente {
+	public Boolean pedirProducto(Integer idProducto, Restaurante R,Integer mesa ) throws ExceptionProductoInexistente {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(idProducto)) {
 				this.Pedido.add(p);
-				this.PedidosHistorial.add(p);
+				Pedido p1 = new Pedido (mesa,R);
 				
 				return true;
 			}
-
 		}
-		throw new ExceptionProductoInexistente(); /* falta meter la array dentro de la array pedidos*/
+		throw new ExceptionProductoInexistente();
 	}
 
 	public Double pedirCuenta(Restaurante R)  throws ClienteExceptionNoPedidos{
