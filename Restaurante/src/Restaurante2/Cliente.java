@@ -18,11 +18,12 @@ public class Cliente extends Usuario {
 			if (p.getIdProducto().equals(idProducto)) {
 				this.Pedido.add(p);
 				this.PedidosHistorial.add(p);
+				
 				return true;
 			}
 
 		}
-		return false;
+		return false; /* falta meter la array dentro de la array pedidos*/
 	}
 
 	public Double pedirCuenta(Restaurante R) {
@@ -68,5 +69,16 @@ public class Cliente extends Usuario {
 			System.out.println(P.hashCode() + "-------" + P.toString());
 		}
 	}
+	
+	public void verHistorial () {
+		for (Producto P : PedidosHistorial) {
+			if (P == null) {
+			}
+			System.out.println(P.hashCode() + "-------" + P.toString());
+
+		}
+	}
+	
+	
 
 }
