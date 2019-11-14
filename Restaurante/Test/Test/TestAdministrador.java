@@ -6,14 +6,16 @@ import org.junit.Test;
 import Restaurante2.Administrador;
 import Restaurante2.Categoria;
 import Restaurante2.Cliente;
+import Restaurante2.ExceptionProductoInexistente;
 import Restaurante2.Producto;
 import Restaurante2.Restaurante;
 import Restaurante2.Sistema;
-import Restaurante2.SistemaException;
+import Restaurante2.SistemaExceptionNoCreaUsuario;
+import Restaurante2.SistemaExceptionNoEncuentraUsuario;
 
 public class TestAdministrador {
 	@Test
-	public void eliminarPedido() throws SistemaException {
+	public void eliminarPedido() throws ExceptionProductoInexistente, ClienteExceptionNoPedidos, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -31,14 +33,14 @@ public class TestAdministrador {
 		c1.pedirProducto(4, r1);
 		c1.pedirProducto(4, r1);
 		c1.pedirProducto(6, r1);
-		c1.eliminarPedido(4);
+		c1.eliminarPedido();
 		c1.mostrarPedido(); 
 		
 		// COMO LO PLANTEAMOS NOSOTRAS NO IRIA UNA CLASE PEDIDO :C
 		
 	}
 	@Test
-	public void admAgregarProductos() throws SistemaException {
+	public void admAgregarProductos() throws SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario  {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -59,7 +61,7 @@ public class TestAdministrador {
 	}
 	// 2 Ingresar productos fallo
 	@Test
-	public void admNoAgregarProductos() throws SistemaException {
+	public void admNoAgregarProductos() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario   {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -74,7 +76,7 @@ public class TestAdministrador {
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 	@Test
-	public void eliminarProductos() throws SistemaException {
+	public void eliminarProductos() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario   {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -97,7 +99,7 @@ public class TestAdministrador {
 	}
 	@Test
 	// 4 Buscar productos//
-	public void buscarProductos() throws SistemaException {
+	public void buscarProductos() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario  {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -120,7 +122,7 @@ public class TestAdministrador {
 	//5 Buscar producto que no existe//
 	
 	@Test
-	public void eliminarProductoQueNoExiste() throws SistemaException {
+	public void eliminarProductoQueNoExiste() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario  {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -141,7 +143,7 @@ public class TestAdministrador {
 
 	}
 	@Test
-	public void eliminarProductosYBuscarlo() throws SistemaException {
+	public void eliminarProductosYBuscarlo() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario  {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -163,7 +165,7 @@ public class TestAdministrador {
 	}
 	//MOSTRAR LISTADO DE TODOS LOS PRODUCTOS
 	@Test
-	public void verListado() throws SistemaException {
+	public void verListado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario  {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
