@@ -8,7 +8,7 @@ import Restaurante.Cliente;
 import Restaurante.Sistema;
 import Restaurante.SistemaExceptionNoCreaUsuario;
 import Restaurante.SistemaExceptionNoEncuentraUsuario;
-import Restaurante.UsuarioExceptionContraseñaIncorrecta;
+import Restaurante.UsuarioExceptionPasswordIncorrecta;
 import Restaurante.SistemaExceptionNoEliminaUsuario;
 
 public class TestSistema {
@@ -16,7 +16,7 @@ public class TestSistema {
 
 	// 1 CONTRASEÑA ACEPTADA
 	@Test
-	public void passwordAceptada() throws UsuarioExceptionContraseñaIncorrecta {
+	public void passwordAceptada() throws UsuarioExceptionPasswordIncorrecta {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 
@@ -29,7 +29,7 @@ public class TestSistema {
 
 	// 2 CONTRASEÑA INCORRECTA
 	@Test
-	public void passwordNegado() throws UsuarioExceptionContraseñaIncorrecta {
+	public void passwordNegado() throws UsuarioExceptionPasswordIncorrecta {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 
