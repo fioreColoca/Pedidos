@@ -3,6 +3,8 @@ package Restaurante2;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import Test.ClienteExceptionNoPedidos;
+
 public class Cliente extends Usuario {
 
 	public Cliente(Integer Id, String nombre, String apellido, String email, String password) {
@@ -13,7 +15,7 @@ public class Cliente extends Usuario {
 	LinkedList<Producto> Pedido = new LinkedList<Producto>();
 
 	// DONDE IRIA NOMBRE DE MESA ?????????????????
-	public Boolean pedirProducto(Integer idProducto, Restaurante R) {
+	public Boolean pedirProducto(Integer idProducto, Restaurante R) throws ExceptionProductoInexistente {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(idProducto)) {
 				this.Pedido.add(p);
@@ -23,13 +25,14 @@ public class Cliente extends Usuario {
 			}
 
 		}
-		return false; /* falta meter la array dentro de la array pedidos*/
+		throw new ExceptionProductoInexistente(); /* falta meter la array dentro de la array pedidos*/
 	}
 
-	public Double pedirCuenta(Restaurante R) {
+	public Double pedirCuenta(Restaurante R)  throws ClienteExceptionNoPedidos{
 		Double acumuladorPrecio = 0.0;
 		for (Producto p : Pedido) {
 			if (Pedido == null) {
+				throw new 	ClienteExceptionNoPedidos();
 			} else {
 				acumuladorPrecio += p.getPrecio();
 
@@ -50,17 +53,15 @@ public class Cliente extends Usuario {
 		}
 	}NO SE COMO HACERLO*/
 
-	public Boolean eliminarPedido(Integer IdProducto) {
-		for (Producto P : Pedido) {
-			if (Pedido == null) {
-				return false;
-			} else {
-				Pedido.remove(P);
-				return true;
-			}
+	public void eliminarPedido()   {
+			Pedido.remove();
+			
 		}
-		return false;
-	} // ????????????????????????????????????
+	
+
+
+
+	// ????????????????????????????????????
 
 	public void mostrarPedido() {
 		for (Producto P : Pedido) {
@@ -80,5 +81,4 @@ public class Cliente extends Usuario {
 	}
 	
 	
-
 }
