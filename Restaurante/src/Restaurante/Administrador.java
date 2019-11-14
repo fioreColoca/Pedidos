@@ -7,22 +7,19 @@ public class Administrador extends Usuario {
 	public Administrador(Integer Id, String nombre, String apellido, String email, String password) {
 		super(Id, nombre, apellido, email, password);
 	}
-	public Boolean agregarProductos(Producto P, Restaurante nombreRestaurante) {
+
+	// AGREGAR PRODUCTO
+	public Boolean agregarProductos(Producto P, Restaurante nombreRestaurante) throws AdministradorExceptionAgregarProducto {
 		if (!nombreRestaurante.productos.contains(P)) {
 			nombreRestaurante.productos.add(P);
 			return true;
 		}
-		return false;
+		throw new AdministradorExceptionAgregarProducto();
 	}
-	// Otra manera de hacerlo//
-	/*
-	 * public void agregarProductosSet(Producto P, Restaurante nombreRestaurante) {
-	 * nombreRestaurante.productos.add(P); }
-	 */
 
-	// Eliminar//
+	// ELIMINAR PRODUCTO
 
-	public Boolean eliminarProducto(Integer IdProducto, Restaurante R) {
+	public Boolean eliminarProducto(Integer IdProducto, Restaurante R) throws AdministradorExceptionEliminarProducto {
 		Iterator<Producto> it = R.productos.iterator();
 
 		while (it.hasNext()) {
@@ -32,28 +29,32 @@ public class Administrador extends Usuario {
 				return true;
 			}
 		}
-		return false;
+		throw new AdministradorExceptionEliminarProducto();
 	}
-
-	public Boolean buscarProducto(Integer id, Restaurante R) {
+	
+	// BUSCAR PRODUCTO
+	
+	public Boolean buscarProducto(Integer id, Restaurante R) throws AdministradorExceptionProductoNoEncontrado {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(id))
 				return true;
 		}
-		return false;
+		throw new AdministradorExceptionProductoNoEncontrado();
 	}
 
-	public Boolean modificarPrecio(Double nuevoPrecio, Integer id, Restaurante R) {
+	public Boolean modificarPrecio(Double nuevoPrecio, Integer id, Restaurante R) throws AdministradorExceptionNoModificaPrecio, AdministradorExceptionProductoNoEncontrado {
 		for (Producto p : R.productos) {
-			if (p.getIdProducto().equals(id))
+			if (p.getIdProducto().equals(id)) {
 				if (nuevoPrecio < 3000 && nuevoPrecio > 0) {
 					p.setPrecio(nuevoPrecio);
 					return true;
 				}
-			return false;
+			throw new AdministradorExceptionNoModificaPrecio();
 		}
-		return false;
+		throw new AdministradorExceptionProductoNoEncontrado();
 	}
+		throw new AdministradorExceptionProductoNoEncontrado();
+}
 
 	public void finalizarPedido(Pedido p) {
 		p.setEstado(EstadoPedido.FINALIZADO);
