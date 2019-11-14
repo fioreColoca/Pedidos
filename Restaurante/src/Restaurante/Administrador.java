@@ -68,6 +68,15 @@ public class Administrador extends Usuario {
 
 		}
 	}
+	
+	// VER LISTA DE USUARIOS 
+	
+	public void mostrarListadoDeUsuarios(Restaurante r1) {
+		
+		
+	}
+	
+	// VER LISTA DE USUARIOS LOGUEADOS
 
 	// ESTADO DE PEDIDO FINALIZADO
 	
