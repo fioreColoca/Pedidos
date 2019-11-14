@@ -10,6 +10,7 @@ import Restaurante2.AdministradorExceptionProductoNoEncontrado;
 import Restaurante2.Categoria;
 import Restaurante2.Cliente;
 import Restaurante2.ExceptionProductoInexistente;
+import Restaurante2.Pedido;
 import Restaurante2.Producto;
 import Restaurante2.Restaurante;
 import Restaurante2.Sistema;
@@ -221,6 +222,34 @@ public class TestAdministrador {
 		r1.mostrarCarta();
 		
 	}
+	@Test
+	public void verEstadoPedido() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema();
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
+		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 8);
+		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
+		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 2);
+		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
+		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		a1.agregarProductos(p1, r1);
+		a1.agregarProductos(p2, r1);
+		a1.agregarProductos(p3, r1);
+		a1.agregarProductos(p4, r1);
+		Pedido pedido = new Pedido (4,r1);
+	    c1.pedirProducto(4,pedido,r1);
+	    c1.pedirProducto(6,pedido,r1);
+	    c1.pedirProducto(4,pedido,r1);
+	    a1.finalizarPedido(pedido);
+
+	    System.out.println("pedido Finalizado " + c1.verEstado(pedido));
+
+	}
+	
+	
+	
 	
 	
 
