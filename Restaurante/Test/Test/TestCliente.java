@@ -123,6 +123,7 @@ public class TestCliente {
 		c1.pedirProducto(4, r1);
 		c1.pedirProducto(4, r1);
 		c1.pedirProducto(6, r1);
+		System.out.println("---PEDIDO---");
 		c1.mostrarPedido();
 	}
 
@@ -146,6 +147,32 @@ public class TestCliente {
 		c1.pedirProducto(4, r1);
 		c1.pedirProducto(6, r1);
 		c1.eliminarPedido(4);
+		System.out.println("----eliminar Producto-----");
 		c1.mostrarPedido();
+		System.out.println("---------");
+	}
+	
+	@Test
+	public void verPedido() throws SistemaException {
+		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema sistema = new Sistema();
+		sistema.crearNuevoUsuario(c1);
+		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
+		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
+		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
+		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 2);
+		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
+		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		a1.agregarProductos(p1, r1);
+		a1.agregarProductos(p2, r1);
+		a1.agregarProductos(p3, r1);
+		a1.agregarProductos(p4, r1);
+		c1.pedirProducto(4, r1);
+		c1.pedirProducto(4, r1);
+		c1.pedirProducto(6, r1);
+		c1.eliminarPedido(4);
+		System.out.println("---------Historial-------");
+		c1.verHistorial();
 	}
 }
