@@ -4,10 +4,19 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Sistema {
-	private String nombreDeSistema;
+	public static Sistema instance;
 
-	public Sistema(String nombreDeSistema) {
-		this.nombreDeSistema = nombreDeSistema;
+	Usuario usuarioLogueado;
+
+	public Sistema() {
+	}
+
+	public static Sistema getInstance() {
+		if (instance == null) {
+			instance = new Sistema();
+		}
+
+		return instance;
 	}
 
 	LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
@@ -15,21 +24,21 @@ public class Sistema {
 	// FALTAN THROWS EXCEPTION
 
 	// REGISTRAR
-	public Boolean crearNuevoUsuario(Usuario usuario) throws SistemaException {
+	public Boolean crearNuevoUsuario(Usuario usuario) throws SistemaExceptionNoCreaUsuario {
 		if (!usuarios.contains(usuario)) { // Se Asegura que no este la cuenta agregada anteriormente..
 			for (Usuario usuarios : usuarios) { // NombreClase,NombreOBJ:NombreList
 				if (usuarios.getEmail().equals(usuario.getEmail()))
-					throw new SistemaException();
+					throw new SistemaExceptionNoCreaUsuario();
 			}
 			this.usuarios.add(usuario);
 			return true;
 		} else
-			throw new SistemaException();
+			throw new SistemaExceptionNoCreaUsuario();
 
 	}
 
 	// ABRIR SESION
-	public Boolean loguearUsuario(String email, String password) throws SistemaException1 {
+	public Boolean loguearUsuario(String email, String password) throws SistemaExceptionNoEncuentraUsuario {
 		for (int i = 0; i < usuarios.size(); i++) {
 			if (usuarios.get(i).getEmail().equals(email) && usuarios.get(i).getPassword().equals(password)) {
 				Usuario usuario = usuarios.get(i);
@@ -37,7 +46,7 @@ public class Sistema {
 				return true;
 			}
 		}
-		throw new SistemaException1();
+		throw new SistemaExceptionNoEncuentraUsuario();
 	}
 
 	// CERRAR SESION
@@ -57,36 +66,35 @@ public class Sistema {
 	}
 
 	// BUSCAR USUARIOS ONLINE
-	public Boolean buscarUsuarioLogueado(Integer Id, Usuario usuario, Usuario usuarioIngresado)
-			throws SistemaException1 {
-		for (Usuario usuarioIngresado1 : usuariosLogueados) {
+	public Boolean buscarUsuarioLogueado(Integer Id, Usuario usuarioIngresado) throws SistemaExceptionNoEncuentraUsuario {
+		for (Usuario usuarioLogueado : usuariosLogueados) {
 			for (Usuario usuarios : usuariosLogueados) {
 
 				if (usuarios.getId().equals(Id))
 					return true;
 			}
-			throw new SistemaException1();
+			throw new SistemaExceptionNoEncuentraUsuario();
 		}
-		throw new SistemaException1();
+		throw new SistemaExceptionNoEncuentraUsuario();
 	}
 
 	// BUSCAR USUARIOS ONLINE/OFFLINE
-	public Boolean buscarUsuario(Integer Id, Usuario usuarioIngresado) throws SistemaException1 {
+	public Boolean buscarUsuario(Integer Id, Usuario usuarioIngresado) throws SistemaExceptionNoEncuentraUsuario {
 		for (Usuario usuarioIngresado1 : usuariosLogueados) {
 			if (usuarioIngresado1.equals(usuarioIngresado)) {
 				for (Usuario usuarios : usuarios) {
 					if (usuarios.getId().equals(Id))
 						return true;
 				}
-				throw new SistemaException1();
+				throw new SistemaExceptionNoEncuentraUsuario();
 			}
-			throw new SistemaException1();
+			throw new SistemaExceptionNoEncuentraUsuario();
 		}
-		throw new SistemaException1();
+		throw new SistemaExceptionNoEncuentraUsuario();
 	}
 	// ELIMINAR USUARIO
 
-	public Boolean EliminarUsuario(Integer Id, String password, Usuario usuarioIngresado) throws SistemaException2 {
+	public Boolean EliminarUsuario(Integer Id, String password, Usuario usuarioIngresado) throws SistemaExceptionNoEliminaUsuario {
 		for (Usuario usuarioIngresado1 : usuariosLogueados) {
 			if (usuarioIngresado1.equals(usuarioIngresado)) {
 
@@ -101,22 +109,22 @@ public class Sistema {
 					}
 				}
 			}
-			
-			throw new SistemaException2();
+
+			throw new SistemaExceptionNoEliminaUsuario();
 		}
-		throw new SistemaException2();
+		throw new SistemaExceptionNoEliminaUsuario();
 	}
 
 	// NUEVO ELIMINAR , YA QUE ESTE SÓLO ELIMINA AL USUARIO LOGUEADO
 
-	public Boolean Eliminar(Integer Id, String password, Usuario usuarioIngresado) throws SistemaException2  {
+	public Boolean Eliminar(Integer Id, String password, Usuario usuarioIngresado) throws SistemaExceptionNoEliminaUsuario {
 		if (usuarios.contains(usuarioIngresado)) {
 			if (usuarioIngresado.getPassword() == password && usuarioIngresado.getId() == Id) {
 				usuarios.remove(usuarioIngresado);
 				return true;
 			}
 		}
-		throw new SistemaException2();
+		throw new SistemaExceptionNoEliminaUsuario();
 	}
 
 }
