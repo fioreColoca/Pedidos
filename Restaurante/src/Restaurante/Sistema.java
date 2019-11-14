@@ -64,56 +64,41 @@ public class Sistema {
 	}
 
 	// BUSCAR USUARIOS ONLINE
-	public Boolean buscarUsuarioLogueado(Integer Id, Usuario usuarioIngresado)
-			throws SistemaExceptionNoEncuentraUsuario {
+	public Boolean buscarUsuarioLogueado(Integer Id) throws SistemaExceptionNoEncuentraUsuario {
 		for (Usuario usuarioLogueado : usuariosLogueados) {
-			for (Usuario usuarios : usuariosLogueados) {
+			if (usuarioLogueado.getId().equals(Id))
+				return true;
+		}
+		throw new SistemaExceptionNoEncuentraUsuario();
+	}
 
-				if (usuarios.getId().equals(Id))
-					return true;
+	// BUSCAR USUARIOS OFFLINE
+	public Boolean buscarUsuarioNoLogueado(Integer Id) throws SistemaExceptionNoEncuentraUsuario {
+		for (Usuario usuarioIngresado1 : usuarios) {
+			if (usuarioIngresado1.getId().equals(Id)) {
+				return true;
 			}
 			throw new SistemaExceptionNoEncuentraUsuario();
 		}
 		throw new SistemaExceptionNoEncuentraUsuario();
 	}
 
-	// BUSCAR USUARIOS ONLINE/OFFLINE
-	public Boolean buscarUsuario(Integer Id, Usuario usuarioIngresado) throws SistemaExceptionNoEncuentraUsuario {
-		for (Usuario usuarioLogueado : usuariosLogueados) {
-			for (Usuario usuarioIngresado1 : usuarios) {
-				if (usuarioIngresado1.equals(usuarioIngresado)) {
-					for (Usuario usuarios : usuarios) {
-						if (usuarios.getId().equals(Id))
-							return true;
-					}
-					throw new SistemaExceptionNoEncuentraUsuario();
-				}
-				throw new SistemaExceptionNoEncuentraUsuario();
-			}
-			throw new SistemaExceptionNoEncuentraUsuario();
-		}
-		throw new SistemaExceptionNoEncuentraUsuario();
-
-	}
 	// ELIMINAR USUARIO
 
-	public Boolean EliminarUsuario(Integer Id, String password, Usuario usuarioIngresado)
-			throws SistemaExceptionNoEliminaUsuario {
-		for (Usuario usuarioIngresado1 : usuariosLogueados) {
-			if (usuarioIngresado1.equals(usuarioIngresado)) {
-
+	public Boolean EliminarUsuario(Integer Id, String password) throws SistemaExceptionNoEliminaUsuario {
+		for (Usuario usuarioLogueado : usuariosLogueados) {
+			if (usuarioLogueado.getPassword() == password && usuarioLogueado.getId() == Id) {
 				Iterator<Usuario> it = usuarios.iterator();
 
-				while (it.hasNext()) {// devuelve true si tiene otro elemento y entra hasta que sea false
+				while (it.hasNext()) {
 
 					Usuario usuario = it.next();
-					if (usuario.getId().equals(Id) && usuario.getPassword().equals(usuario.getPassword())) {
+					if (usuario.getId().equals(Id) && usuario.getPassword().equals(password)) {
 						usuarios.remove(usuario);
 						return true;
 					}
 				}
 			}
-
 			throw new SistemaExceptionNoEliminaUsuario();
 		}
 		throw new SistemaExceptionNoEliminaUsuario();
