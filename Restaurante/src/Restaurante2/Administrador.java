@@ -78,10 +78,19 @@ public class Administrador extends Usuario {
 			p.setEstado(EstadoPedido.FINALIZADO);
 		}
 		
-		//ESTADO DE PEDIDO EN PROCESO
+		//ESTADO DE PEDIDO EN PROCESO HAY Q  HACER EL TESTEO DE ESTO
+		// Y QUE EL CLIENTE PUEDA VER ESTO TMB
 		
 		public void pedidoEnProceso(Pedido p) {
 			p.setEstado(EstadoPedido.PROCESANDO);
 		}// DUDANDO COMO METER ESTO EN EL MAIN
-
+		
+		public void pedidoEntregado(Pedido p) {
+			p.setEstado(EstadoPedido.ENTREGADO);
+		}
+		public void pedidoInicializando(Pedido p) {
+			p.setEstado(EstadoPedido.INICIALIZANDO);
+		}
+		
+	
 }
