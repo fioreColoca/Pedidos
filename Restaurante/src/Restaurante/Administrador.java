@@ -42,6 +42,8 @@ public class Administrador extends Usuario {
 		throw new AdministradorExceptionProductoNoEncontrado();
 	}
 
+	// MODIFICAR PRECIO DEL PRODUCTO
+	
 	public Boolean modificarPrecio(Double nuevoPrecio, Integer id, Restaurante R) throws AdministradorExceptionNoModificaPrecio, AdministradorExceptionProductoNoEncontrado {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(id)) {
@@ -55,15 +57,9 @@ public class Administrador extends Usuario {
 	}
 		throw new AdministradorExceptionProductoNoEncontrado();
 }
-
-	public void finalizarPedido(Pedido p) {
-		p.setEstado(EstadoPedido.FINALIZADO);
-	}
-
-	public void pedidoEnProceso(Pedido p) {
-		p.setEstado(EstadoPedido.PROCESANDO);
-	}// DUDANDO COMO METER ESTO EN EL MAIN
-
+	
+	// LISTADO DE PEDIDOS PENDIENTES
+	
 	public void mostrarListadoPedidosPendientes(Restaurante r1) {
 		for (Producto P : r1.productos) {
 			if (P == null) {
@@ -72,5 +68,19 @@ public class Administrador extends Usuario {
 
 		}
 	}
+
+	// ESTADO DE PEDIDO FINALIZADO
+	
+	public void finalizarPedido(Pedido p) {
+		p.setEstado(EstadoPedido.FINALIZADO);
+	}
+	
+	//ESTADO DE PEDIDO EN PROCESO
+	
+	public void pedidoEnProceso(Pedido p) {
+		p.setEstado(EstadoPedido.PROCESANDO);
+	}// DUDANDO COMO METER ESTO EN EL MAIN
+
+
 
 }
