@@ -57,7 +57,9 @@ public class Cliente extends Usuario {
 		return pedido.eliminarProducto(idProducto);
 		
 	}
-
+	 public EstadoPedido verEstado (Pedido pedido) {
+		 return pedido.getEstado();
+	 }
 	
 	
 }
