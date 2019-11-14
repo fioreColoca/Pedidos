@@ -6,3 +6,4 @@ public class ClienteExceptionNoPedidos extends Exception {
 		super ("no hay pagas pendientes ");
 	}
 }
+
