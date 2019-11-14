@@ -71,13 +71,21 @@ public class Administrador extends Usuario {
 	
 	// VER LISTA DE USUARIOS 
 	
-	public void mostrarListadoDeUsuarios(Restaurante r1) {
-		
+	public void mostrarListadoDeUsuarios(Sistema s1) {
+		for(Usuario usuarioIngresado: s1.usuarios) {
+			System.out.println(usuarioIngresado.toString());
+		}
 		
 	}
 	
 	// VER LISTA DE USUARIOS LOGUEADOS
 
+	public void mostrarListadoDeUsuariosLogueados(Sistema s1) {
+		for(Usuario usuarioIngresado: s1.usuariosLogueados) {
+			System.out.println(usuarioIngresado.toString());
+		}
+	}
+	
 	// ESTADO DE PEDIDO FINALIZADO
 	
 	public void finalizarPedido(Pedido p) {
