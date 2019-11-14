@@ -34,10 +34,9 @@ public class TestAdministrador {
 		Boolean valorObtenido=a1.agregarProductos(p1,r1);
 		Boolean valorEsperado=true;
 		Assert.assertEquals(valorEsperado, valorObtenido);
+		System.out.println("----- PRODUCTOS AGREGADOS-----");
 		r1.mostrarCarta();
-		
-		System.out.println("-----");
-
+	
 	}
 	// 2 Ingresar productos fallo
 	@Test   (expected=AdministradorExceptionAgregarProducto.class)
@@ -218,6 +217,7 @@ public class TestAdministrador {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
+		System.out.println("----->LISTADO<-------");
 		r1.mostrarCarta();
 		
 	}
