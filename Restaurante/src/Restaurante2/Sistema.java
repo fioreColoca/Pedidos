@@ -3,6 +3,9 @@ package Restaurante2;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.regex.Pattern;
+
+import org.hamcrest.Matcher;
 
 public class Sistema {
 	
@@ -140,6 +143,19 @@ public class Sistema {
 			return true;
 
 		}
+		 Pattern pattern = Pattern
+	                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+	                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+	 
+		public Boolean verificarEmail (String email) throws ExceptionEmail {
+			 java.util.regex.Matcher mather = pattern.matcher(email);
+			 if (mather.find() == true) {
+		          return true;
+		        } else {
+		        	throw new  ExceptionEmail();
+		        }
+		    }
+		 
+		}
 		
 		
-}
