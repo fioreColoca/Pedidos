@@ -116,4 +116,30 @@ public class Sistema {
 			}
 			throw new SistemaExceptionNoEliminaUsuario();
 		}
+		
+		public Boolean validarPassword(String password) throws UsuarioExceptionPasswordIncorrecta {
+
+			if (password.length() >= 8) {
+				for (int i = 0; i < password.length(); i++) {
+					if (Character.isDigit(password.charAt(i)) == true) {
+						return true;
+					}
+				}
+			}
+			throw new UsuarioExceptionPasswordIncorrecta();
+		}
+		
+		public Boolean soloLetras(String nombre) throws MainExceptionSoloCaracteres {
+			for (int i = 0; i < nombre.length(); i++)
+			{
+				char caracter = nombre.toUpperCase().charAt(i);
+				int valorASCII = (int)caracter;
+				if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90))
+					throw new MainExceptionSoloCaracteres();
+			}
+			return true;
+
+		}
+		
+		
 }
