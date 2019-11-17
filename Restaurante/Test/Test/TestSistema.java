@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import Restaurante2.Cliente;
+import Restaurante2.ExceptionEmail;
+import Restaurante2.ExceptionProductoInexistente;
 import Restaurante2.MainExceptionSoloCaracteres;
 import Restaurante2.Sistema;
 import Restaurante2.SistemaExceptionNoCreaUsuario;
@@ -215,4 +217,25 @@ public class TestSistema {
 
 	}
 
+	// 17 EMAIL CORRECTO
+	@Test
+	public void emailAceptado() throws  ExceptionEmail {
+
+		Sistema s1 = new Sistema();
+
+		Boolean valorEsperado = true;
+		Boolean valorObtenido = s1.verificarEmail("martinez123@gmail.com");
+		Assert.assertEquals(valorEsperado, valorObtenido);
+
+	}
+	
+	// 18 EMAIL INCORRECTO
+	
+	@Test(expected = ExceptionEmail.class)
+	public void emailNoAceptado() throws ExceptionEmail {
+		Sistema s1 = new Sistema();
+
+		s1.verificarEmail("hola");
+
+	}
 }
