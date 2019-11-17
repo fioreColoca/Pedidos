@@ -18,7 +18,8 @@ import Restaurante2.SistemaExceptionNoEncuentraUsuario;
 public class TestCliente {
 
 	@Test
-	public void pedirProducto() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void pedirProducto() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -33,14 +34,15 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);
-		Boolean valorObtenido = c1.pedirProducto(4,pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		Boolean valorObtenido = c1.pedirProducto(4, pedido, r1);
 		Boolean valorEsperado = true;
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
-	@Test
-	public void pedirProductoInexistente() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto  {
+	@Test(expected=ExceptionProductoInexistente.class)
+	public void pedirProductoInexistente() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -55,14 +57,15 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);
-		Boolean valorObtenido = c1.pedirProducto(8,pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		Boolean valorObtenido = c1.pedirProducto(8, pedido, r1);
 		Boolean valorEsperado = false;
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
 
 	@Test
-	public void pedirCuenta() throws ClienteExceptionNoPedidos, ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void pedirCuenta() throws ClienteExceptionNoPedidos, ExceptionProductoInexistente,
+			SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -77,17 +80,18 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
-		Double valorObtenido = c1.pedirCuenta(pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
+		Double valorObtenido = c1.pedirCuenta(pedido, r1);
 		Double valorEsperado = 610.0;
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
-	
+
 	@Test
-	public void pedirCuentaSinPedirNada() throws  ClienteExceptionNoPedidos, ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void pedirCuentaSinPedirNada() throws ClienteExceptionNoPedidos, ExceptionProductoInexistente,
+			SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -102,14 +106,15 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		Double valorObtenido = c1.pedirCuenta(pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		Double valorObtenido = c1.pedirCuenta(pedido, r1);
 		Double valorEsperado = 0.0;
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
-	
+
 	@Test
-	public void mostrarCuenta() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void mostrarCuenta() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -124,16 +129,17 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
 		System.out.println("---PEDIDO---");
 		c1.mostrarPedido(pedido);
 	}
-	
+
 	@Test
-	public void mostrarCuentaVacia() throws  ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void mostrarCuentaVacia() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -148,13 +154,14 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
+		Pedido pedido = new Pedido(4, r1);
 		System.out.println("---PEDIDO VACIO---");
 		c1.mostrarPedido(pedido);
 	}
 
 	@Test
-	public void eliminarPedido() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void eliminarPedido() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -169,19 +176,20 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
 		System.out.println("----eliminar Producto-----");
 		c1.eliminarPedidoCompleto(pedido);
 		c1.mostrarPedido(pedido);
 		System.out.println("---------");
-		
-		
+
 	}
+
 	@Test
-	public void eliminarPedidoInexistente() throws  ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void eliminarPedidoInexistente() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -196,16 +204,16 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
+		Pedido pedido = new Pedido(4, r1);
 		System.out.println("----eliminar Producto-----");
 		c1.eliminarPedidoCompleto(pedido);
 		c1.mostrarPedido(pedido);
-		System.out.println("---------");		
+		System.out.println("---------");
 	}
-	
-	
+
 	@Test
-	public void pagarPedido() throws  ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void pagarPedido() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -220,18 +228,19 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
 		c1.pagar(pedido);
-		c1.pedirProducto(6,pedido,r1);
+		c1.pedirProducto(6, pedido, r1);
 		System.out.println("---------MOSTRAR PEDIDO ACTUAL-------");
 		c1.mostrarPedido(pedido);
 	}
-	
+
 	@Test
-	public void verHistorial() throws  ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void verHistorial() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -246,18 +255,19 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
 		c1.pagar(pedido);
-		c1.pedirProducto(6,pedido,r1);
+		c1.pedirProducto(6, pedido, r1);
 		System.out.println("---------Historial-------");
 		c1.verHistorial();
 	}
-	
+
 	@Test
-	public void eliminarUnProductoDelPedido() throws SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto, SistemaExceptionNoCreaUsuario {
+	public void eliminarUnProductoDelPedido() throws SistemaExceptionNoEncuentraUsuario,
+			AdministradorExceptionAgregarProducto, SistemaExceptionNoCreaUsuario, ExceptionProductoInexistente {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -272,20 +282,22 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
-		c1.pedirProducto(6,pedido,r1);
-		Boolean valorObtenido = c1.eliminarProducto(pedido,6);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
+		c1.pedirProducto(6, pedido, r1);
+		Boolean valorObtenido = c1.eliminarProducto(pedido, 6);
 		Boolean valorEsperado = true;
 		Assert.assertEquals(valorEsperado, valorObtenido);
 		System.out.println("Mostrar nueva lista");
 		c1.mostrarPedido(pedido);
 		System.out.println("----------");
 	}
-	@Test
-	public void eliminarUnProductoDelPedidoQueNoEstaEnElPedido() throws SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto, SistemaExceptionNoCreaUsuario {
+	@Test (expected=ExceptionProductoInexistente.class)
+
+	public void eliminarUnProductoDelPedidoQueNoEstaEnElPedido() throws SistemaExceptionNoEncuentraUsuario,
+			AdministradorExceptionAgregarProducto, SistemaExceptionNoCreaUsuario, ExceptionProductoInexistente {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -300,21 +312,20 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
-		c1.pedirProducto(6,pedido,r1);
-		Boolean valorObtenido = c1.eliminarProducto(pedido,10);
-		Boolean valorEsperado = false;
-		Assert.assertEquals(valorEsperado, valorObtenido);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.eliminarProducto(pedido, 3);
 		System.out.println("Mostrar nueva lista");
 		c1.mostrarPedido(pedido);
 		System.out.println("----------");
 	}
-	
+
 	@Test
-	public void verEstadoPedido() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+	public void verEstadoPedido() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -329,14 +340,16 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);
-	    c1.pedirProducto(4,pedido,r1);
-	    c1.pedirProducto(6,pedido,r1);
-	    c1.pedirProducto(4,pedido,r1);
-	    System.out.println("Estado del pedio " + c1.verEstado(pedido));
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+
+		System.out.println("Estado del pedio " + c1.verEstado(pedido));
 	}
-	
-	public void mostrarCuenta2() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
+
+	public void mostrarCuenta2() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario,
+			SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
@@ -351,20 +364,20 @@ public class TestCliente {
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
-		Pedido pedido = new Pedido (4,r1);		
-		c1.pedirProducto(6,pedido,r1);
-		c1.pedirProducto(4,pedido,r1);
-		c1.pedirProducto(2,pedido,r1);
+		Pedido pedido = new Pedido(4, r1);
+		c1.pedirProducto(6, pedido, r1);
+		c1.pedirProducto(4, pedido, r1);
+		c1.pedirProducto(2, pedido, r1);
 		System.out.println("---PEDIDO---");
 		sistema.cerrarSesiondeUsuario();
 		Cliente c2 = new Cliente(456, "Marcelo", "martinez", "Marcelo@hotmail.com", "123luciamartinez");
 		sistema.crearNuevoUsuario(c2);
 		sistema.loguearUsuario("Marcelo@hotmail.com", "123luciamartinez");
-		Pedido pedido2 = new Pedido (4,r1);		
-		c2.pedirProducto(6,pedido2,r1);
-		c2.pedirProducto(4,pedido2,r1);
-		c2.pedirProducto(2,pedido2,r1);
-		c2.mostrarPedido(pedido2);		
+		Pedido pedido2 = new Pedido(4, r1);
+		c2.pedirProducto(6, pedido2, r1);
+		c2.pedirProducto(4, pedido2, r1);
+		c2.pedirProducto(2, pedido2, r1);
+		c2.mostrarPedido(pedido2);
 
 	}
 }
