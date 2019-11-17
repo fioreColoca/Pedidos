@@ -58,18 +58,6 @@ public abstract class Usuario {
 		this.password = password;
 	}
 
-	public Boolean validarPassword(String password) throws UsuarioExceptionPasswordIncorrecta {
-
-		if (password.length() >= 8) {
-			for (int i = 0; i < password.length(); i++) {
-				if (Character.isDigit(password.charAt(i)) == true) {
-					return true;
-				}
-			}
-		}
-		throw new UsuarioExceptionPasswordIncorrecta();
-	}
-	
 	
 	
 	
