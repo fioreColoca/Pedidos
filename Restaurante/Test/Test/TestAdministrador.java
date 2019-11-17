@@ -22,11 +22,11 @@ public class TestAdministrador {
 		
 	@Test
 	public void admAgregarProductos() throws SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario, AdministradorExceptionAgregarProducto  {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Restaurante r1 = new Restaurante("Cafeteria", 123456);
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 4);
@@ -42,11 +42,11 @@ public class TestAdministrador {
 	// 2 Ingresar productos fallo
 	@Test   (expected=AdministradorExceptionAgregarProducto.class)
 	public void admNoAgregarProductos() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto   {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Restaurante Cafeteria = new Restaurante("Cafeteria", 123456);
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		a1.agregarProductos(p1, Cafeteria);
@@ -57,11 +57,11 @@ public class TestAdministrador {
 	// 2 Ingresar productos fallo por id repetida 
 	@Test   (expected=AdministradorExceptionAgregarProducto.class)
 	public void admNoAgregarProductosIdRepetida() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto   {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Restaurante Cafeteria = new Restaurante("Cafeteria", 123456);
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS , "pollo", 20.0, 2);
@@ -74,10 +74,10 @@ public class TestAdministrador {
 	
 	@Test
 	public void eliminarProductos() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto, AdministradorExceptionEliminarProducto   {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		sistema.crearNuevoUsuario(c1);
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		sistema.crearNuevoUsuario(a1);
 		sistema.loguearUsuario("MarceloGomez123@gmail.com", "123123");
 		Restaurante r1 = new Restaurante("Cafeteria", 123456);
@@ -98,11 +98,11 @@ public class TestAdministrador {
 	@Test(expected = AdministradorExceptionEliminarProducto.class)
 	public void eliminarProductoNoValido() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario,
 			AdministradorExceptionAgregarProducto, AdministradorExceptionEliminarProducto {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
@@ -119,11 +119,11 @@ public class TestAdministrador {
 	@Test
 	// 4 Buscar productos//
 	public void buscarProductos() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto, AdministradorExceptionProductoNoEncontrado  {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
@@ -142,11 +142,11 @@ public class TestAdministrador {
 	@Test(expected = AdministradorExceptionProductoNoEncontrado.class)
 	public void buscarProductoQueNoExiste() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario,
 			AdministradorExceptionAgregarProducto, AdministradorExceptionProductoNoEncontrado {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
@@ -162,11 +162,11 @@ public class TestAdministrador {
 	
 	@Test   (expected=AdministradorExceptionProductoNoEncontrado.class)
 	public void eliminarProductoQueNoExiste() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto, AdministradorExceptionProductoNoEncontrado  {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
@@ -183,11 +183,11 @@ public class TestAdministrador {
 	
 	@Test (expected=AdministradorExceptionProductoNoEncontrado.class)
 	public void eliminarProductosYBuscarlo() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto, AdministradorExceptionProductoNoEncontrado, AdministradorExceptionEliminarProducto  {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
@@ -204,11 +204,11 @@ public class TestAdministrador {
 	//MOSTRAR LISTADO DE TODOS LOS PRODUCTOS
 	@Test
 	public void verListado() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto  {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
@@ -224,11 +224,11 @@ public class TestAdministrador {
 	}
 	@Test
 	public void verEstadoPedido() throws ExceptionProductoInexistente, SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
-		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 		Sistema sistema = new Sistema();
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-		Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 8);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 2);
