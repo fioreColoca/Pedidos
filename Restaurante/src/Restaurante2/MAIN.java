@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MAIN {
 
-	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta {
+	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres {
 		Integer optcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
@@ -33,6 +33,7 @@ public class MAIN {
 				switch (opcionAdministrador) {	
 				
 				case 1:
+					Boolean error = false;
 					String nombre;
 					String apellido;
 					String email;
@@ -41,8 +42,27 @@ public class MAIN {
 					//*HACER CLASE PARA QUE VERIFIQUE SI ESTAN BIEN O NO LO INGRESADO //
 					
 					System.out.println("Selecciono para registrarse");
-					System.out.println("Ingrese su nombre");
-					nombre = teclado.next();
+					do {
+						System.out.println("Ingrese su nombre");
+						nombre = teclado.next();
+						if (sistema.soloLetras(nombre)==true) {
+							String nombreConfirmado=nombre;
+							System.out.println("Ingrese su apellido");
+							apellido = teclado.next();
+								if (sistema.soloLetras(apellido)==true) {
+								String apellidoConfrimado=apellido;}
+								else {
+									error=true;
+								}
+						}else {
+							error=true;
+						}
+					
+					}
+					while (error=false);
+					
+					
+					
 					System.out.println("Ingrese su apellido");
 					apellido = teclado.next();
 					System.out.println("Ingrese su email");
@@ -53,7 +73,7 @@ public class MAIN {
 					id = teclado.nextInt();
 					
 					Administrador a1 = new Administrador(id, nombre, apellido, email, password);
-					a1.validarPassword(password);	
+					
 					
 					// VERIFICAR PASSWORD ESTA MAL DENTRODE USUARIO
 				
