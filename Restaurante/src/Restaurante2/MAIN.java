@@ -2,9 +2,10 @@ package Restaurante2;
 
 import java.util.Scanner;
 
+
 public class MAIN {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta {
 		Integer optcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
@@ -37,11 +38,7 @@ public class MAIN {
 					String email;
 					String password;
 					Integer id;
-					String nombreConfirmado;
-					String apellidoConfirmado;
-					String emailConfirmado;
-					String passwordConfirmado;
-					Integer idConfirmado;
+					//*HACER CLASE PARA QUE VERIFIQUE SI ESTAN BIEN O NO LO INGRESADO //
 					
 					System.out.println("Selecciono para registrarse");
 					System.out.println("Ingrese su nombre");
@@ -54,15 +51,11 @@ public class MAIN {
 					password = teclado.next();
 					System.out.println("Ingrese su DNI, sólo números");
 					id = teclado.nextInt();
-
 					
 					Administrador a1 = new Administrador(id, nombre, apellido, email, password);
-
+					a1.validarPassword(password);	
 					
-
-
-				
-				
+					// VERIFICAR PASSWORD ESTA MAL DENTRODE USUARIO
 				
 				}
 				
