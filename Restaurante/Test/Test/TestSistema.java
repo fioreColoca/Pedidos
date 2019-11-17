@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import Restaurante2.Cliente;
+import Restaurante2.MainExceptionSoloCaracteres;
 import Restaurante2.Sistema;
 import Restaurante2.SistemaExceptionNoCreaUsuario;
 import Restaurante2.SistemaExceptionNoEliminaUsuario;
@@ -19,9 +20,10 @@ public class TestSistema {
 	public void passwordAceptada() throws UsuarioExceptionPasswordIncorrecta {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+		Sistema s1 = new Sistema();
 
 		Boolean valorEsperado = true;
-		Boolean valorObtenido = c1.validarPassword("123luciamartinez");
+		Boolean valorObtenido = s1.validarPassword("123luciamartinez");
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 
@@ -30,11 +32,14 @@ public class TestSistema {
 	// 2 CONTRASEÑA INCORRECTA
 	@Test(expected = UsuarioExceptionPasswordIncorrecta.class)
 	public void passwordNegado() throws UsuarioExceptionPasswordIncorrecta {
+		Sistema s1 = new Sistema();
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		c1.validarPassword("111");
+		s1.validarPassword("111");
 
 	}
+	
+	
 
 	// 3 REGISTRAR USUARIO VÁLIDO
 	@Test
@@ -188,6 +193,26 @@ public class TestSistema {
 		sistema.buscarUsuarioNoLogueado(123);
 
 	}
+	// 15 NOMBRE ACEPTADA
+	@Test
+	public void nombreAceptado() throws MainExceptionSoloCaracteres {
 
+		Sistema s1 = new Sistema();
+
+		Boolean valorEsperado = true;
+		Boolean valorObtenido = s1.soloLetras("martinez");
+
+		Assert.assertEquals(valorEsperado, valorObtenido);
+
+	}
+
+	// 16 NOMBRE INCORRECTA
+	@Test(expected = MainExceptionSoloCaracteres.class)
+	public void nombreNoAceptado() throws MainExceptionSoloCaracteres {
+		Sistema s1 = new Sistema();
+
+		s1.soloLetras("111");
+
+	}
 
 }
