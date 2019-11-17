@@ -7,12 +7,17 @@ import java.util.Iterator;
 public class Pedido {
 
 	ArrayList<Producto> pedidos = new ArrayList<Producto>();
+	
 	private Restaurante restaurante;
 	private Integer mesa;
 	private Integer numeroDePedido;
+	private static int ultimo = 0;
+    public final int id;
+	
 	private EstadoPedido estado;
 
 	public Pedido(Integer mesa,Restaurante restaurante) {
+		this.id= ultimo++;
 		this.mesa = mesa;
 		this.restaurante = restaurante;
 		this.estado = EstadoPedido.INICIALIZANDO;
@@ -166,4 +171,11 @@ public class Pedido {
 	}
 		
 	
+	
+	public void enviarPedido() {
+		this.estado = EstadoPedido.ENVIADO;
+		
+	}
+	
+
 }
