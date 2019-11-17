@@ -7,7 +7,7 @@ import Test.ClienteExceptionNoPedidos;
 
 public class Cliente extends Usuario {
 
-		public Cliente(Integer Id, String nombre, String apellido, String email, String password) {
+		public Cliente(String Id, String nombre, String apellido, String email, String password) {
 			super(Id, nombre, apellido, email, password);
 		}
 
