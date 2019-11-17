@@ -48,7 +48,7 @@ public class Cliente extends Usuario {
 		}
 	}
 	
-	public Boolean  eliminarProducto (Pedido pedido,Integer idProducto) {
+	public Boolean  eliminarProducto (Pedido pedido,Integer idProducto) throws ExceptionProductoInexistente {
 		return pedido.eliminarProducto(idProducto);
 	}
 	
