@@ -20,8 +20,8 @@ public class TestSistema {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 
-		Boolean valorEsperado = true;
-		Boolean valorObtenido = c1.validarPassword("123luciamartinez");
+		String valorEsperado = "123luciamartinez";
+		String valorObtenido = c1.getPassword();
 
 		Assert.assertEquals(valorEsperado, valorObtenido);
 
@@ -33,7 +33,7 @@ public class TestSistema {
 	public void passwordNegado() throws UsuarioExceptionPasswordIncorrecta {
 
 		Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
-		c1.validarPassword("111");
+		c1.setPassword("111");
 
 	}
 

@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Sistema {
+
 	public static Sistema instance;
 
 	Usuario usuarioLogueado;
@@ -24,7 +25,7 @@ public class Sistema {
 
 	// REGISTRAR
 	public Boolean crearNuevoUsuario(Usuario usuario) throws SistemaExceptionNoCreaUsuario {
-		if (!usuarios.contains(usuario)) { // Se Asegura que no este la cuenta agregada anteriormente..
+		if (!usuarios.contains(usuario)) { 
 			for (Usuario usuarios : usuarios) {
 				if (usuarios.getEmail().equals(usuario.getEmail()))
 					throw new SistemaExceptionNoCreaUsuario();
@@ -57,8 +58,8 @@ public class Sistema {
 			Usuario usuarioAuxiliar = it.next();
 			if (usuarioAuxiliar.equals(usuarioLogueado)) {
 				usuariosLogueados.remove(usuarioLogueado);
-				return true;
-			}return true;
+			}
+			return true;
 		}
 		return false;
 	}
@@ -72,7 +73,7 @@ public class Sistema {
 		throw new SistemaExceptionNoEncuentraUsuario();
 	}
 
-	// BUSCAR USUARIOS OFFLINE
+	// BUSCAR USUARIOS
 	public Boolean buscarUsuarioNoLogueado(Integer Id) throws SistemaExceptionNoEncuentraUsuario {
 		for (Usuario usuarioIngresado1 : usuarios) {
 			if (usuarioIngresado1.getId().equals(Id)) {
@@ -114,6 +115,29 @@ public class Sistema {
 			}
 		}
 		throw new SistemaExceptionNoEliminaUsuario();
+	}
+
+	public Boolean validarPassword(String password) throws UsuarioExceptionPasswordIncorrecta {
+
+		if (password.length() >= 8) {
+			for (int i = 0; i < password.length(); i++) {
+				if (Character.isDigit(password.charAt(i)) == true) {
+					return true;
+				}
+			}
+		}
+		throw new UsuarioExceptionPasswordIncorrecta();
+	}
+
+	public Boolean soloLetras(String nombre) throws MainExceptionSoloCaracteres {
+		for (int i = 0; i < nombre.length(); i++) {
+			char caracter = nombre.toUpperCase().charAt(i);
+			int valorASCII = (int) caracter;
+			if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90))
+				throw new MainExceptionSoloCaracteres();
+		}
+		return true;
+
 	}
 
 }

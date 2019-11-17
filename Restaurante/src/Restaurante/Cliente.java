@@ -13,7 +13,7 @@ public class Cliente extends Usuario {
 
 	LinkedList<Producto> PedidosHistorial = new LinkedList<Producto>();
 	
-	public Boolean pedirProducto(Integer idProducto,Pedido p1 ,Restaurante R ) {
+	public Boolean pedirProducto(Integer idProducto,Pedido p1 ,Restaurante R ) throws ExceptionProductoInexistente {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(idProducto)) {
 				this.PedidosHistorial.add(p);
@@ -21,7 +21,7 @@ public class Cliente extends Usuario {
 				return true;
 			}
 		}
-		return false;
+		throw new ExceptionProductoInexistente();
 	}
 	
 	public Double pedirCuenta(Pedido pedido,Restaurante R) {
@@ -48,11 +48,10 @@ public class Cliente extends Usuario {
 		}
 	}
 	
-	
 	public Boolean  eliminarProducto (Pedido pedido,Integer idProducto) {
 		return pedido.eliminarProducto(idProducto);
-		
 	}
+	
 	 public EstadoPedido verEstado (Pedido pedido) {
 		 return pedido.getEstado();
 	 }

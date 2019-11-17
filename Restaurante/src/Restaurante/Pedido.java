@@ -6,12 +6,17 @@ import java.util.Iterator;
 public class Pedido {
 
 	ArrayList<Producto> pedidos = new ArrayList<Producto>();
+
 	private Restaurante restaurante;
 	private Integer mesa;
 	private Integer numeroDePedido;
+	private static int ultimo = 0;
+	public final int id;
+
 	private EstadoPedido estado;
 
 	public Pedido(Integer mesa, Restaurante restaurante) {
+		this.id = ultimo++;
 		this.mesa = mesa;
 		this.restaurante = restaurante;
 		this.estado = EstadoPedido.INICIALIZANDO;
@@ -49,11 +54,66 @@ public class Pedido {
 		this.pedidos = pedidos;
 	}
 
-	public void mostrarPedidos() { 
+	public void mostrarPedidos() {
 		this.pedidos.toString();
 	}
 
 	public void agregarProductos() {
+
+	}
+
+	public Boolean pedirProducto(Integer id, Restaurante R) {
+		for (Producto p : R.productos) {
+			if (p.getIdProducto().equals(id)) {
+				this.pedidos.add(p);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public Double pedirCuenta(Restaurante R) {
+		Double acumuladorPrecio = 0.0;
+		for (Producto p : pedidos) {
+			acumuladorPrecio += p.getPrecio();
+
+		}
+		return acumuladorPrecio;
+
+	}
+
+	public void eliminarPedido() {
+		pedidos.clear();
+	}
+
+	public void pagar() {
+		pedidos.clear();
+	}
+
+	public boolean eliminarProducto(Integer idProducto) {
+		Iterator<Producto> it = pedidos.iterator();
+
+		while (it.hasNext()) {
+
+			Producto pedido = it.next();
+			if (pedido.getIdProducto().equals(idProducto)) {
+				pedidos.remove(pedido);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void mostrarPedido() {
+		for (Producto P : pedidos) {
+			if (P == null) {
+			}
+			System.out.println(P.hashCode() + "-------" + P.toString());
+		}
+	}
+
+	public void enviarPedido() {
+		this.estado = EstadoPedido.ENVIADO;
 
 	}
 
@@ -107,56 +167,6 @@ public class Pedido {
 		} else if (!restaurante.equals(other.restaurante))
 			return false;
 		return true;
-	}
-
-	public Boolean pedirProducto(Integer id, Restaurante R) {
-		for (Producto p : R.productos) {
-			if (p.getIdProducto().equals(id)) {
-				this.pedidos.add(p);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public Double pedirCuenta(Restaurante R) {
-		Double acumuladorPrecio = 0.0;
-		for (Producto p : pedidos) {
-			acumuladorPrecio += p.getPrecio();
-
-		}
-		return acumuladorPrecio;
-
-	}
-
-	public void eliminarPedido() {
-		pedidos.clear();
-	}
-
-	public void pagar() { // NO FUNCIONA
-		pedidos.clear();
-	}
-
-	public boolean eliminarProducto(Integer idProducto) {
-		Iterator<Producto> it = pedidos.iterator();
-
-		while (it.hasNext()) {
-
-			Producto pedido = it.next();
-			if (pedido.getIdProducto().equals(idProducto)) {
-				pedidos.remove(pedido);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public void mostrarPedido() {
-		for (Producto P : pedidos) {
-			if (P == null) {
-			}
-			System.out.println(P.hashCode() + "-------" + P.toString());
-		}
 	}
 
 }
