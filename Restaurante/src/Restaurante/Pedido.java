@@ -90,7 +90,7 @@ public class Pedido {
 		pedidos.clear();
 	}
 
-	public boolean eliminarProducto(Integer idProducto) {
+	public Boolean eliminarProducto(Integer idProducto) throws ExceptionProductoInexistente{
 		Iterator<Producto> it = pedidos.iterator();
 
 		while (it.hasNext()) {
@@ -101,7 +101,7 @@ public class Pedido {
 				return true;
 			}
 		}
-		return false;
+		 throw new ExceptionProductoInexistente();
 	}
 
 	public void mostrarPedido() {
