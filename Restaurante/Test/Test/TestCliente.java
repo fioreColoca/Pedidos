@@ -333,7 +333,6 @@ public class TestCliente {
 	    c1.pedirProducto(4,pedido,r1);
 	    c1.pedirProducto(6,pedido,r1);
 	    c1.pedirProducto(4,pedido,r1);
-
 	    System.out.println("Estado del pedio " + c1.verEstado(pedido));
 	}
 	
@@ -365,8 +364,7 @@ public class TestCliente {
 		c2.pedirProducto(6,pedido2,r1);
 		c2.pedirProducto(4,pedido2,r1);
 		c2.pedirProducto(2,pedido2,r1);
-		c2.mostrarPedido(pedido2);
-		
+		c2.mostrarPedido(pedido2);		
 
 	}
 }
