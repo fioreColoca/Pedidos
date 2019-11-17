@@ -68,18 +68,18 @@ public class Sistema {
 		}
 
 		// BUSCAR USUARIOS ONLINE
-		public Boolean buscarUsuarioLogueado(Integer Id) throws SistemaExceptionNoEncuentraUsuario {
+		public Boolean buscarUsuarioLogueado(String string) throws SistemaExceptionNoEncuentraUsuario {
 			for (Usuario usuarioLogueado : usuariosLogueados) {
-				if (usuarioLogueado.getId().equals(Id))
+				if (usuarioLogueado.getId().equals(string))
 					return true;
 			}
 			throw new SistemaExceptionNoEncuentraUsuario();
 		}
 
 		// BUSCAR USUARIOS 
-		public Boolean buscarUsuarioNoLogueado(Integer Id) throws SistemaExceptionNoEncuentraUsuario {
+		public Boolean buscarUsuarioNoLogueado(String string) throws SistemaExceptionNoEncuentraUsuario {
 			for (Usuario usuarioIngresado1 : usuarios) {
-				if (usuarioIngresado1.getId().equals(Id)) {
+				if (usuarioIngresado1.getId().equals(string)) {
 					return true;
 				}
 				throw new SistemaExceptionNoEncuentraUsuario();
