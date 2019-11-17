@@ -16,11 +16,11 @@ public class TestRestaurante {
 		// 1 mostrar carta
 		@Test
 		public void mostrarCarta() throws SistemaExceptionNoCreaUsuario, SistemaExceptionNoEncuentraUsuario, AdministradorExceptionAgregarProducto {
-			Cliente c1 = new Cliente(123, "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
+			Cliente c1 = new Cliente("123", "lucia", "martinez", "luciamartinez@hotmail.com", "123luciamartinez");
 			Sistema sistema = new Sistema();
 			sistema.crearNuevoUsuario(c1);
 			sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
-			Administrador a1 = new Administrador(456, "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
+			Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 			Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 			Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 			Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
