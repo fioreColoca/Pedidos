@@ -89,7 +89,7 @@ public class Sistema {
 
 		// ELIMINAR USUARIO
 
-		public Boolean EliminarUsuario(Integer Id, String password) throws SistemaExceptionNoEliminaUsuario {
+		public Boolean EliminarUsuario(String Id, String password) throws SistemaExceptionNoEliminaUsuario {
 			for (Usuario usuarioLogueado : usuariosLogueados) {
 				if (usuarioLogueado.getPassword() == password && usuarioLogueado.getId() == Id) {
 					Iterator<Usuario> it = usuarios.iterator();
@@ -110,7 +110,7 @@ public class Sistema {
 
 		// NUEVO ELIMINAR , YA QUE ESTE SÓLO ELIMINA AL USUARIO LOGUEADO
 
-		public Boolean Eliminar(Integer Id, String password) throws SistemaExceptionNoEliminaUsuario {
+		public Boolean Eliminar(String Id, String password) throws SistemaExceptionNoEliminaUsuario {
 			if (usuarios.contains(usuarioLogueado)) {
 				if (usuarioLogueado.getPassword() == password && usuarioLogueado.getId() == Id) {
 					usuarios.remove(usuarioLogueado);
@@ -155,6 +155,20 @@ public class Sistema {
 		        	throw new  ExceptionEmail();
 		        }
 		    }
+		
+		
+		public Boolean soloNumeros(String numero) throws ExceptionNumero {
+			for (int i = 0; i < numero.length(); i++)
+			{
+				char caracter = numero.toUpperCase().charAt(i);
+				int valorASCII = (int)caracter;
+				if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90))
+					return true;
+				}
+			throw new ExceptionNumero();
+
+		}
+	
 		 
 		}
 		
