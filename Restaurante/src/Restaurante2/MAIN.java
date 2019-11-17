@@ -36,9 +36,14 @@ public class MAIN {
 						Boolean error = false;
 						String nombre;
 						String apellido;
-						String email;
 						String password;
-						Integer id;
+						String id;
+						String email;
+						String nombreConfirmado = null;
+						String apellidoConfirmado = null;
+						String emailConfirmado = null;
+						String passwordConfirmado = null;
+						String idConfirmado = null;
 						// *HACER CLASE PARA QUE VERIFIQUE SI ESTAN BIEN O NO LO INGRESADO //
 
 						System.out.println("Selecciono para registrarse");
@@ -48,16 +53,51 @@ public class MAIN {
 							nombre = teclado.next();
 							try {
 								if (sistema.soloLetras(nombre) == true) {
-									String nombreConfirmado = nombre;
+									nombreConfirmado = nombre;
 									do {
 										System.out.println("Ingrese su apellido");
 										apellido = teclado.next();
 
 										try {
 											if (sistema.soloLetras(apellido) == true) {
-												String apellidoConfrimado = apellido;
-												
-												
+												apellidoConfirmado = apellido;
+												do {
+													System.out.println("Ingrese su email");
+													email = teclado.next();
+													try {
+														if (sistema.verificarEmail(email) == true) {
+															emailConfirmado = email;
+														do {
+															System.out.println("Ingrese su contraseña");
+															password = teclado.next();
+															try {
+																if (sistema.validarPassword(password)) {
+																	passwordConfirmado = password;
+																	do {
+																		System.out.println("Ingrese su dni");
+																		id= teclado.next();
+																		try {
+																			if (sistema.soloNumeros(id)) {
+																				idConfirmado=id;
+																			}
+																			} catch (ExceptionNumero e) {
+																		System.out.println(e.getMessage());																		}
+																	
+																	} while (error != true); // FALTA ALGO PARA QUE LO CORTE
+																}
+															} catch (UsuarioExceptionPasswordIncorrecta e) {
+																System.out.println(e.getMessage());
+															}
+													
+															} while (error != true);
+														}
+
+													} catch (ExceptionEmail e) {
+														System.out.println(e.getMessage());
+													}
+													
+												} while (error != true);
+
 											}
 
 										} catch (MainExceptionSoloCaracteres e) {
@@ -65,31 +105,17 @@ public class MAIN {
 										}
 									} while (error != true);
 								}
+							
 							} catch (MainExceptionSoloCaracteres e) {
 								System.out.println(e.getMessage());
 							}
 
 						} while (error != true);
-						/*
-						 * do { System.out.println("Ingrese su nombre"); nombre = teclado.next(); if
-						 * (sistema.soloLetras(nombre)==true) { String nombreConfirmado=nombre;
-						 * System.out.println("Ingrese su apellido"); apellido = teclado.next(); if
-						 * (sistema.soloLetras(apellido)==true) { String apellidoConfrimado=apellido;}
-						 * else { error=true; } }else { error=true; }
-						 * 
-						 * } while (error=false);
-						 */
 
-						System.out.println("Ingrese su apellido");
-						apellido = teclado.next();
-						System.out.println("Ingrese su email");
-						email = teclado.next();
-						System.out.println("Ingrese su password");
-						password = teclado.next();
-						System.out.println("Ingrese su DNI, sólo números");
-						id = teclado.nextInt();
+				
 
-						Administrador a1 = new Administrador(id, nombre, apellido, email, password);
+						Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado, emailConfirmado,
+								passwordConfirmado);
 
 						// VERIFICAR PASSWORD ESTA MAL DENTRODE USUARIO
 
