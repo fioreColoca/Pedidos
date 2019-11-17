@@ -1,6 +1,6 @@
 package Restaurante;
 
-public class Producto implements Comparable<Producto> {
+public class Producto implements Comparable<Producto>{
 	private Categoria categoria;
 	private String descripcion;
 	private Double precio;
@@ -52,7 +52,8 @@ public class Producto implements Comparable<Producto> {
 				+ ", idProducto=" + idProducto + "]";
 	}
 
-	// identificacion unica
+	// IDENTIFICACIÓN ÚNICA
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
