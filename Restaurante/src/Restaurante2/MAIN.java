@@ -47,7 +47,10 @@ public class MAIN {
 						// *HACER CLASE PARA QUE VERIFIQUE SI ESTAN BIEN O NO LO INGRESADO //
 
 						System.out.println("Selecciono para registrarse");
-
+						
+						boolean ingresoTerminado;
+						do {
+							 ingresoTerminado=false;
 						do {
 							System.out.println("Ingrese su nombre");
 							nombre = teclado.next();
@@ -71,14 +74,15 @@ public class MAIN {
 															System.out.println("Ingrese su contraseña");
 															password = teclado.next();
 															try {
-																if (sistema.validarPassword(password)) {
+																if (sistema.validarPassword(password) == true) {
 																	passwordConfirmado = password;
 																	do {
 																		System.out.println("Ingrese su dni");
 																		id= teclado.next();
 																		try {
-																			if (sistema.soloNumeros(id)) {
+																			if (sistema.soloNumeros(id) == true) {
 																				idConfirmado=id;
+																				 ingresoTerminado=true;
 																			}
 																			} catch (ExceptionNumero e) {
 																		System.out.println(e.getMessage());																		}
@@ -111,8 +115,9 @@ public class MAIN {
 							}
 
 						} while (error != true);
+						
+						} while(ingresoTerminado==true);
 
-				
 
 						Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado, emailConfirmado,
 								passwordConfirmado);
