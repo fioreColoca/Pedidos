@@ -1,15 +1,18 @@
 package Restaurante;
 
 import java.util.Iterator;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class Administrador extends Usuario {
 
-	public Administrador(Integer Id, String nombre, String apellido, String email, String password) {
+	public Administrador(String Id, String nombre, String apellido, String email, String password) {
 		super(Id, nombre, apellido, email, password);
 	}
 
 	// AGREGAR PRODUCTO
-	public Boolean agregarProductos(Producto P, Restaurante nombreRestaurante) throws AdministradorExceptionAgregarProducto {
+	public Boolean agregarProductos(Producto P, Restaurante nombreRestaurante)
+			throws AdministradorExceptionAgregarProducto {
 		if (!nombreRestaurante.productos.contains(P)) {
 			nombreRestaurante.productos.add(P);
 			return true;
@@ -31,9 +34,9 @@ public class Administrador extends Usuario {
 		}
 		throw new AdministradorExceptionEliminarProducto();
 	}
-	
+
 	// BUSCAR PRODUCTO
-	
+
 	public Boolean buscarProducto(Integer id, Restaurante R) throws AdministradorExceptionProductoNoEncontrado {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(id))
@@ -43,23 +46,24 @@ public class Administrador extends Usuario {
 	}
 
 	// MODIFICAR PRECIO DEL PRODUCTO
-	
-	public Boolean modificarPrecio(Double nuevoPrecio, Integer id, Restaurante R) throws AdministradorExceptionNoModificaPrecio, AdministradorExceptionProductoNoEncontrado {
+
+	public Boolean modificarPrecio(Double nuevoPrecio, Integer id, Restaurante R)
+			throws AdministradorExceptionNoModificaPrecio, AdministradorExceptionProductoNoEncontrado {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(id)) {
 				if (nuevoPrecio < 3000 && nuevoPrecio > 0) {
 					p.setPrecio(nuevoPrecio);
 					return true;
 				}
-			throw new AdministradorExceptionNoModificaPrecio();
+				throw new AdministradorExceptionNoModificaPrecio();
+			}
+			throw new AdministradorExceptionProductoNoEncontrado();
 		}
 		throw new AdministradorExceptionProductoNoEncontrado();
 	}
-		throw new AdministradorExceptionProductoNoEncontrado();
-}
-	
+
 	// LISTADO DE PEDIDOS PENDIENTES
-	
+
 	public void mostrarListadoPedidosPendientes(Restaurante r1) {
 		for (Producto P : r1.productos) {
 			if (P == null) {
@@ -68,36 +72,26 @@ public class Administrador extends Usuario {
 
 		}
 	}
-	
-	// VER LISTA DE USUARIOS 
-	
-	public void mostrarListadoDeUsuarios(Sistema s1) {
-		for(Usuario usuarioIngresado: s1.usuarios) {
-			System.out.println(usuarioIngresado.toString());
-		}
-		
-	}
-	
-	// VER LISTA DE USUARIOS LOGUEADOS
 
-	public void mostrarListadoDeUsuariosLogueados(Sistema s1) {
-		for(Usuario usuarioIngresado: s1.usuariosLogueados) {
-			System.out.println(usuarioIngresado.toString());
-		}
-	}
-	
 	// ESTADO DE PEDIDO FINALIZADO
-	
+
 	public void finalizarPedido(Pedido p) {
 		p.setEstado(EstadoPedido.FINALIZADO);
 	}
-	
-	//ESTADO DE PEDIDO EN PROCESO
-	
+
+	// ESTADO DE PEDIDO EN PROCESO HAY Q HACER EL TESTEO DE ESTO
+	// Y QUE EL CLIENTE PUEDA VER ESTO TMB
+
 	public void pedidoEnProceso(Pedido p) {
 		p.setEstado(EstadoPedido.PROCESANDO);
 	}// DUDANDO COMO METER ESTO EN EL MAIN
 
+	public void pedidoEntregado(Pedido p) {
+		p.setEstado(EstadoPedido.ENTREGADO);
+	}
 
+	public void pedidoInicializando(Pedido p) {
+		p.setEstado(EstadoPedido.INICIALIZANDO);
+	}
 
 }
