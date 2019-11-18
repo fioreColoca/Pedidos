@@ -6,34 +6,39 @@ public class MAIN {
 
 	public static void main(String[] args)
 			throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres, SistemaExceptionNoEncuentraUsuario {
-		Integer optcion = null;
+		Integer option = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
 		Boolean salir = false;
 // <----------MENU ---------- >
 		do {
-			System.out.println("Ingrese '1' si es administrador o '2' si es cliente");
-			optcion = teclado.nextInt();
-			if (optcion != 1 || optcion != 2) {
+			System.out.println("Bienvenido, Ingrese la opcion '1' si es administrador o la opcion '2' si es cliente");
+			option = teclado.nextInt();
+
+			if (option != 1 || option != 2) {
 				salir = true;
 			}
 
-			switch (optcion) {
+			switch (option) {
 			case 1:
 
 				Boolean salirAdministrador = false;
 				Integer opcionAdministrador = null;
+
 				do {
 
 					System.out.println(
-							"Seleccionaste administrador, Ingrese '1'  registrarse,'2' abrir sesión,'3' salir");
+							"Seleccionaste administrador, Ingrese la opcion '1' para registrarse, la opcion '2' para abrir sesión, la opcion '3' para salir");
 					opcionAdministrador = teclado.nextInt();
+
 					if (opcionAdministrador != 1 || opcionAdministrador != 2) {
 						salirAdministrador = true;
 					}
+
 					switch (opcionAdministrador) {
 
 					case 1: {
+
 						Boolean error = false;
 						String nombre;
 						String apellido;
@@ -45,6 +50,7 @@ public class MAIN {
 						String emailConfirmado = null;
 						String passwordConfirmado = null;
 						String idConfirmado = null;
+
 						// *HACER CLASE PARA QUE VERIFIQUE SI ESTAN BIEN O NO LO INGRESADO //
 
 						System.out.println("Selecciono para registrarse");
@@ -85,23 +91,26 @@ public class MAIN {
 																							.soloNumeros(id) == true) {
 																						idConfirmado = id;
 																						ingresoTerminado = true;
-																						System.out.println(
-																								"Te registraste correctamente");
-
-																						// FALTAALGO QUE LO CORTE
+																						
+																						System.out.println("¡Te registraste correctamente!");
 																					}
+																					
+																					// FALTA ALGO QUE LO CORTE
+
 																				} catch (ExceptionNumero e) {
 																					System.out.println(e.getMessage());
 																				}
 
 																			} while (error != true); // FALTA ALGO PARA
-																										// QUE LO CORTE
+																			// QUE LO CORTE
+																		
 																		}
 																	} catch (UsuarioExceptionPasswordIncorrecta e) {
 																		System.out.println(e.getMessage());
 																	}
 
 																} while (error != true);
+
 															}
 
 														} catch (ExceptionEmail e) {
@@ -126,6 +135,8 @@ public class MAIN {
 
 						} while (ingresoTerminado == true);
 
+						
+
 						Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado,
 								emailConfirmado, passwordConfirmado);
 
@@ -140,7 +151,7 @@ public class MAIN {
 						Integer opcionCliente = null;
 						System.out.println("Ingrese email");
 						email2 = teclado.next();
-						System.out.println("Ingrese email");
+						System.out.println("Ingrese password");
 						password2 = teclado.next();
 
 						sistema.loguearUsuario("email2", "password2");
@@ -156,7 +167,7 @@ public class MAIN {
 			case 2:
 				Integer opcionCliente = null;
 				System.out.println("Seleccionaste cliente, Ingrese '1'  registrarse,'2' abrir sesión , '3' salir");
-				optcion = teclado.nextInt();
+				option = teclado.nextInt();
 
 				break;
 			}
