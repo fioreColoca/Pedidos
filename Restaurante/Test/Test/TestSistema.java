@@ -65,7 +65,6 @@ public class TestSistema {
 		sistema.crearNuevoUsuario(c2);
 
 	}
-
 	// 5 MISMO OBJETO NO PUEDE SER REGISTRADO DOS VECES
 	@Test(expected = SistemaExceptionNoCreaUsuario.class)
 	public void registrarUsuarioNoValido2() throws SistemaExceptionNoCreaUsuario {
