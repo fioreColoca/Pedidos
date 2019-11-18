@@ -16,15 +16,15 @@ public class MAIN {
 			optcion = teclado.next();
 			if (optcion !="1" || optcion != "2") {
 				salir = true;
-			}
+			} 
+			/* <<-----               ADMINISTRADOR                  ---->>  */ 
 
 			switch (optcion) {
 			case "1":
 
-				Boolean salirAdministrador = false;
+				Boolean salirAdministrador = null;
 				String opcionAdministrador = null;
 				do {
-
 					System.out.println(
 							"Seleccionaste administrador, Ingrese '1'  registrarse,'2' abrir sesión,'3' salir");
 					opcionAdministrador = teclado.next();
@@ -201,8 +201,7 @@ public class MAIN {
 						break;
 					}
 					case "3":
-						break; 
-						
+						salirAdministrador=false;
 					}
 
 				} while (salirAdministrador = true);
