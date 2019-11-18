@@ -6,20 +6,20 @@ public class MAIN {
 
 	public static void main(String[] args)
 			throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario {
-		Integer optcion = null;
+		String optcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
 		Boolean salir = false;
 // <----------MENU ---------- >
 		do {
 			System.out.println("Ingrese '1' si es administrador o '2' si es cliente");
-			optcion = teclado.nextInt();
-			if (optcion != 1 || optcion != 2) {
+			optcion = teclado.next();
+			if (optcion !="1" || optcion != "2") {
 				salir = true;
 			}
 
 			switch (optcion) {
-			case 1:
+			case "1":
 
 				Boolean salirAdministrador = false;
 				String opcionAdministrador = null;
@@ -45,6 +45,7 @@ public class MAIN {
 						String emailConfirmado = null;
 						String passwordConfirmado = null;
 						String idConfirmado = null;
+						Boolean finalizado=false;
 						// *HACER CLASE PARA QUE VERIFIQUE SI ESTAN BIEN O NO LO INGRESADO //
 
 						System.out.println("Selecciono para registrarse");
@@ -87,19 +88,20 @@ public class MAIN {
 
 																						do {System.out
 																								.println("verificacion..");
+																							
 																							try {
 																								Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado,
 																										emailConfirmado, passwordConfirmado);
 																								if (sistema.crearNuevoUsuario(a1)==true) {
 																									System.out.println("te registraste correctamente");
 																									opcionAdministrador="2";
-																									ingresoTerminado=true;
+																									error=true;
 																									break;
 
 																								}
 																							}catch (SistemaExceptionNoCreaUsuario e) {
 																								System.out.println(e.getMessage());
-																								ingresoTerminado=true;
+																								ingresoTerminado=false;
 																							}
 																							
 																						}while (error!=true);
@@ -155,7 +157,7 @@ public class MAIN {
 						do {
 							System.out.println("Ingrese email");
 							email2 = teclado.next();
-							System.out.println("Ingrese email");
+							System.out.println("Ingrese password");
 							password2 = teclado.next();
 							try {sistema.loguearUsuario("email2", "password2");
 								do { 
@@ -198,17 +200,19 @@ public class MAIN {
 
 						break;
 					}
-
+					case "3":
+						break; 
+						
 					}
 
 				} while (salirAdministrador = true);
 				break;
-
-			case 2:
-				Integer opcionCliente = null;
+//<<----------------------------- CLIENTE ----------------->>
+			case "2":
+				String opcionCliente = null;
 				System.out.println("Seleccionaste cliente, Ingrese '1'  registrarse,'2' abrir sesión , '3' salir");
-				optcion = teclado.nextInt();
-
+				opcionCliente = teclado.next();
+				
 				break;
 			}
 
