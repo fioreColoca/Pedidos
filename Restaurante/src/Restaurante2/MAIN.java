@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class MAIN {
 
 	public static void main(String[] args)
-			throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres, SistemaExceptionNoEncuentraUsuario {
+			throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres, SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario {
 		Integer optcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
@@ -22,18 +22,18 @@ public class MAIN {
 			case 1:
 
 				Boolean salirAdministrador = false;
-				Integer opcionAdministrador = null;
+				String opcionAdministrador = null;
 				do {
 
 					System.out.println(
 							"Seleccionaste administrador, Ingrese '1'  registrarse,'2' abrir sesión,'3' salir");
-					opcionAdministrador = teclado.nextInt();
-					if (opcionAdministrador != 1 || opcionAdministrador != 2) {
+					opcionAdministrador = teclado.next();
+					if (opcionAdministrador != "1" || opcionAdministrador != "2") {
 						salirAdministrador = true;
 					}
 					switch (opcionAdministrador) {
 
-					case 1: {
+					case "1": {
 						Boolean error = false;
 						String nombre;
 						String apellido;
@@ -84,18 +84,31 @@ public class MAIN {
 																					if (sistema
 																							.soloNumeros(id) == true) {
 																						idConfirmado = id;
-																						ingresoTerminado = true;
-																						System.out.println(
-																								"Te registraste correctamente");
-																						
-																						//FALTAALGO QUE LO CORTE 
+
+																						do {System.out
+																								.println("verificacion..");
+																							try {
+																								Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado,
+																										emailConfirmado, passwordConfirmado);
+																								if (sistema.crearNuevoUsuario(a1)==true) {
+																									System.out.println("te registraste correctamente");
+																									opcionAdministrador="2";
+																									ingresoTerminado=true;
+																									break;
+
+																								}
+																							}catch (SistemaExceptionNoCreaUsuario e) {
+																								System.out.println(e.getMessage());
+																								ingresoTerminado=true;
+																							}
+																							
+																						}while (error!=true);
 																					}
 																				} catch (ExceptionNumero e) {
 																					System.out.println(e.getMessage());
 																				}
 
-																			} while (error != true); // FALTA ALGO PARA
-																										// QUE LO CORTE
+																			} while (error != true); 
 																		}
 																	} catch (UsuarioExceptionPasswordIncorrecta e) {
 																		System.out.println(e.getMessage());
@@ -126,24 +139,62 @@ public class MAIN {
 
 						} while (ingresoTerminado == true);
 
-						Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado,
-								emailConfirmado, passwordConfirmado);
-
 						break;
 
 					}
 
 					// VERIFICAR PASSWORD ESTA MAL DENTRODE USUARIO
-					case 2: {
+					case "2": {
+						Boolean iniciarSesion = true;
 						String email2;
 						String password2;
 						Integer opcionCliente = null;
-						System.out.println("Ingrese email");
-						email2 = teclado.next();
-						System.out.println("Ingrese email");
-						password2 = teclado.next();
-
-						sistema.loguearUsuario("email2", "password2");
+						Boolean salirMenuAdm=false;
+						String opcionAdministrador2=null;
+						Boolean errorAdm = true;
+						do {
+							System.out.println("Ingrese email");
+							email2 = teclado.next();
+							System.out.println("Ingrese email");
+							password2 = teclado.next();
+							try {sistema.loguearUsuario("email2", "password2");
+								do { 
+									System.out.println("Ingresaste correctamente");
+									System.out.println("Ingrese '1'-> para agregar productos '2'-> para eliminar '3'-> Buscar producto '4'->Modificar precio");
+									opcionAdministrador2 = teclado.next();
+									if (opcionAdministrador2 != "1" || opcionAdministrador2 != "2" || opcionAdministrador2 != "3" ) {
+										salirMenuAdm = true;
+									}
+									switch (opcionAdministrador2) {
+									case "1" : 
+										System.out.println("Seleccionaste 1- 'agregar productos'");
+										do {
+											System.out.println();
+										}while (errorAdm !=true);
+										break;
+									case "2" : 
+										System.out.println("Seleccionaste 2- para eliminar productos");
+											 
+										break;
+										
+									case "3" : 
+										System.out.println("Seleccionaste 3- para buscar productos");
+										break;
+										
+									case "4": 
+										System.out.println("Seleccionaste 4- para modificar precio");
+									}
+									
+									
+								}while(salirMenuAdm=true);
+								
+							
+							} catch (SistemaExceptionNoEncuentraUsuario e) {
+								System.out.println(e.getMessage());
+							}
+							
+							
+						} while (iniciarSesion != true);
 
 						break;
 					}
