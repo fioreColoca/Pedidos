@@ -23,6 +23,7 @@ public class Sistema {
 		return instance;
 	}
 
+	LinkedList<Restaurante> restaurantes = new LinkedList<Restaurante>();
 	LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 	LinkedList<Usuario> usuariosLogueados = new LinkedList<Usuario>();
 
@@ -120,6 +121,29 @@ public class Sistema {
 		throw new SistemaExceptionNoEliminaUsuario();
 	}
 
+	// BUSCAR EL RESTAURANTE
+
+	public Boolean buscarRestaurante(String nombre) throws RestauranteExceptionInexistente {
+		for (Restaurante restaurante1 : restaurantes) {
+			restaurante1.getNombre2().equals(nombre);
+			return true;
+		}
+		throw new RestauranteExceptionInexistente();
+	}
+
+	// AGREGAR EL RESTAURANTE
+
+	public Boolean agregarRestaurante(Restaurante r) throws RestauranteExceptionNoLoCrea {
+		if (!restaurantes.contains(r)) {
+			this.restaurantes.add(r);
+			return true;
+		}
+		throw new RestauranteExceptionNoLoCrea();
+
+	}
+
+	// VALIDAR PASSWORD
+
 	public Boolean validarPassword(String password) throws UsuarioExceptionPasswordIncorrecta {
 
 		if (password.length() >= 8) {
@@ -127,10 +151,13 @@ public class Sistema {
 				if (Character.isDigit(password.charAt(i)) == true) {
 					return true;
 				}
+				throw new UsuarioExceptionPasswordIncorrecta();
 			}
 		}
 		throw new UsuarioExceptionPasswordIncorrecta();
 	}
+
+	// VERIFICA QUE TENGA SOLO LETRAS
 
 	public Boolean soloLetras(String nombre) throws MainExceptionSoloCaracteres {
 		for (int i = 0; i < nombre.length(); i++) {
@@ -143,17 +170,7 @@ public class Sistema {
 
 	}
 
-	Pattern pattern = Pattern
-			.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-
-	public Boolean verificarEmail(String email) throws ExceptionEmail {
-		java.util.regex.Matcher mather = pattern.matcher(email);
-		if (mather.find() == true) {
-			return true;
-		} else {
-			throw new ExceptionEmail();
-		}
-	}
+	// VERIFICA QUE TENGA SOLO NUMEROS
 
 	public Boolean soloNumeros(String numero) throws ExceptionNumero {
 		for (int i = 0; i < numero.length(); i++) {
@@ -164,6 +181,20 @@ public class Sistema {
 		}
 		throw new ExceptionNumero();
 
+	}
+
+	Pattern pattern = Pattern
+			.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+	// VERIFICACION DE EMAIL
+
+	public Boolean verificarEmail(String email) throws ExceptionEmail {
+		java.util.regex.Matcher mather = pattern.matcher(email);
+		if (mather.find() == true) {
+			return true;
+		} else {
+			throw new ExceptionEmail();
+		}
 	}
 
 }
