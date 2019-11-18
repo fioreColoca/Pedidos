@@ -2,6 +2,9 @@ package Restaurante;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.regex.Pattern;
+
+import org.hamcrest.Matcher;
 
 public class Sistema {
 
@@ -25,7 +28,7 @@ public class Sistema {
 
 	// REGISTRAR
 	public Boolean crearNuevoUsuario(Usuario usuario) throws SistemaExceptionNoCreaUsuario {
-		if (!usuarios.contains(usuario)) { 
+		if (!usuarios.contains(usuario)) { // Se Asegura que no este la cuenta agregada anteriormente..
 			for (Usuario usuarios : usuarios) {
 				if (usuarios.getEmail().equals(usuario.getEmail()))
 					throw new SistemaExceptionNoCreaUsuario();
@@ -65,18 +68,18 @@ public class Sistema {
 	}
 
 	// BUSCAR USUARIOS ONLINE
-	public Boolean buscarUsuarioLogueado(Integer Id) throws SistemaExceptionNoEncuentraUsuario {
+	public Boolean buscarUsuarioLogueado(String string) throws SistemaExceptionNoEncuentraUsuario {
 		for (Usuario usuarioLogueado : usuariosLogueados) {
-			if (usuarioLogueado.getId().equals(Id))
+			if (usuarioLogueado.getId().equals(string))
 				return true;
 		}
 		throw new SistemaExceptionNoEncuentraUsuario();
 	}
 
 	// BUSCAR USUARIOS
-	public Boolean buscarUsuarioNoLogueado(Integer Id) throws SistemaExceptionNoEncuentraUsuario {
+	public Boolean buscarUsuarioNoLogueado(String string) throws SistemaExceptionNoEncuentraUsuario {
 		for (Usuario usuarioIngresado1 : usuarios) {
-			if (usuarioIngresado1.getId().equals(Id)) {
+			if (usuarioIngresado1.getId().equals(string)) {
 				return true;
 			}
 			throw new SistemaExceptionNoEncuentraUsuario();
@@ -86,7 +89,7 @@ public class Sistema {
 
 	// ELIMINAR USUARIO
 
-	public Boolean EliminarUsuario(Integer Id, String password) throws SistemaExceptionNoEliminaUsuario {
+	public Boolean EliminarUsuario(String Id, String password) throws SistemaExceptionNoEliminaUsuario {
 		for (Usuario usuarioLogueado : usuariosLogueados) {
 			if (usuarioLogueado.getPassword() == password && usuarioLogueado.getId() == Id) {
 				Iterator<Usuario> it = usuarios.iterator();
@@ -107,7 +110,7 @@ public class Sistema {
 
 	// NUEVO ELIMINAR , YA QUE ESTE SÓLO ELIMINA AL USUARIO LOGUEADO
 
-	public Boolean Eliminar(Integer Id, String password) throws SistemaExceptionNoEliminaUsuario {
+	public Boolean Eliminar(String Id, String password) throws SistemaExceptionNoEliminaUsuario {
 		if (usuarios.contains(usuarioLogueado)) {
 			if (usuarioLogueado.getPassword() == password && usuarioLogueado.getId() == Id) {
 				usuarios.remove(usuarioLogueado);
@@ -137,6 +140,29 @@ public class Sistema {
 				throw new MainExceptionSoloCaracteres();
 		}
 		return true;
+
+	}
+
+	Pattern pattern = Pattern
+			.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+	public Boolean verificarEmail(String email) throws ExceptionEmail {
+		java.util.regex.Matcher mather = pattern.matcher(email);
+		if (mather.find() == true) {
+			return true;
+		} else {
+			throw new ExceptionEmail();
+		}
+	}
+
+	public Boolean soloNumeros(String numero) throws ExceptionNumero {
+		for (int i = 0; i < numero.length(); i++) {
+			char caracter = numero.toUpperCase().charAt(i);
+			int valorASCII = (int) caracter;
+			if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90))
+				return true;
+		}
+		throw new ExceptionNumero();
 
 	}
 
