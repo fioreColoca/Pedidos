@@ -35,14 +35,15 @@ public class MAIN {
 				do {
 					// DO WHILE DE CREAR RESTAURANTE O INGRESAR A UN RESATURANTE
 					System.out.println(
-							"Usted ha seleccionado administrador, Ingrese la opcion'1' si desea crear su restaurante, la opcion '2' ingresar a su restaurante, la opcion '3' para salir");
+							"Usted ha seleccionado administrador, Ingrese la opcion '1' si desea crear su restaurante, la opcion '2' ingresar a su restaurante, la opcion '3' para salir");
 					opcionAdministrador = teclado.next();
 
-					if (opcionAdministrador != "1" || opcionAdministrador != "2" ) {
+					if (opcionAdministrador != "1" || opcionAdministrador != "2") {
 						salirAdministrador = true;
 					}
 
-					// SWITCH PARA CREAR EL RESTAURANTE O LOGUEARSE                       //<<------------------ RESTAURANTE ----------------->>
+					// SWITCH PARA CREAR EL RESTAURANTE O LOGUEARSE //<<------------------
+					// RESTAURANTE ----------------->>
 					switch (opcionAdministrador) {
 
 					// CREAR RESTAURANTE
@@ -80,10 +81,11 @@ public class MAIN {
 																	cuitConfirmado);
 
 															if (sistema.agregarRestaurante(r1) == true) {
-																System.out.println("Ha creado su restaurante Exitosamente");
+																System.out.println(
+																		"Ha creado su restaurante Exitosamente");
 																opcionAdministrador = "2";
 																error1 = true;
-																ingresoTerminado2=true;
+																ingresoTerminado2 = true;
 																break;
 
 															}
@@ -128,11 +130,12 @@ public class MAIN {
 												"Usted ha entrado a su restaurante exitosamente , Ingrese la opcion '1' para registrarse, la opcion '2'  para  iniciar sesión , la opcion '3' para salir");
 										opcionAdministrador = teclado.next();
 
-										if (opcionAdministrador != "1" || opcionAdministrador != "2" || opcionAdministrador == "3") {
+										if (opcionAdministrador != "1" || opcionAdministrador != "2"
+												|| opcionAdministrador == "3") {
 											salirAdministrador = true;
 										}
 
-										// SWITCH DEL ADMINISTRADOR                                                   
+										// SWITCH DEL ADMINISTRADOR
 
 										switch (opcionAdministrador) {
 
@@ -175,7 +178,8 @@ public class MAIN {
 																			System.out.println("Ingrese su email");
 																			email = teclado.next();
 																			try {
-																				if (sistema.verificarEmail(email) == true) {
+																				if (sistema.verificarEmail(
+																						email) == true) {
 																					emailConfirmado = email;
 																					do {
 																						System.out.println(
@@ -190,14 +194,15 @@ public class MAIN {
 																											"Ingrese su dni");
 																									id = teclado.next();
 																									try {
-																										if (sistema.soloNumeros(
-																												id) == true) {
+																										if (sistema
+																												.soloNumeros(
+																														id) == true) {
 																											idConfirmado = id;
 
 																											do {
 																												System.out
 																														.println(
-																																"verificacion..");
+																																"VERIFICACION..");
 
 																												try {
 																													Administrador a1 = new Administrador(
@@ -211,7 +216,7 @@ public class MAIN {
 																																	a1) == true) {
 																														System.out
 																																.println(
-																																		"te registraste correctamente"); // SE
+																																		"Te registraste correctamente"); // SE
 																																											// CREA
 																																											// EL
 																																											// ADMINISTRADOR
@@ -230,14 +235,16 @@ public class MAIN {
 																											} while (error != true);
 																										}
 																									} catch (ExceptionNumero e) {
-																										System.out.println(
-																												e.getMessage());
+																										System.out
+																												.println(
+																														e.getMessage());
 																									}
 
 																								} while (error != true);
 																							}
 																						} catch (UsuarioExceptionPasswordIncorrecta e) {
-																							System.out.println(e.getMessage());
+																							System.out.println(
+																									e.getMessage());
 																						}
 
 																					} while (error != true);
@@ -264,8 +271,9 @@ public class MAIN {
 												} while (error != true);
 
 											} while (ingresoTerminado == true);
-
+											salirAdministrador=true;
 											break;
+											
 										}
 
 										// INICIO DE SESION ADMINISTRADOR
@@ -316,16 +324,19 @@ public class MAIN {
 
 															break;
 														case "2":
-															System.out.println("Seleccionaste 2- para eliminar productos");
+															System.out.println(
+																	"Seleccionaste 2- para eliminar productos");
 
 															break;
 
 														case "3":
-															System.out.println("Seleccionaste 3- para buscar productos");
+															System.out
+																	.println("Seleccionaste 3- para buscar productos");
 															break;
 
 														case "4":
-															System.out.println("Seleccionaste 4- para modificar precio");
+															System.out
+																	.println("Seleccionaste 4- para modificar precio");
 														}
 
 													} while (salirMenuAdm = true);
@@ -344,7 +355,8 @@ public class MAIN {
 										}
 
 										}
-										while (salirAdministrador = true);
+										while (salirAdministrador = true)
+											;
 										break;
 									}
 
@@ -359,13 +371,13 @@ public class MAIN {
 				} while (ingresoTerminado2 = true);
 				// PARA LOGUEARSE AL RESTAURANTE
 
-
-                                                                                //<<----------------------------- CLIENTE ----------------->>
+				// <<----------------------------- CLIENTE ----------------->>
 			case "1":
-				
+
 				String opcionCliente = null;
-				
-				System.out.println("Seleccionaste cliente, Ingrese la opcion '1' para registrarse, la opcion '2'  para  iniciar sesión , la opcion '3' para salir");
+
+				System.out.println(
+						"Seleccionaste cliente, Ingrese la opcion '1' para registrarse, la opcion '2'  para  iniciar sesión , la opcion '3' para salir");
 				opcionCliente = teclado.next();
 
 				break;
