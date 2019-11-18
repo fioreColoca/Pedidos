@@ -7,6 +7,7 @@ import Restaurante2.Administrador;
 import Restaurante2.AdministradorExceptionAgregarProducto;
 import Restaurante2.Categoria;
 import Restaurante2.Cliente;
+import Restaurante2.ClienteExceptionNoPedidos;
 import Restaurante2.ExceptionProductoInexistente;
 import Restaurante2.Pedido;
 import Restaurante2.Producto;
