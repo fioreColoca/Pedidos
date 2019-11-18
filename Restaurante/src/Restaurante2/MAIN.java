@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class MAIN {
 
-	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres {
+	public static void main(String[] args)
+			throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres, SistemaExceptionNoEncuentraUsuario {
 		Integer optcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
@@ -32,7 +33,7 @@ public class MAIN {
 					}
 					switch (opcionAdministrador) {
 
-					case 1:
+					case 1: {
 						Boolean error = false;
 						String nombre;
 						String apellido;
@@ -47,86 +48,108 @@ public class MAIN {
 						// *HACER CLASE PARA QUE VERIFIQUE SI ESTAN BIEN O NO LO INGRESADO //
 
 						System.out.println("Selecciono para registrarse");
-						
+
 						boolean ingresoTerminado;
 						do {
-							 ingresoTerminado=false;
-						do {
-							System.out.println("Ingrese su nombre");
-							nombre = teclado.next();
-							try {
-								if (sistema.soloLetras(nombre) == true) {
-									nombreConfirmado = nombre;
-									do {
-										System.out.println("Ingrese su apellido");
-										apellido = teclado.next();
+							ingresoTerminado = false;
+							do {
+								System.out.println("Ingrese su nombre");
+								nombre = teclado.next();
+								try {
+									if (sistema.soloLetras(nombre) == true) {
+										nombreConfirmado = nombre;
+										do {
+											System.out.println("Ingrese su apellido");
+											apellido = teclado.next();
 
-										try {
-											if (sistema.soloLetras(apellido) == true) {
-												apellidoConfirmado = apellido;
-												do {
-													System.out.println("Ingrese su email");
-													email = teclado.next();
-													try {
-														if (sistema.verificarEmail(email) == true) {
-															emailConfirmado = email;
-														do {
-															System.out.println("Ingrese su contraseña");
-															password = teclado.next();
-															try {
-																if (sistema.validarPassword(password) == true) {
-																	passwordConfirmado = password;
-																	do {
-																		System.out.println("Ingrese su dni");
-																		id= teclado.next();
-																		try {
-																			if (sistema.soloNumeros(id) == true) {
-																				idConfirmado=id;
-																				 ingresoTerminado=true;
-																			}
-																			} catch (ExceptionNumero e) {
-																		System.out.println(e.getMessage());																		}
-																	
-																	} while (error != true); // FALTA ALGO PARA QUE LO CORTE
-																}
-															} catch (UsuarioExceptionPasswordIncorrecta e) {
-																System.out.println(e.getMessage());
+											try {
+												if (sistema.soloLetras(apellido) == true) {
+													apellidoConfirmado = apellido;
+													do {
+														System.out.println("Ingrese su email");
+														email = teclado.next();
+														try {
+															if (sistema.verificarEmail(email) == true) {
+																emailConfirmado = email;
+																do {
+																	System.out.println("Ingrese su contraseña");
+																	password = teclado.next();
+																	try {
+																		if (sistema.validarPassword(password) == true) {
+																			passwordConfirmado = password;
+																			do {
+																				System.out.println("Ingrese su dni");
+																				id = teclado.next();
+																				try {
+																					if (sistema
+																							.soloNumeros(id) == true) {
+																						idConfirmado = id;
+																						ingresoTerminado = true;
+																						System.out.println(
+																								"Te registraste correctamente");
+																						
+																						//FALTAALGO QUE LO CORTE 
+																					}
+																				} catch (ExceptionNumero e) {
+																					System.out.println(e.getMessage());
+																				}
+
+																			} while (error != true); // FALTA ALGO PARA
+																										// QUE LO CORTE
+																		}
+																	} catch (UsuarioExceptionPasswordIncorrecta e) {
+																		System.out.println(e.getMessage());
+																	}
+
+																} while (error != true);
 															}
-													
-															} while (error != true);
+
+														} catch (ExceptionEmail e) {
+															System.out.println(e.getMessage());
 														}
 
-													} catch (ExceptionEmail e) {
-														System.out.println(e.getMessage());
-													}
-													
-												} while (error != true);
+													} while (error != true);
 
+												}
+
+											} catch (MainExceptionSoloCaracteres e) {
+												System.out.println(e.getMessage());
 											}
+										} while (error != true);
+									}
 
-										} catch (MainExceptionSoloCaracteres e) {
-											System.out.println(e.getMessage());
-										}
-									} while (error != true);
+								} catch (MainExceptionSoloCaracteres e) {
+									System.out.println(e.getMessage());
 								}
-							
-							} catch (MainExceptionSoloCaracteres e) {
-								System.out.println(e.getMessage());
-							}
 
-						} while (error != true);
-						
-						} while(ingresoTerminado==true);
+							} while (error != true);
 
+						} while (ingresoTerminado == true);
 
-						Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado, emailConfirmado,
-								passwordConfirmado);
+						Administrador a1 = new Administrador(idConfirmado, nombreConfirmado, apellidoConfirmado,
+								emailConfirmado, passwordConfirmado);
 
-						// VERIFICAR PASSWORD ESTA MAL DENTRODE USUARIO
+						break;
 
 					}
 
-					break;
+					// VERIFICAR PASSWORD ESTA MAL DENTRODE USUARIO
+					case 2: {
+						String email2;
+						String password2;
+						Integer opcionCliente = null;
+						System.out.println("Ingrese email");
+						email2 = teclado.next();
+						System.out.println("Ingrese email");
+						password2 = teclado.next();
+
+						sistema.loguearUsuario("email2", "password2");
+
+						break;
+					}
+
+					}
+
 				} while (salirAdministrador = true);
 				break;
 
