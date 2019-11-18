@@ -1,15 +1,13 @@
 package Restaurante;
 
-import java.util.ArrayList;
-
 public abstract class Usuario {
-	private Integer Id;
+	private String Id;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String password;
 
-	public Usuario(Integer Id, String nombre, String apellido, String email, String password) {
+	public Usuario(String Id, String nombre, String apellido, String email, String password) {
 		this.Id = Id;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -17,7 +15,7 @@ public abstract class Usuario {
 		this.password = password;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return this.Id;
 	}
 
@@ -37,7 +35,7 @@ public abstract class Usuario {
 		return this.password;
 	}
 
-	public void setId(Integer Id) {
+	public void setId(String Id) {
 		this.Id = Id;
 	}
 
