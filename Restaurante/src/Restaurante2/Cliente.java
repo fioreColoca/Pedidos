@@ -3,8 +3,6 @@ package Restaurante2;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import Test.ClienteExceptionNoPedidos;
-
 public class Cliente extends Usuario {
 
 		public Cliente(String Id, String nombre, String apellido, String email, String password) {
