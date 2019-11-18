@@ -1,7 +1,7 @@
 package Restaurante;
 
-public class MainExceptionSoloCaracteres extends Exception {
+public class MainExceptionSoloCaracteres extends Exception{
 	public MainExceptionSoloCaracteres() {
-		super("Escriba solo numeros");
-	}
+		super("Escriba solo letras");
+}
 }
