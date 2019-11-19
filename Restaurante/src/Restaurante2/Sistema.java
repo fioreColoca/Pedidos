@@ -1,6 +1,5 @@
 package Restaurante2;
 
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
@@ -8,7 +7,7 @@ import java.util.regex.Pattern;
 import org.hamcrest.Matcher;
 
 public class Sistema {
-	
+
 	public static Sistema instance;
 
 	Usuario usuarioLogueado;
@@ -197,9 +196,6 @@ public class Sistema {
 			throw new ExceptionEmail();
 		}
 	}
+	// VERIFICACION CATEGORIAS
 
-	
-		 
-		}
-		
-		
+}
