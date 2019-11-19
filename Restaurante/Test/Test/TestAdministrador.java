@@ -27,7 +27,7 @@ public class TestAdministrador {
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 4);
 		a1.agregarProductos(p2, r1);
@@ -50,11 +50,11 @@ public class TestAdministrador {
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
-		Restaurante Cafeteria = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
-		a1.agregarProductos(p1, Cafeteria);
+		a1.agregarProductos(p1, r1);
 
-		a1.agregarProductos(p1, Cafeteria);
+		a1.agregarProductos(p1, r1);
 
 	}
 
@@ -68,12 +68,12 @@ public class TestAdministrador {
 		sistema.crearNuevoUsuario(c1);
 		sistema.loguearUsuario("luciamartinez@hotmail.com", "123luciamartinez");
 		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
-		Restaurante Cafeteria = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 20.0, 2);
 
-		a1.agregarProductos(p1, Cafeteria);
-		a1.agregarProductos(p2, Cafeteria);
+		a1.agregarProductos(p1, r1);
+		a1.agregarProductos(p2, r1);
 	}
 
 	@Test
@@ -85,7 +85,7 @@ public class TestAdministrador {
 		Administrador a1 = new Administrador("456", "Marcelo", "Gomez", "MarceloGomez123@gmail.com", "123123");
 		sistema.crearNuevoUsuario(a1);
 		sistema.loguearUsuario("MarceloGomez123@gmail.com", "123123");
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		Producto p1 = new Producto(Categoria.PIZZAS, "Muzzarella", 500.0, 2);
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 5);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 4);
@@ -113,7 +113,7 @@ public class TestAdministrador {
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
 		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		a1.agregarProductos(p1, r1);
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
@@ -135,7 +135,7 @@ public class TestAdministrador {
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
 		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		a1.agregarProductos(p1, r1);
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
@@ -158,7 +158,7 @@ public class TestAdministrador {
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
 		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		a1.agregarProductos(p1, r1);
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
@@ -179,7 +179,7 @@ public class TestAdministrador {
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
 		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		a1.agregarProductos(p1, r1);
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
@@ -202,7 +202,7 @@ public class TestAdministrador {
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
 		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		a1.agregarProductos(p1, r1);
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
@@ -225,7 +225,7 @@ public class TestAdministrador {
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
 		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		a1.agregarProductos(p1, r1);
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
@@ -247,7 +247,7 @@ public class TestAdministrador {
 		Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 		Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 2);
 		Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-		Restaurante r1 = new Restaurante("Cafeteria", 123456);
+		Restaurante r1 = new Restaurante("Cafeteria", "123456");
 		a1.agregarProductos(p1, r1);
 		a1.agregarProductos(p2, r1);
 		a1.agregarProductos(p3, r1);
