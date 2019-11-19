@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class MAIN {
 
-	public static void main(String[] args)
-			throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres, SistemaExceptionNoEncuentraUsuario,
-			SistemaExceptionNoCreaUsuario, RestauranteExceptionNoLoCrea, RestauranteExceptionInexistente {
+	private static final Restaurante r1 = null;
+	private static final Administrador a1 = null;
+
+	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres,
+			SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario, RestauranteExceptionNoLoCrea,
+			RestauranteExceptionInexistente, ExceptionNumero, AdministradorExceptionNoModificaPrecio {
 		String optcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
@@ -38,11 +41,12 @@ public class MAIN {
 							"Usted ha seleccionado administrador, Ingrese la opcion'1' si desea crear su restaurante, la opcion '2' ingresar a su restaurante, la opcion '3' para salir");
 					opcionAdministrador = teclado.next();
 
-					if (opcionAdministrador != "1" || opcionAdministrador != "2" ) {
+					if (opcionAdministrador != "1" || opcionAdministrador != "2") {
 						salirAdministrador = true;
 					}
 
-					// SWITCH PARA CREAR EL RESTAURANTE O LOGUEARSE                       //<<------------------ RESTAURANTE ----------------->>
+					// SWITCH PARA CREAR EL RESTAURANTE O LOGUEARSE //<<------------------
+					// RESTAURANTE ----------------->>
 					switch (opcionAdministrador) {
 
 					// CREAR RESTAURANTE
@@ -80,10 +84,11 @@ public class MAIN {
 																	cuitConfirmado);
 
 															if (sistema.agregarRestaurante(r1) == true) {
-																System.out.println("Ha creado su restaurante Exitosamente");
+																System.out.println(
+																		"Ha creado su restaurante Exitosamente");
 																opcionAdministrador = "2";
 																error1 = true;
-																ingresoTerminado2=true;
+																ingresoTerminado2 = true;
 																break;
 
 															}
@@ -128,11 +133,12 @@ public class MAIN {
 												"Usted ha entrado a su restaurante exitosamente , Ingrese la opcion '1' para registrarse, la opcion '2'  para  iniciar sesión , la opcion '3' para salir");
 										opcionAdministrador = teclado.next();
 
-										if (opcionAdministrador != "1" || opcionAdministrador != "2" || opcionAdministrador == "3") {
+										if (opcionAdministrador != "1" || opcionAdministrador != "2"
+												|| opcionAdministrador == "3") {
 											salirAdministrador = true;
 										}
 
-										// SWITCH DEL ADMINISTRADOR                                                   
+										// SWITCH DEL ADMINISTRADOR
 
 										switch (opcionAdministrador) {
 
@@ -175,7 +181,8 @@ public class MAIN {
 																			System.out.println("Ingrese su email");
 																			email = teclado.next();
 																			try {
-																				if (sistema.verificarEmail(email) == true) {
+																				if (sistema.verificarEmail(
+																						email) == true) {
 																					emailConfirmado = email;
 																					do {
 																						System.out.println(
@@ -190,8 +197,9 @@ public class MAIN {
 																											"Ingrese su dni");
 																									id = teclado.next();
 																									try {
-																										if (sistema.soloNumeros(
-																												id) == true) {
+																										if (sistema
+																												.soloNumeros(
+																														id) == true) {
 																											idConfirmado = id;
 
 																											do {
@@ -213,9 +221,8 @@ public class MAIN {
 																																.println(
 																																		"te registraste correctamente"); // SE
 																																											// CREA
-																																											// EL
-																																											// ADMINISTRADOR
-																														opcionAdministrador = "2";
+																														// ADMINISTRADOR
+																														ingresoTerminado = false;
 																														error = true;
 																														break;
 
@@ -230,14 +237,16 @@ public class MAIN {
 																											} while (error != true);
 																										}
 																									} catch (ExceptionNumero e) {
-																										System.out.println(
-																												e.getMessage());
+																										System.out
+																												.println(
+																														e.getMessage());
 																									}
 
 																								} while (error != true);
 																							}
 																						} catch (UsuarioExceptionPasswordIncorrecta e) {
-																							System.out.println(e.getMessage());
+																							System.out.println(
+																									e.getMessage());
 																						}
 
 																					} while (error != true);
@@ -293,8 +302,10 @@ public class MAIN {
 													sistema.loguearUsuario("email2", "password2");
 													do {
 														System.out.println("Ingresaste correctamente");
+
+														// <------------------------OPCIONES QUE PUEDE HACER EL ADM -------------------->
 														System.out.println(
-																"Ingrese '1'-> para agregar productos '2'-> para eliminar '3'-> Buscar producto '4'->Modificar precio");
+																"Ingrese '1'-> para agregar productos '2'-> para eliminar '3'-> Buscar producto '4'->Modificar precio , '5'-> CERRAR SESION , '6' -> eliminar cuenta");
 														opcionAdministrador2 = teclado.next();
 
 														if (opcionAdministrador2 != "1" || opcionAdministrador2 != "2"
@@ -305,27 +316,232 @@ public class MAIN {
 														// SWITCH DE ADMINISTRADOR PARA REALIZAR ACCIONES
 
 														switch (opcionAdministrador2) {
-
+														// <------------------------------ AGREGAR PRODUCTOS
+														// ------------------------------>
 														case "1":
-															System.out.println("Seleccionaste 1- 'agregar productos'");
+
+															Boolean error1 = false;
+															Categoria categoria = null;
+															String descripcion = null;
+															String descripcionConfirmado = null;
+															Double precioConfirmado = null;
+															Integer idConfirmada = null;
+															Double precio = null;
+															Integer id = null;
+															String opcion = null;
+															boolean errorAdm2 = false;
 
 															do {
-																System.out.println();
 
-															} while (errorAdm != true);
+																System.out.println(
+																		"Seleccionaste 1- 'agregar productos'");
+
+																do {
+																	System.out.println(
+																			"Ingrese categoria '1'PIZZAS , '2' EMPANADAS , '3' PASTAS , '4' POSTRES ");
+																	opcion = teclado.next();
+																	if (opcionAdministrador2 != "1"
+																			|| opcionAdministrador2 != "2"
+																			|| opcionAdministrador2 != "3"
+																			|| opcionAdministrador2 != "4") {
+																		errorAdm2 = true;
+																	} else {
+
+																		/*
+											* <----------- SWTICH CON LAS CATEGORIAS  ELEGIDAS-------------->
+																		 */
+																		switch (opcion) {
+																		case "1":
+																			categoria = categoria.PIZZAS;
+																			break;
+																		case "2":
+																			categoria = categoria.EMPANADAS;
+																			break;
+
+																		case "3":
+																			categoria = categoria.PASTAS;
+																			break;
+
+																		case "4":
+																			categoria = categoria.POSTRES;
+																			break;
+
+																		}
+																	}
+
+																	do {
+																		System.out.println("Ingrese descripcion");
+																		descripcion = teclado.next();
+																		try {
+																			if (sistema
+																					.soloLetras(descripcion) == true) {
+																				descripcionConfirmado = descripcion;
+																			}
+																			do {
+																				System.out.println(
+																						"Ingrese precio '000.00' ");
+																				precio = teclado.nextDouble();
+																				precioConfirmado = precio;
+																				System.out.println(
+																						"Ingrese id sólo números ");
+																				id = teclado.nextInt();
+																				idConfirmada = id;
+																				try {
+																					Producto p1 = new Producto(
+																							categoria,
+																							descripcionConfirmado,
+																							precioConfirmado,
+																							idConfirmada);
+																					if (a1.agregarProductos(p1,
+																							r1) == true) {
+																						System.out.println(
+																								"Ha creado su restaurante Exitosamente");
+																					}
+
+																				} catch (AdministradorExceptionAgregarProducto e) {
+																					System.out.println(e.getMessage());
+																				}
+
+																			} while (error1 != true);
+
+																		} catch (MainExceptionSoloCaracteres e) {
+																			System.out.println(e.getMessage());
+																		}
+
+																	} while (error1 != true);
+
+																} while (errorAdm2 != true);
+															} while (errorAdm2 != true);
 
 															break;
+															
+							// <---------------------------- ELIMINAR PRODUCTO	 ------------------------------------>
 														case "2":
-															System.out.println("Seleccionaste 2- para eliminar productos");
+															error1 = true;
+															Integer idEliminar = null;
+															do {
+																System.out.println(
+																		"Seleccionaste 2- para eliminar productos");
+																System.out.println(
+																		"Ingrese id (sólo numeros) del producto a eliminar");
+																idEliminar = teclado.nextInt();
+																try {
+																	if (a1.eliminarProducto(idEliminar, r1) == true) {
+																		System.out.println("Eliminacion exitosa");
+																	}
 
+																} catch (AdministradorExceptionEliminarProducto e) {
+																	System.out.println(e.getMessage());
+																}
+
+															} while (error1 != true);
 															break;
+															
+							// <---------------------------- BRUSCAR PRODUCTO  ------------------------------------>
 
 														case "3":
-															System.out.println("Seleccionaste 3- para buscar productos");
+															error1 = true;
+															Integer buscarProducto = null;
+															do {
+																System.out.println(
+																		"Seleccionaste 3- para buscar productos");
+																System.out.println(
+																		"Ingrese id (slo numeros) para buscar el producto");
+																buscarProducto = teclado.nextInt();
+																try {
+																	if (a1.buscarProducto(buscarProducto,r1) == true ) {
+																		System.out.println(a1.buscarProductoDevuelve(buscarProducto,r1));
+																	}
+
+																} catch (AdministradorExceptionProductoNoEncontrado e) {
+																	System.out.println(e.getMessage());
+																}
+
+															} while (error1 != true);
 															break;
 
+							// <---------------------------- MODIFICAR PRECIO  ------------------------------------>
+
 														case "4":
-															System.out.println("Seleccionaste 4- para modificar precio");
+															error1 = true;
+															Integer buscarProducto2 = null;
+															Double  precioModificar = null;
+															do {
+																System.out
+																.println("Seleccionaste 4- para modificar precio");
+																System.out.println(
+																		"Ingrese id (slo numeros) para el producto que quiere modificar su precio");
+																buscarProducto2 = teclado.nextInt();
+																System.out.println(
+																		"Ingrese 0000.00 del precio que quiera modificar");
+																precioModificar = teclado.nextDouble();
+
+																try {
+																	if (a1.buscarProducto(buscarProducto2,r1) == true   ) {
+																		 a1.modificarPrecio(precioModificar,buscarProducto2,r1);
+																	System.out.println(a1.buscarProductoDevuelve(buscarProducto2,r1));
+																	
+																	}
+
+																} catch (AdministradorExceptionProductoNoEncontrado e) {
+																	System.out.println(e.getMessage());
+																}
+
+															} while (error1 != true);
+															break;
+							// <--------------------CERRAR SESION-----------------)							
+															
+														case "5" : 
+															System.out.println(" cerrando sesion... ");
+															sistema.cerrarSesiondeUsuario();
+															
+															
+														break ;
+														
+							// <--------------------ELIMINAR CUENTA----------------)							
+
+														case "6" : 
+															String password3 = null;
+															String passwordConfirmado2 = null;
+															String id2 = null;
+															System.out.println("Eliminar cuenta");
+															error1=true;
+															do {
+	
+																	System.out.println(
+																			"Ingrese su contraseña");
+																	password3 = teclado.next();
+																	try {
+																		if (sistema.validarPassword(
+																				password3) == true) {
+																			passwordConfirmado2 = password2;
+																		}
+																			do {
+																				System.out.println("Ingrese su documento");
+																				id2 = teclado.next();
+																				try {
+																					if (sistema.Eliminar(passwordConfirmado2,id2)== true) {
+																						System.out
+																								.println("Cuenta eliminada");
+																						}
+																					} catch (SistemaExceptionNoEliminaUsuario e) {
+																						System.out.println(e.getMessage());
+																					}
+
+																				} while (error1 != true);
+																				
+																			} catch (UsuarioExceptionPasswordIncorrecta e) {
+																				System.out.println(e.getMessage());
+																			}
+
+																
+															}while (error1 != true);
+															
+															
+														break;
+															
+															
+							// <----------------------    TERMINA SWITCH DE ADM ------------------------------------->						
 														}
 
 													} while (salirMenuAdm = true);
@@ -344,7 +560,8 @@ public class MAIN {
 										}
 
 										}
-										while (salirAdministrador = true);
+										while (salirAdministrador = true)
+											;
 										break;
 									}
 
@@ -359,13 +576,17 @@ public class MAIN {
 				} while (ingresoTerminado2 = true);
 				// PARA LOGUEARSE AL RESTAURANTE
 
-
-                                                                                //<<----------------------------- CLIENTE ----------------->>
+				
+				
+				
+				
+				// <<----------------------------- CLIENTE ---------------------------->>
 			case "1":
-				
+
 				String opcionCliente = null;
-				
-				System.out.println("Seleccionaste cliente, Ingrese la opcion '1' para registrarse, la opcion '2'  para  iniciar sesión , la opcion '3' para salir");
+
+				System.out.println(
+						"Seleccionaste cliente, Ingrese la opcion '1' para registrarse, la opcion '2'  para  iniciar sesión , la opcion '3' para salir");
 				opcionCliente = teclado.next();
 
 				break;
