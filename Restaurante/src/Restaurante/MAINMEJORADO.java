@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class MAINMEJORADO {
 
+	private static final Administrador a1 = null;
+	private static final Restaurante r1 = null;
+	private static final Pedido p1 = null;
+	private static final Cliente c1 = null;
+
 	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres,
 			SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario, RestauranteExceptionNoLoCrea,
 			RestauranteExceptionInexistente, AdministradorExceptionNoModificaPrecio {
@@ -291,8 +296,6 @@ public class MAINMEJORADO {
 
 										// SWITCH DE ADMINISTRADOR PARA REALIZAR ACCIONES
 
-										Administrador a1 = null;
-										Restaurante r1 = null;
 										switch (opcionAdministrador2) {
 
 										case "1":
@@ -336,44 +339,44 @@ public class MAINMEJORADO {
 													 */
 													switch (opcion1) {
 													case "1":
-														categoria = categoria.PIZZAS;
+														categoria = Categoria.PIZZAS;
 														break;
 													case "2":
-														categoria = categoria.EMPANADAS;
+														categoria = Categoria.EMPANADAS;
 														break;
 
 													case "3":
-														categoria = categoria.PASTAS;
+														categoria = Categoria.PASTAS;
 														break;
 
 													case "4":
-														categoria = categoria.POSTRES;
+														categoria = Categoria.POSTRES;
 														break;
 
 													case "5":
-														categoria = categoria.BEBIDAS;
+														categoria = Categoria.BEBIDAS;
 														break;
 													case "6":
-														categoria = categoria.VINOS;
+														categoria = Categoria.VINOS;
 														break;
 													case "7":
-														categoria = categoria.ENSALADAS;
+														categoria = Categoria.ENSALADAS;
 														break;
 
 													case "8":
-														categoria = categoria.ENTRADAS;
+														categoria = Categoria.ENTRADAS;
 														break;
 
 													case "9":
-														categoria = categoria.MILANESAS;
+														categoria = Categoria.MILANESAS;
 														break;
 
 													case "10":
-														categoria = categoria.GUARNICIONES;
+														categoria = Categoria.GUARNICIONES;
 														break;
 
 													case "11":
-														categoria = categoria.PARRILLA;
+														categoria = Categoria.PARRILLA;
 														break;
 
 													}
@@ -466,14 +469,14 @@ public class MAINMEJORADO {
 										case "4":
 											error1 = true;
 											Integer buscarProducto2 = null;
-											Double precioModificar = null;
+											Integer precioModificar = null;
 											do {
 												System.out.println("Seleccionaste 4- Modificar Precio del Producto");
 												System.out.println(
 														"Ingrese id (slo numeros) para el producto que quiere modificar su precio");
 												buscarProducto2 = teclado.nextInt();
 												System.out.println("Ingrese 0000.00 del precio que quiera modificar");
-												precioModificar = teclado.nextDouble();
+												precioModificar = (int) teclado.nextDouble();
 
 												try {
 													if (a1.buscarProducto(buscarProducto2, r1) == true) {
@@ -749,19 +752,74 @@ public class MAINMEJORADO {
 										if (opcionCliente1 != "1" || opcionCliente1 != "2" || opcionCliente1 != "3") {
 											salirMenuClie = true;
 										}
-										
-										switch(opcionCliente1) {
-										
-										//<-------------------HACER PEDIDO-------------------->
-										
-										case "1":
-											
-											System.out.println("Ingrese el producto que pedira");
-											
-											
-										
+
+										switch (opcionCliente1) {
+
+										// <-------------------HACER PEDIDO-------------------->
+
+										// <----------------------MOSTRAR PRODUCTOS----------------->
+										case "4":
+											r1.mostrarCarta();
+											// <----------------------PEDIR CUENTA----------------->
+										case "5":
+											System.out.println("Su cuenta es de" + c1.pedirCuenta(p1, r1));
+											break;
+										// <---------------------- ELIMINAR PEDIDO COMPLETO----------------->
+										case "6":
+											c1.eliminarPedidoCompleto(p1);
+											System.out.println("su pedido fue eliminado");
+											break;
+										// <----------------------HISTORIAL----------------->
+										case "7":
+											System.out.println("mi historial de pedidos es");
+											c1.verHistorial();
+											break;
+										// <--------------- CERRAR SESION --------------------->
+										case "8":
+											System.out.println(" cerrando sesion... ");
+											sistema.cerrarSesiondeUsuario();
+											break;
+
+										// <--------------------ELIMINAR CUENTA----------------)
+
+										case "9":
+											String password4 = null;
+											String passwordConfirmado3 = null;
+											String id3 = null;
+											System.out.println("Eliminar cuenta");
+											Boolean error10 = true;
+
+											do {
+
+												System.out.println("Ingrese su contraseña");
+												password4 = teclado.next();
+												try {
+													if (sistema.validarPassword(password4) == true) {
+														passwordConfirmado3 = password4;
+													}
+													do {
+														System.out.println("Ingrese su documento");
+														id3 = teclado.next();
+														try {
+															if (sistema.Eliminar(passwordConfirmado3, id3) == true) {
+																System.out.println("Cuenta eliminada");
+															}
+														} catch (SistemaExceptionNoEliminaUsuario e) {
+															System.out.println(e.getMessage());
+														}
+
+													} while (error10 != true);
+
+												} catch (UsuarioExceptionPasswordIncorrecta e) {
+													System.out.println(e.getMessage());
+												}
+
+											} while (error10 != true);
+											break;
+
+										// <----------------------- CIERRE SWTICH ------------------>
+
 										}
-										
 
 									} while (salirMenuClie = true);
 
