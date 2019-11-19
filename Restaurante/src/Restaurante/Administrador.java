@@ -1,7 +1,6 @@
 package Restaurante;
 
 import java.util.Iterator;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Administrador extends Usuario {
@@ -41,6 +40,15 @@ public class Administrador extends Usuario {
 		for (Producto p : R.productos) {
 			if (p.getIdProducto().equals(id))
 				return true;
+		}
+		throw new AdministradorExceptionProductoNoEncontrado();
+	}
+
+	public Producto buscarProductoDevuelve(Integer id, Restaurante R)
+			throws AdministradorExceptionProductoNoEncontrado {
+		for (Producto p : R.productos) {
+			if (p.getIdProducto().equals(id))
+				return p;
 		}
 		throw new AdministradorExceptionProductoNoEncontrado();
 	}
