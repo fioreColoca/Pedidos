@@ -130,7 +130,6 @@ public class MAIN {
 									}
 
 								} while (error1 = true);
-								
 								break;
 
 							case "1":
@@ -417,11 +416,11 @@ public class MAIN {
 									r1.mostrarCarta();
 									// <----------------------PEDIR CUENTA----------------->
 								case "5":
-									// System.out.println("Su cuenta es de" + c1.pedirCuenta(p1, r1));
+									 System.out.println("Su cuenta es de" + c1.pedirCuenta(p1, r1));
 									break;
 								// <---------------------- ELIMINAR PEDIDO COMPLETO----------------->
 								case "6":
-									// c1.eliminarPedidoCompleto(p1);
+									 c1.eliminarPedidoCompleto(p1);
 									System.out.println("su pedido fue eliminado");
 									break;
 								// <----------------------HISTORIAL----------------->
