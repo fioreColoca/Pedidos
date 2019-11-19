@@ -73,8 +73,8 @@ public class Pedido {
 		return false;
 	}
 
-	public Double pedirCuenta(Restaurante R) {
-		Double acumuladorPrecio = 0.0;
+	public Integer pedirCuenta(Restaurante R) {
+		Integer acumuladorPrecio = 0;
 		for (Producto p : pedidos) {
 			acumuladorPrecio += p.getPrecio();
 
