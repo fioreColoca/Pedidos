@@ -10,6 +10,7 @@ public class Cliente extends Usuario {
 		}
 
 		LinkedList<Producto> PedidosHistorial = new LinkedList<Producto>();
+		public Object out;
 		
 		public Boolean pedirProducto(Integer idProducto,Pedido p1 ,Restaurante R ) throws ExceptionProductoInexistente {
 			for (Producto p : R.productos) {
@@ -22,7 +23,7 @@ public class Cliente extends Usuario {
 			throw new ExceptionProductoInexistente();
 		}
 		
-		public Double pedirCuenta(Pedido pedido,Restaurante R) {
+		public Integer pedirCuenta(Pedido pedido,Restaurante R) {
 			return pedido.pedirCuenta(R) ;
 			
 		}
@@ -40,7 +41,7 @@ public class Cliente extends Usuario {
 			pedido.eliminarPedido();
 		}
 		
-		public void verHistorial () {
+		public void verHistorial() {
 			for (Producto P : PedidosHistorial) {
 				System.out.println(P.hashCode() + "-------" + P.toString());
 			}
