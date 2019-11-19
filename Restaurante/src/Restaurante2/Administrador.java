@@ -55,11 +55,11 @@ public class Administrador extends Usuario {
 
 		// MODIFICAR PRECIO DEL PRODUCTO
 		
-		public Boolean modificarPrecio(Double nuevoPrecio, Integer id, Restaurante R) throws AdministradorExceptionNoModificaPrecio, AdministradorExceptionProductoNoEncontrado {
+		public Boolean modificarPrecio(Integer precioModificar, Integer id, Restaurante R) throws AdministradorExceptionNoModificaPrecio, AdministradorExceptionProductoNoEncontrado {
 			for (Producto p : R.productos) {
 				if (p.getIdProducto().equals(id)) {
-					if (nuevoPrecio < 3000 && nuevoPrecio > 0) {
-						p.setPrecio(nuevoPrecio);
+					if (precioModificar < 3000 && precioModificar > 0) {
+						p.setPrecio(precioModificar);
 						return true;
 					}
 				throw new AdministradorExceptionNoModificaPrecio();
