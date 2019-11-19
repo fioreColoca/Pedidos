@@ -1,6 +1,5 @@
 package Restaurante;
 
-import java.awt.SystemColor;
 import java.util.Scanner;
 
 public class MAINMEJORADO {
@@ -739,7 +738,7 @@ public class MAINMEJORADO {
 										System.out.println("1 -> Pedir");
 										System.out.println("2 -> Agregar un Producto al Pedido");
 										System.out.println("3 -> Eliminar un Producto del Pedido");
-										System.out.println("4 -> Buscar Producto");
+										System.out.println("4 -> Ver Estado del Pedido");
 										System.out.println("5 -> Pedir Cuenta");
 										System.out.println("6 -> Eliminar Pedido");
 										System.out.println("7 -> Ver Mi Historial de Pedidos");
@@ -750,6 +749,19 @@ public class MAINMEJORADO {
 										if (opcionCliente1 != "1" || opcionCliente1 != "2" || opcionCliente1 != "3") {
 											salirMenuClie = true;
 										}
+										
+										switch(opcionCliente1) {
+										
+										//<-------------------HACER PEDIDO-------------------->
+										
+										case "1":
+											
+											System.out.println("Ingrese el producto que pedira");
+											
+											
+										
+										}
+										
 
 									} while (salirMenuClie = true);
 
