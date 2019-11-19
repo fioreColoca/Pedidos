@@ -48,7 +48,8 @@ public class Sistema {
 				Usuario usuario = usuarios.get(i);
 				this.usuariosLogueados.add(usuario);
 				return true;
-			}
+			} 	throw new SistemaExceptionNoEncuentraUsuario();
+
 		}
 		throw new SistemaExceptionNoEncuentraUsuario();
 	}
