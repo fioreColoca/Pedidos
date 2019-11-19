@@ -25,7 +25,7 @@ public class TestRestaurante {
 			Producto p2 = new Producto(Categoria.EMPANADAS, "pollo", 50.0, 4);
 			Producto p3 = new Producto(Categoria.VINOS, "Tinto", 500.0, 5);
 			Producto p4 = new Producto(Categoria.BEBIDAS, "Agua", 60.0, 6);
-			Restaurante r1 = new Restaurante("Cafeteria", 123456);
+			Restaurante r1 = new Restaurante("Cafeteria", "123456");
 			a1.agregarProductos(p1, r1);
 			a1.agregarProductos(p2, r1);
 			a1.agregarProductos(p3, r1);
