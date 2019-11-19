@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class MAIN {
 
-	private static final Restaurante r1 = null;
-	private static final Administrador a1 = null;
 
 	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres,
 			SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario, RestauranteExceptionNoLoCrea,
 			RestauranteExceptionInexistente, ExceptionNumero, AdministradorExceptionNoModificaPrecio {
-		String optcion = null;
+	/*	String optcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
 		Boolean salir = false;
@@ -349,7 +347,7 @@ public class MAIN {
 
 																		/*
 											* <----------- SWTICH CON LAS CATEGORIAS  ELEGIDAS-------------->
-																		 */
+																		 
 																		switch (opcion) {
 																		case "1":
 																			categoria = categoria.PIZZAS;
@@ -592,7 +590,7 @@ public class MAIN {
 				break;
 			}
 
-		} while (salir = true);
+		} while (salir = true);*/
 
 	}
 }
