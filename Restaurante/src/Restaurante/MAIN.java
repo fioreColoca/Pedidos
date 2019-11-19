@@ -11,9 +11,9 @@ public class MAIN {
 		String opcion = null;
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
-		//Restaurante r1 = new Restaurante(" ", " ");
-		//Cliente c1 = new Cliente(null, "", "", "", "");
-		//Administrador a1 = new Administrador(null, "", "", "", "");
+		// Restaurante r1 = new Restaurante(" ", " ");
+		// Cliente c1 = new Cliente(null, "", "", "", "");
+		// Administrador a1 = new Administrador(null, "", "", "", "");
 		Boolean salir = false;
 
 		// <----------MENU ---------- >
@@ -45,6 +45,7 @@ public class MAIN {
 					try {
 						System.out.println("VERIFICANDO...");
 						sistema.loguearUsuario(email, password);
+						System.out.println("Usted ha iniciado sesion correctamente");
 						salir = true;
 
 					} catch (SistemaExceptionNoEncuentraUsuario e) { // NO ENCUENTRA USUARIO
@@ -72,6 +73,11 @@ public class MAIN {
 						String idAdm;
 						String passwordAdm;
 						Boolean salirAdm;
+						String idAdmConfirmado = null;
+						String passwordAdmConfirmado = null;
+						String apellidoAdmConfirmado = null;
+						String emailAdmConfirmado = null;
+						String nombreAdmConfirmado = null;
 
 						System.out.println("Ingrese su nombre");
 						nombreAdm = teclado.next();
@@ -79,7 +85,7 @@ public class MAIN {
 						try {
 
 							if (sistema.soloLetras(nombreAdm) == true) {
-								String nombreAdmConfirmado = nombreAdm;
+								nombreAdmConfirmado = nombreAdm;
 							}
 
 							System.out.println("Ingrese su apellido");
@@ -88,7 +94,7 @@ public class MAIN {
 							try {
 
 								if (sistema.soloLetras(apellidoAdm) == true) {
-									String apellidoAdmConfirmado = apellidoAdm;
+									apellidoAdmConfirmado = apellidoAdm;
 								}
 
 								System.out.println("Ingrese su email");
@@ -97,7 +103,7 @@ public class MAIN {
 								try {
 
 									if (sistema.verificarEmail(emailAdm) == true) {
-										String emailAdmConfirmado = emailAdm;
+										emailAdmConfirmado = emailAdm;
 									}
 
 									System.out.println("Ingrese su contraseña");
@@ -106,7 +112,7 @@ public class MAIN {
 									try {
 
 										if (sistema.validarPassword(passwordAdm) == true) {
-											String passwordAdmConfirmado = passwordAdm;
+											passwordAdmConfirmado = passwordAdm;
 										}
 
 										System.out.println("Ingrese su dni");
@@ -115,17 +121,19 @@ public class MAIN {
 										try {
 
 											if (sistema.soloNumeros(idAdm) == true) {
-												String idAdmConfirmado = idAdm;
+												idAdmConfirmado = idAdm;
 											}
 
 											try {
-											/*	a1.setNombre(nombreAdm);
-												a1.setApellido(apellidoAdm);
-												a1.setEmail(emailAdm);
-												a1.setPassword(passwordAdm);
-												a1.setId(idAdm);*/
-											
-												
+												/*
+												 * a1.setNombre(nombreAdm); a1.setApellido(apellidoAdm);
+												 * a1.setEmail(emailAdm); a1.setPassword(passwordAdm); a1.setId(idAdm);
+												 */
+
+												Administrador a1 = new Administrador(idAdmConfirmado,
+														nombreAdmConfirmado, apellidoAdmConfirmado, emailAdmConfirmado,
+														passwordAdmConfirmado);
+
 												if (sistema.crearNuevoUsuario(a1) == true) {
 													System.out.println("Te registraste correctamente");
 
@@ -156,14 +164,111 @@ public class MAIN {
 							System.out.println(e.getMessage());
 						}
 
-					}
-					break;
-					
-				 case "2.2":
-					
-					break;
+						break;
 
+					case "2.2":
+
+						String nombreClie;
+						String apellidoClie;
+						String emailClie;
+						String idClie;
+						String passwordClie;
+						Boolean salirClie;
+						String idClieConfirmado = null;
+						String passwordClieConfirmado = null;
+						String apellidoClieConfirmado = null;
+						String emailClieConfirmado = null;
+						String nombreClieConfirmado = null;
+
+						System.out.println("Ingrese su nombre");
+						nombreClie = teclado.next();
+
+						try {
+
+							if (sistema.soloLetras(nombreClie) == true) {
+								nombreClieConfirmado = nombreClie;
+							}
+
+							System.out.println("Ingrese su apellido");
+							apellidoClie = teclado.next();
+
+							try {
+
+								if (sistema.soloLetras(apellidoClie) == true) {
+									apellidoClieConfirmado = apellidoClie;
+								}
+
+								System.out.println("Ingrese su email");
+								emailClie = teclado.next();
+
+								try {
+
+									if (sistema.verificarEmail(emailClie) == true) {
+										emailClieConfirmado = emailClie;
+									}
+
+									System.out.println("Ingrese su contraseña");
+									passwordClie = teclado.next();
+
+									try {
+
+										if (sistema.validarPassword(passwordClie) == true) {
+											passwordClieConfirmado = passwordClie;
+										}
+
+										System.out.println("Ingrese su dni");
+										idClie = teclado.next();
+
+										try {
+
+											if (sistema.soloNumeros(idClie) == true) {
+												idClieConfirmado = idClie;
+											}
+
+											try {
+												/*
+												 * a1.setNombre(nombreAdm); a1.setApellido(apellidoAdm);
+												 * a1.setEmail(emailAdm); a1.setPassword(passwordAdm); a1.setId(idAdm);
+												 */
+
+												Cliente a1 = new Cliente(idClieConfirmado, nombreClieConfirmado,
+														apellidoClieConfirmado, emailClieConfirmado,
+														passwordClieConfirmado);
+
+												if (sistema.crearNuevoUsuario(a1) == true) {
+													System.out.println("Te registraste correctamente");
+
+												}
+
+											} catch (SistemaExceptionNoCreaUsuario e) {
+												System.out.println(e.getMessage());
+												salirClie = false;
+											}
+
+										} catch (ExceptionNumero e) {
+											System.out.println(e.getMessage());
+										}
+
+									} catch (UsuarioExceptionPasswordIncorrecta e) {
+										System.out.println(e.getMessage());
+									}
+
+								} catch (ExceptionEmail e) {
+									System.out.println(e.getMessage());
+								}
+
+							} catch (MainExceptionSoloCaracteres e) {
+								System.out.println(e.getMessage());
+							}
+
+						} catch (MainExceptionSoloCaracteres e) {
+							System.out.println(e.getMessage());
+						}
+						break;
+
+					}
 				}
+
 			} while (salir = true);
 
 		} while (salir = true);
