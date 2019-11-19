@@ -1,5 +1,6 @@
 package Restaurante;
 
+import java.awt.SystemColor;
 import java.util.Scanner;
 
 public class MAINMEJORADO {
@@ -13,14 +14,16 @@ public class MAINMEJORADO {
 		Boolean salir = false;
 
 		// <----------MENU ---------- >
-		
+
 		boolean salirAdministrador;
-		
+
 		do {
 			// PREGUNTA SI ES ADMINISTRADOR O CLIENTE
 			System.out.println("BIENVENIDO");
 
-			System.out.println("Ingrese la opcion '0' si es administrador o la opcion '1' si es cliente");
+			System.out.println("Por favor, indique si es : ");
+			System.out.println("0 -> Administrador");
+			System.out.println("1 -> Cliente");
 			opcion = teclado.next();
 
 			if (opcion != "0" || opcion != "1") {
@@ -40,8 +43,11 @@ public class MAINMEJORADO {
 
 					do {
 						// DO WHILE DE CREAR RESTAURANTE O INGRESAR A UN RESATURANTE
-						System.out.println(
-								"Usted ha seleccionado administrador, Ingrese la opcion '1' si desea crear su restaurante, la opcion '2' si desea registrarse, la opcion '3' si desea iniciar sesion, la opcion '4' para salir");
+						System.out.println("Usted ha seleccionado Administrador");
+						System.out.println("1 -> Crear Restaurante");
+						System.out.println("2 -> Registrarse");
+						System.out.println("3 -> Iniciar Sesion");
+						System.out.println("4 -> Salir");
 						opcionAdministrador = teclado.next();
 
 						if (opcionAdministrador != "1" || opcionAdministrador != "2" || opcionAdministrador != "3") {
@@ -133,7 +139,7 @@ public class MAINMEJORADO {
 							String idConfirmado = null;
 							Boolean finalizado = false;
 
-							System.out.println("Usted ha seleccionado para registrarse");
+							System.out.println("Usted ha seleccionado Registrarse");
 
 							boolean ingresoTerminado;
 							do {
@@ -270,8 +276,13 @@ public class MAINMEJORADO {
 
 										// <------------------------OPCIONES QUE PUEDE HACER EL ADM
 										// -------------------->
-										System.out.println(
-												"Ingrese la opcion '1'-> para agregar productos, la opcion '2'-> para eliminar, la opcion '3'-> para Buscar producto, la opcion '4'-> para Modificar precio , la opcion '5'-> para Cerrar Sesion , la opcion '6' -> para eliminar cuenta");
+
+										System.out.println("1 -> Agregar Productos");
+										System.out.println("2 -> Eliminar Producto");
+										System.out.println("3 -> Buscar Producto");
+										System.out.println("4 -> Modificar Precio del Producto");
+										System.out.println("5 -> Cerrar Sesion");
+										System.out.println("6 -> Eliminar Cuenta");
 										opcionAdministrador2 = teclado.next();
 
 										if (opcionAdministrador2 != "1" || opcionAdministrador2 != "2"
@@ -298,11 +309,23 @@ public class MAINMEJORADO {
 											String opcion1 = null;
 											boolean errorAdm2 = false;
 
-											System.out.println("Seleccionaste 1- 'agregar productos'");
+											System.out.println("Seleccionaste 1- 'Agregar Productos'");
 
 											do {
 												System.out.println(
-														"Ingrese categoria '1'PIZZAS , '2' EMPANADAS , '3' PASTAS , '4' POSTRES ");
+														"Por favor, ingrese la categoria a la que agregara el producto: ");
+												System.out.println("1 -> PIZZAS");
+												System.out.println("2 -> EMPANADAS");
+												System.out.println("3 -> PASTAS");
+												System.out.println("4 -> POSTRES");
+												System.out.println("5 -> BEBIDAS");
+												System.out.println("6 -> VINOS");
+												System.out.println("7 -> ENSALADAS");
+												System.out.println("8 -> ENTRADAS");
+												System.out.println("9 -> MILANESAS");
+												System.out.println("10 -> GUARNICIONES");
+												System.out.println("11 -> PARRILLA");
+
 												opcion1 = teclado.next();
 												if (opcionAdministrador2 != "1" || opcionAdministrador2 != "2"
 														|| opcionAdministrador2 != "3" || opcionAdministrador2 != "4") {
@@ -326,6 +349,32 @@ public class MAINMEJORADO {
 
 													case "4":
 														categoria = categoria.POSTRES;
+														break;
+
+													case "5":
+														categoria = categoria.BEBIDAS;
+														break;
+													case "6":
+														categoria = categoria.VINOS;
+														break;
+													case "7":
+														categoria = categoria.ENSALADAS;
+														break;
+
+													case "8":
+														categoria = categoria.ENTRADAS;
+														break;
+
+													case "9":
+														categoria = categoria.MILANESAS;
+														break;
+
+													case "10":
+														categoria = categoria.GUARNICIONES;
+														break;
+
+													case "11":
+														categoria = categoria.PARRILLA;
 														break;
 
 													}
@@ -374,7 +423,7 @@ public class MAINMEJORADO {
 											error1 = true;
 											Integer idEliminar = null;
 											do {
-												System.out.println("Seleccionaste 2- para eliminar productos");
+												System.out.println("Seleccionaste 2- Eliminar P");
 												System.out.println("Ingrese id (sólo numeros) del producto a eliminar");
 												idEliminar = teclado.nextInt();
 												try {
@@ -396,7 +445,7 @@ public class MAINMEJORADO {
 											error1 = true;
 											Integer buscarProducto = null;
 											do {
-												System.out.println("Seleccionaste 3- para buscar productos");
+												System.out.println("Seleccionaste 3- Buscar producto");
 												System.out.println("Ingrese id (slo numeros) para buscar el producto");
 												buscarProducto = teclado.nextInt();
 												try {
@@ -420,7 +469,7 @@ public class MAINMEJORADO {
 											Integer buscarProducto2 = null;
 											Double precioModificar = null;
 											do {
-												System.out.println("Seleccionaste 4- para modificar precio");
+												System.out.println("Seleccionaste 4- Modificar Precio del Producto");
 												System.out.println(
 														"Ingrese id (slo numeros) para el producto que quiere modificar su precio");
 												buscarProducto2 = teclado.nextInt();
@@ -502,10 +551,10 @@ public class MAINMEJORADO {
 					} while (salirAdministrador1 != true); // TERMINA DO WHILE DE RESTO
 
 				} while (salirAdministrador1 = true); // TERMINA EL OTRO PA QUE VUELVA AL MENU
-				
-				//<----------------CLIENTE---------------------->
+
+				// <----------------CLIENTE---------------------->
 			case "1":
-				
+
 				Boolean salirCliente = false;
 				String opcionCliente = null;
 				Boolean ingresoCliente = false;
@@ -514,24 +563,24 @@ public class MAINMEJORADO {
 				do {
 
 					do {
-						/*System.out.println("Bienvenido, usted ha seleccionado cliente, por favor ingrese en que restaurante se encuentra");
-						resto = teclado.next();
-						try {
-						if(sistema.buscarRestaurante(resto)) {
-						}
-					*/
-						System.out.println(
-								"Ingrese la opcion '1' si desea registrarse, la opcion '2' si desea iniciar sesion, la opcion '3' para salir");
+						/*
+						 * System.out.
+						 * println("Bienvenido, usted ha seleccionado cliente, por favor ingrese en que restaurante se encuentra"
+						 * ); resto = teclado.next(); try { if(sistema.buscarRestaurante(resto)) { }
+						 */
+						System.out.println("1 -> Registrarse");
+						System.out.println("2 -> Iniciar Sesion");
+						System.out.println("3 -> Salir");
 						opcionCliente = teclado.next();
 
 						if (opcionCliente != "1" || opcionCliente != "2") {
 							salirCliente = true;
 						}
-						
-						switch(opcionCliente) {
-						
-						//SE REGISTRA EL CLIENTE
-						
+
+						switch (opcionCliente) {
+
+						// SE REGISTRA EL CLIENTE
+
 						case "1":
 							Boolean error = false;
 							String nombre;
@@ -546,7 +595,7 @@ public class MAINMEJORADO {
 							String idConfirmado = null;
 							Boolean finalizado = false;
 
-							System.out.println("Usted ha seleccionado para registrarse");
+							System.out.println("Usted ha seleccionado Registrarse");
 
 							boolean ingresoTerminado;
 							do {
@@ -656,14 +705,16 @@ public class MAINMEJORADO {
 							} while (ingresoTerminado == true);
 							salirCliente = true;
 							break;
-							
+
+						// SE LOGUEA EL USUARIO
+
 						case "2":
 							Boolean iniciarSesion = true;
 							String email1;
 							String password1;
 							String opcionCliente1 = null;
 							Boolean salirMenuClie = false;
-							String opcionCliente11= null;
+							String opcionCliente11 = null;
 							Boolean errorClie = true;
 
 							do {
@@ -677,55 +728,51 @@ public class MAINMEJORADO {
 								try {
 
 									sistema.loguearUsuario(email1, password1);
-									
+
 									do {
 										System.out.println("Ingresaste correctamente");
 
 										// <------------------------OPCIONES QUE PUEDE HACER EL CLIENTE
 										// -------------------->
-										System.out.println(
-												"Ingrese la opcion '1' para hacer un pedido, la opcion '2'-> para Agregar productos, la opcion '3'-> para Eliminar productos, la opcion '4'-> para Eliminar pedido, la opcion '4'-> para Buscar producto , la opcion '5' para pedir cuenta, la opcion '6' -> para Cerrar Sesion, la opcion '7' para Eliminar Cuenta");
+
+										System.out.println("Por favor, indique que desea hacer: ");
+										System.out.println("1 -> Pedir");
+										System.out.println("2 -> Agregar un Producto al Pedido");
+										System.out.println("3 -> Eliminar un Producto del Pedido");
+										System.out.println("4 -> Buscar Producto");
+										System.out.println("5 -> Pedir Cuenta");
+										System.out.println("6 -> Eliminar Pedido");
+										System.out.println("7 -> Ver Mi Historial de Pedidos");
+										System.out.println("8 -> Cerrar Sesion");
+										System.out.println("9 -> Eliminar Cuenta");
 										opcionCliente1 = teclado.next();
 
-										if (opcionCliente1 != "1" || opcionCliente1 != "2"
-												|| opcionCliente1 != "3") {
+										if (opcionCliente1 != "1" || opcionCliente1 != "2" || opcionCliente1 != "3") {
 											salirMenuClie = true;
 										}
-										
-									}while(salirMenuClie = true);
-									
-								}catch (SistemaExceptionNoEncuentraUsuario e) {
+
+									} while (salirMenuClie = true);
+
+								} catch (SistemaExceptionNoEncuentraUsuario e) {
 									System.out.println(e.getMessage());
 								}
-						
-								}while(errorClie!=true);
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
+							} while (errorClie != true);
+
 						}
-				
-						
-						
-						/*}catch(RestauranteExceptionInexistente e) {
-							System.out.println(e.getMessage());
-						}*/
-				
-					}while(salirCliente!=true);
-				}while(salirCliente=true); //TERMINA DO GENERAL
-				
-			}while (salir != true); // SWITCH GENERAL
-				
+
+						/*
+						 * }catch(RestauranteExceptionInexistente e) {
+						 * System.out.println(e.getMessage()); }
+						 */
+
+					} while (salirCliente != true);
+				} while (salirCliente = true); // TERMINA DO GENERAL
+
+			}
+			while (salir != true)
+				; // SWITCH GENERAL
+
 		} while (salirAdministrador = true); // ADMIN O CLIENTE
 	}
 }
