@@ -281,6 +281,8 @@ public class MAINMEJORADO {
 
 										// SWITCH DE ADMINISTRADOR PARA REALIZAR ACCIONES
 
+										Administrador a1 = null;
+										Restaurante r1 = null;
 										switch (opcionAdministrador2) {
 
 										case "1":
@@ -504,8 +506,222 @@ public class MAINMEJORADO {
 				//<----------------CLIENTE---------------------->
 			case "1":
 				
+				Boolean salirCliente = false;
+				String opcionCliente = null;
+				Boolean ingresoCliente = false;
+				String resto = null;
+
+				do {
+
+					do {
+						/*System.out.println("Bienvenido, usted ha seleccionado cliente, por favor ingrese en que restaurante se encuentra");
+						resto = teclado.next();
+						try {
+						if(sistema.buscarRestaurante(resto)) {
+						}
+					*/
+						System.out.println(
+								"Ingrese la opcion '1' si desea registrarse, la opcion '2' si desea iniciar sesion, la opcion '3' para salir");
+						opcionCliente = teclado.next();
+
+						if (opcionCliente != "1" || opcionCliente != "2") {
+							salirCliente = true;
+						}
+						
+						switch(opcionCliente) {
+						
+						//SE REGISTRA EL CLIENTE
+						
+						case "1":
+							Boolean error = false;
+							String nombre;
+							String apellido;
+							String password;
+							String id;
+							String email;
+							String nombreConfirmado = null;
+							String apellidoConfirmado = null;
+							String emailConfirmado = null;
+							String passwordConfirmado = null;
+							String idConfirmado = null;
+							Boolean finalizado = false;
+
+							System.out.println("Usted ha seleccionado para registrarse");
+
+							boolean ingresoTerminado;
+							do {
+								ingresoTerminado = false;
+								do {
+									System.out.println("Ingrese su nombre");
+									nombre = teclado.next();
+									try {
+										if (sistema.soloLetras(nombre) == true) {
+											nombreConfirmado = nombre;
+											do {
+												System.out.println("Ingrese su apellido");
+												apellido = teclado.next();
+
+												try {
+													if (sistema.soloLetras(apellido) == true) {
+														apellidoConfirmado = apellido;
+														do {
+															System.out.println("Ingrese su email");
+															email = teclado.next();
+															try {
+																if (sistema.verificarEmail(email) == true) {
+																	emailConfirmado = email;
+																	do {
+																		System.out.println("Ingrese su contraseña");
+																		password = teclado.next();
+																		try {
+																			if (sistema.validarPassword(
+																					password) == true) {
+																				passwordConfirmado = password;
+																				do {
+																					System.out
+																							.println("Ingrese su dni");
+																					id = teclado.next();
+																					try {
+																						if (sistema.soloNumeros(
+																								id) == true) {
+																							idConfirmado = id;
+
+																							do {
+																								System.out.println(
+																										"VERIFICACION..");
+
+																								try {
+																									Cliente c1 = new Cliente(
+																											idConfirmado,
+																											nombreConfirmado,
+																											apellidoConfirmado,
+																											emailConfirmado,
+																											passwordConfirmado);
+																									if (sistema
+																											.crearNuevoUsuario(
+																													c1) == true) {
+																										System.out
+																												.println(
+																														"Te registraste correctamente"); // SE
+																																							// CREA
+																																							// EL
+																																							// ADMINISTRADOR
+																										opcionCliente = "2";
+																										error = true;
+																										break;
+
+																									}
+																								} catch (SistemaExceptionNoCreaUsuario e) {
+																									System.out.println(e
+																											.getMessage());
+																									ingresoTerminado = false;
+																								}
+
+																							} while (error != true);
+																						}
+																					} catch (ExceptionNumero e) {
+																						System.out.println(
+																								e.getMessage());
+																					}
+
+																				} while (error != true);
+																			}
+																		} catch (UsuarioExceptionPasswordIncorrecta e) {
+																			System.out.println(e.getMessage());
+																		}
+
+																	} while (error != true);
+																}
+
+															} catch (ExceptionEmail e) {
+																System.out.println(e.getMessage());
+															}
+
+														} while (error != true);
+
+													}
+
+												} catch (MainExceptionSoloCaracteres e) {
+													System.out.println(e.getMessage());
+												}
+											} while (error != true);
+										}
+
+									} catch (MainExceptionSoloCaracteres e) {
+										System.out.println(e.getMessage());
+									}
+
+								} while (error != true);
+
+							} while (ingresoTerminado == true);
+							salirCliente = true;
+							break;
+							
+						case "2":
+							Boolean iniciarSesion = true;
+							String email1;
+							String password1;
+							String opcionCliente1 = null;
+							Boolean salirMenuClie = false;
+							String opcionCliente11= null;
+							Boolean errorClie = true;
+
+							do {
+
+								System.out.println("Ingrese email");
+								email1 = teclado.next();
+
+								System.out.println("Ingrese password");
+								password1 = teclado.next();
+
+								try {
+
+									sistema.loguearUsuario(email1, password1);
+									
+									do {
+										System.out.println("Ingresaste correctamente");
+
+										// <------------------------OPCIONES QUE PUEDE HACER EL CLIENTE
+										// -------------------->
+										System.out.println(
+												"Ingrese la opcion '1' para hacer un pedido, la opcion '2'-> para agregar productos, la opcion '3'-> para eliminar, la opcion '4'-> para Buscar producto, la opcion '5'-> para Cerrar Sesion , la opcion '6' -> para eliminar cuenta");
+										opcionCliente1 = teclado.next();
+
+										if (opcionCliente1 != "1" || opcionCliente1 != "2"
+												|| opcionCliente1 != "3") {
+											salirMenuClie = true;
+										}
+									}while(salirMenuClie = true);
+									
+								}catch (SistemaExceptionNoEncuentraUsuario e) {
+									System.out.println(e.getMessage());
+								}
+						
+								}while(errorClie!=true);
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						}
 				
+						
+						
+						/*}catch(RestauranteExceptionInexistente e) {
+							System.out.println(e.getMessage());
+						}*/
 				
+					}while(salirCliente!=true);
+				}while(salirCliente=true); //TERMINA DO GENERAL
 				
 			}while (salir != true); // SWITCH GENERAL
 				
