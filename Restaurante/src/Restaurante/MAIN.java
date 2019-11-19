@@ -372,19 +372,43 @@ public class MAIN {
 				} while (ingresoTerminado2 = true);
 				// PARA LOGUEARSE AL RESTAURANTE
 
-				// <<----------------------------- CLIENTE ----------------->>
-			case "1":
-
+case "1":
+				
+				Boolean salirCliente = false;
 				String opcionCliente = null;
+				Boolean ingresoCliente = false;
+				String resto = null;
 
-				System.out.println(
-						"Seleccionaste cliente, Ingrese la opcion '1' para registrarse, la opcion '2'  para  iniciar sesión , la opcion '3' para salir");
-				opcionCliente = teclado.next();
+				do {
 
-				break;
-			}
+					do {
+						System.out.println("Bienvenido, usted ha seleccionado cliente, por favor ingrese en que restaurante se encuentra");
+						resto = teclado.next();
+						try {
+							
+						if(sistema.buscarRestaurante(resto)) {
+						}
+						System.out.println(
+								"Ingrese la opcion '1' si desea registrarse, la opcion '2' si desea iniciar sesion, la opcion '3' para salir");
+						opcionCliente = teclado.next();
 
-		} while (salir = true);
-
+						if (opcionCliente != "1" || opcionCliente != "2") {
+							salirCliente = true;
+						}
+						
+						}catch(RestauranteExceptionInexistente e) {
+							System.out.println(e.getMessage());
+						}
+				
+					}while(salirCliente!=true);
+				}while(salirCliente=true); //TERMINA DO GENERAL
+				
+				
+				
+				
+				
+			}while (salir != true); // SWITCH GENERAL
+				
+		} while (salirAdministrador = true); // ADMIN O CLIENTE
 	}
 }
