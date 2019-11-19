@@ -684,13 +684,14 @@ public class MAINMEJORADO {
 										// <------------------------OPCIONES QUE PUEDE HACER EL CLIENTE
 										// -------------------->
 										System.out.println(
-												"Ingrese la opcion '1' para hacer un pedido, la opcion '2'-> para agregar productos, la opcion '3'-> para eliminar, la opcion '4'-> para Buscar producto, la opcion '5'-> para Cerrar Sesion , la opcion '6' -> para eliminar cuenta");
+												"Ingrese la opcion '1' para hacer un pedido, la opcion '2'-> para Agregar productos, la opcion '3'-> para Eliminar productos, la opcion '4'-> para Eliminar pedido, la opcion '4'-> para Buscar producto , la opcion '5' para pedir cuenta, la opcion '6' -> para Cerrar Sesion, la opcion '7' para Eliminar Cuenta");
 										opcionCliente1 = teclado.next();
 
 										if (opcionCliente1 != "1" || opcionCliente1 != "2"
 												|| opcionCliente1 != "3") {
 											salirMenuClie = true;
 										}
+										
 									}while(salirMenuClie = true);
 									
 								}catch (SistemaExceptionNoEncuentraUsuario e) {
