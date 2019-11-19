@@ -49,6 +49,8 @@ public class Sistema {
 				this.usuariosLogueados.add(usuario);
 				return true;
 			}
+			throw new SistemaExceptionNoEncuentraUsuario();
+
 		}
 		throw new SistemaExceptionNoEncuentraUsuario();
 	}
@@ -196,5 +198,6 @@ public class Sistema {
 			throw new ExceptionEmail();
 		}
 	}
+	// VERIFICACION CATEGORIAS
 
 }
