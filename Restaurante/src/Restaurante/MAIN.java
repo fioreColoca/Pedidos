@@ -48,12 +48,14 @@ public class MAIN {
 						sistema.loguearUsuario(email, password);
 						System.out.println("Usted ha iniciado sesion correctamente");
 						salir = true;
-
-						// ACA IRIA LA CONFIMACION DE QUE ES ADMINISTRADOR O CLIENTE
-
+						
+						Administrador usuario;
+						if(usuario instanceof Administrador) {
+						
 						String opcionADM;
+						
 						do {
-
+						
 							// MENU DE ADMINISTRADOR
 							System.out.println("¿Que desea hacer?");
 
@@ -383,7 +385,11 @@ public class MAIN {
 								break;
 
 							}// CIERRA SWITCH ADM ACCIONES
-
+						
+						}while (salir = true);
+						
+						}else { Cliente usuario1;
+						if (usuario1 instanceof Cliente) {
 							String opcionCliente1 = null;
 							String opcionCliente11 = null;
 							Boolean salirMenuClie = false;
@@ -481,13 +487,14 @@ public class MAIN {
 
 						} while (salir = true);
 
-					} catch (SistemaExceptionNoEncuentraUsuario e) { // NO ENCUENTRA USUARIO
+					}
+					}catch (SistemaExceptionNoEncuentraUsuario e) { // NO ENCUENTRA USUARIO
 						System.out.println(e.getMessage());
 					}
 
 					salir = true;
 					break;
-
+					
 				case "2":
 
 					System.out.println("Usted ha seleccionado: Registrarse");
@@ -701,12 +708,13 @@ public class MAIN {
 							System.out.println(e.getMessage());
 						}
 						break;
-
+					}
 					}
 				}
 
-			} while (salir = true);
+			while (salir = true);
 
-		} while (salir = true);
+		}while (salir = true);
+		
 	}
 }
