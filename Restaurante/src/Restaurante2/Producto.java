@@ -3,10 +3,10 @@ package Restaurante2;
 public class Producto implements  Comparable<Producto> {
 	private Categoria categoria;
 	private String descripcion;
-	private Double precio;
+	private Integer precio;
 	private Integer idProducto;
 	
-	public Producto (Categoria categoria,String descripcion,Double precio,Integer idProducto) {
+	public Producto (Categoria categoria,String descripcion,Integer precio,Integer idProducto) {
 		this.categoria=categoria;
 		this.descripcion=descripcion;
 		this.precio=precio;
@@ -30,11 +30,11 @@ public class Producto implements  Comparable<Producto> {
 		this.descripcion = descripcion;
 	}
 
-	public Double getPrecio() {
+	public Integer getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(Double precio) {
+	public void setPrecio(Integer precio) {
 		this.precio = precio;
 		
 	}
@@ -42,7 +42,7 @@ public class Producto implements  Comparable<Producto> {
 		return idProducto;
 	}
 
-	public void setPrecio(Integer id) {
+	public void setPrecioId(Integer id) {
 		this.idProducto = id;
 	}
 
