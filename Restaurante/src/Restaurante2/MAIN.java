@@ -222,7 +222,7 @@ public class MAIN {
 																																		"te registraste correctamente"); // SE
 																																											// CREA
 																														// ADMINISTRADOR
-																														ingresoTerminado = false;
+																														ingresoTerminado2 = false;
 																														error = true;
 																														break;
 
@@ -324,9 +324,9 @@ public class MAIN {
 															Categoria categoria = null;
 															String descripcion = null;
 															String descripcionConfirmado = null;
-															Double precioConfirmado = null;
+															Integer precioConfirmado = null;
 															Integer idConfirmada = null;
-															Double precio = null;
+															Integer precio = null;
 															Integer id = null;
 															String opcion = null;
 															boolean errorAdm2 = false;
@@ -380,7 +380,7 @@ public class MAIN {
 																			do {
 																				System.out.println(
 																						"Ingrese precio '000.00' ");
-																				precio = teclado.nextDouble();
+																				precio = teclado.nextInt();
 																				precioConfirmado = precio;
 																				System.out.println(
 																						"Ingrese id sólo números ");
