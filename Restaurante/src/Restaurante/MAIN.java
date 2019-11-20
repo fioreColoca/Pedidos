@@ -132,7 +132,6 @@ public class MAIN {
 																&& sistema.agregarRestaurante(r1) == true) {
 															System.out.println("Ha creado su Restaurante exitosamente");
 															error1 = false;
-
 														}
 
 													} catch (RestauranteExceptionNoLoCrea e) {
@@ -145,7 +144,7 @@ public class MAIN {
 											} catch (MainExceptionSoloCaracteres e) {
 												System.out.println(e.getMessage());
 											}
-
+											
 										} while (error1 == true);
 										break;
 										
