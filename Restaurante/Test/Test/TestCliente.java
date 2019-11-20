@@ -85,7 +85,7 @@ public class TestCliente {
 		c1.pedirProducto(6, pedido, r1);
 		c1.pedirProducto(4, pedido, r1);
 		c1.pedirProducto(2, pedido, r1);
-		Double valorObtenido = c1.pedirCuenta(pedido, r1);
+		Integer valorObtenido = c1.pedirCuenta(pedido, r1);
 		Double valorEsperado = 610.0;
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
@@ -108,7 +108,7 @@ public class TestCliente {
 		a1.agregarProductos(p3, r1);
 		a1.agregarProductos(p4, r1);
 		Pedido pedido = new Pedido(4, r1);
-		Double valorObtenido = c1.pedirCuenta(pedido, r1);
+		Integer valorObtenido = c1.pedirCuenta(pedido, r1);
 		Double valorEsperado = 0.0;
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}

@@ -52,8 +52,7 @@ public class Producto implements Comparable<Producto> {
 				+ ", idProducto=" + idProducto + "]";
 	}
 
-	// IDENTIFICACION UNICA
-	
+	// identificacion unica
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -99,5 +98,4 @@ public class Producto implements Comparable<Producto> {
 	public int compareTo(Producto idPedido) {
 		return this.idProducto.compareTo(idPedido.getIdProducto());
 	}
-
 }
