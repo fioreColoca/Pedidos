@@ -9,6 +9,15 @@ public class Pedido {
 
 	private Restaurante restaurante;
 	private Integer mesa;
+
+	public void setRestaurante(Restaurante restaurante) {
+		this.restaurante = restaurante;
+	}
+
+	public void setMesa(Integer mesa) {
+		this.mesa = mesa;
+	}
+
 	private Integer numeroDePedido;
 	private static int ultimo = 0;
 	public final int id;
