@@ -405,8 +405,7 @@ public class MAIN {
 										salir = false;
 										break;
 
-									} // CIERRA SWITCH ADM ACCIONES
-
+									} // <-----------------------CIERRA SWITCH DE ACCIONES ADMINISTRADOR-------------------------->
 								} while (salir == true);
 							}
 							salir = false;
@@ -572,7 +571,7 @@ public class MAIN {
 										break;
 									}
 
-									// <----------------------- CIERRE SWTICH ------------------>
+									// <----------------------- CIERRE SWTICH DE ACCIONES CLIENTE ----------------------->
 
 								} while (salirMenuClie == true);
 
