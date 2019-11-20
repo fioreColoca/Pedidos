@@ -1,16 +1,15 @@
 package Restaurante;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Cliente extends Usuario {
+	
 
 		public Cliente(String Id, String nombre, String apellido, String email, String password) {
 			super(Id, nombre, apellido, email, password);
 		}
 
 		LinkedList<Producto> PedidosHistorial = new LinkedList<Producto>();
-		public Object out;
 		
 		public Boolean pedirProducto(Integer idProducto,Pedido p1 ,Restaurante R ) throws ExceptionProductoInexistente {
 			for (Producto p : R.productos) {
@@ -23,8 +22,8 @@ public class Cliente extends Usuario {
 			throw new ExceptionProductoInexistente();
 		}
 		
-		public Integer pedirCuenta(Pedido p1,Restaurante R) {
-			return p1.pedirCuenta(R) ;
+		public Integer pedirCuenta(Pedido pedido,Restaurante R) {
+			return pedido.pedirCuenta(R) ;
 			
 		}
 		
