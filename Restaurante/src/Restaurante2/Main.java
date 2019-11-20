@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class Main {
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres,
 	SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario, RestauranteExceptionNoLoCrea,
 	RestauranteExceptionInexistente, AdministradorExceptionNoModificaPrecio {
@@ -365,7 +369,11 @@ do {
 									System.out.println("Ingrese su documento");
 									id2 = teclado.next();
 									try {
+<<<<<<< Updated upstream
 										if (sistema.Eliminar(passwordConfirmado2, id2) == true) {
+=======
+										if (sistema.Eliminar(id2,passwordConfirmado2) == true) {
+>>>>>>> Stashed changes
 											System.out.println("Cuenta eliminada");
 										}
 										salir = false;
