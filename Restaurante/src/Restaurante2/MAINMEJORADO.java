@@ -6,7 +6,8 @@ public class MAINMEJORADO {
 
 	private static final Cliente c1 = null;
 	private static final Pedido  p1 = null;
-	private static Restaurante r1;
+	private static Restaurante r1 = null;
+	public static Administrador a1 = null;
 
 	public static void main(String[] args) throws UsuarioExceptionPasswordIncorrecta, MainExceptionSoloCaracteres,
 			SistemaExceptionNoEncuentraUsuario, SistemaExceptionNoCreaUsuario, RestauranteExceptionNoLoCrea,
@@ -15,7 +16,6 @@ public class MAINMEJORADO {
 		Scanner teclado = new Scanner(System.in);
 		Sistema sistema = new Sistema();
 		Boolean salir = false;
-
 		// <----------MENU ---------- >
 
 		boolean salirAdministrador;
@@ -188,7 +188,7 @@ public class MAINMEJORADO {
 																										"VERIFICACION..");
 
 																								try {
-																									Administrador a1 = new Administrador(
+																									 a1 = new Administrador(
 																											idConfirmado,
 																											nombreConfirmado,
 																											apellidoConfirmado,
@@ -295,9 +295,8 @@ public class MAINMEJORADO {
 										}
 
 										// SWITCH DE ADMINISTRADOR PARA REALIZAR ACCIONES
-
-										Administrador a1 = null;
-										Restaurante r1 = null;
+										//Administrador a1 = null;
+										//Restaurante r1 = null;
 										switch (opcionAdministrador2) {
 
 										case "1":
@@ -341,44 +340,44 @@ public class MAINMEJORADO {
 													 */
 													switch (opcion1) {
 													case "1":
-														categoria = categoria.PIZZAS;
+														categoria = Categoria.PIZZAS;
 														break;
 													case "2":
-														categoria = categoria.EMPANADAS;
+														categoria = Categoria.EMPANADAS;
 														break;
 
 													case "3":
-														categoria = categoria.PASTAS;
+														categoria = Categoria.PASTAS;
 														break;
 
 													case "4":
-														categoria = categoria.POSTRES;
+														categoria = Categoria.POSTRES;
 														break;
 
 													case "5":
-														categoria = categoria.BEBIDAS;
+														categoria = Categoria.BEBIDAS;
 														break;
 													case "6":
-														categoria = categoria.VINOS;
+														categoria = Categoria.VINOS;
 														break;
 													case "7":
-														categoria = categoria.ENSALADAS;
+														categoria = Categoria.ENSALADAS;
 														break;
 
 													case "8":
-														categoria = categoria.ENTRADAS;
+														categoria = Categoria.ENTRADAS;
 														break;
 
 													case "9":
-														categoria = categoria.MILANESAS;
+														categoria = Categoria.MILANESAS;
 														break;
 
 													case "10":
-														categoria = categoria.GUARNICIONES;
+														categoria = Categoria.GUARNICIONES;
 														break;
 
 													case "11":
-														categoria = categoria.PARRILLA;
+														categoria = Categoria.PARRILLA;
 														break;
 
 													}
@@ -393,7 +392,7 @@ public class MAINMEJORADO {
 														}
 														do {
 															System.out.println("Ingrese precio '000.00' ");
-															precio = (int) teclado.nextDouble();
+															precio =  teclado.nextInt();
 															precioConfirmado = precio;
 															System.out.println("Ingrese id sólo números ");
 															id1 = teclado.nextInt();
@@ -755,10 +754,67 @@ public class MAINMEJORADO {
 											opcionCliente1 != "4" || opcionCliente1 != "5" || opcionCliente1 != "6" ||
 											opcionCliente1 != "7" || opcionCliente1 != "8" || opcionCliente1 != "9") {
 											salirMenuClie = true;
+										
 											
 										}
-										
+										Integer opcionElegidaClie=null;
 										switch (opcionCliente1) {
+										//<-----------  PEDIR PEDIDO ----------->	
+										case "1":
+											do {
+												r1.mostrarCarta();
+												System.out.println("Ingrese id del producto que quiera pedir");
+												opcionElegidaClie = teclado.nextInt();
+
+												try { if (c1.pedirProducto(opcionElegidaClie,p1,r1)==true) {
+													System.out.println("validar pedido..");
+													
+												}
+															
+												}catch (ExceptionProductoInexistente e) {
+													System.out.println(e.getMessage());
+												
+									
+												}
+											}while (salirMenuClie != true);
+											break;
+										//<-----------  PRODUCTO QUE QUIERA AGREGAR AL PEDIDO ----------->	
+										case "2":do {
+											r1.mostrarCarta();
+											System.out.println("Ingrese id del producto que quiera añadir");
+											opcionElegidaClie = teclado.nextInt();
+
+											try { if (c1.pedirProducto(opcionElegidaClie,p1,r1)==true) {
+												System.out.println("validar pedido..");
+												
+											}
+														
+											}catch (ExceptionProductoInexistente e) {
+												System.out.println(e.getMessage());
+											
+								
+											}
+										}while (salirMenuClie != true);
+										break;
+										//<-----------  PRODUCTO QUE QUIERA ELIMINAR ----------->
+										case "3":
+											do {
+											r1.mostrarCarta();
+											System.out.println("Ingrese id del producto que quiera eliminar de su pedido");
+											opcionElegidaClie = teclado.nextInt();
+
+											try { if (c1.eliminarProducto(p1,opcionElegidaClie)==true) {
+												System.out.println("Producto eliminado del pedido..");
+												
+											}
+														
+											}catch (ExceptionProductoInexistente e) {
+												System.out.println(e.getMessage());
+											
+								
+											}
+										}while (salirMenuClie != true);
+										break;
 										  //<----------------------MOSTRAR PRODUCTOS----------------->
 										case "4":
 											r1.mostrarCarta();
