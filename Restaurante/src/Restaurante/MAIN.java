@@ -413,6 +413,7 @@ public class MAIN {
 						// SI CONTESTA QUE ES CLIENTE, VA A VERIFICAR QUE LO ES
 
 						case "2":
+							
 							if (c1 instanceof Cliente) {
 
 								String opcionCliente1 = null;
