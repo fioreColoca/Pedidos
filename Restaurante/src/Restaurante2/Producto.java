@@ -29,6 +29,10 @@ public class Producto implements  Comparable<Producto> {
 		return categoria;
 	}
 
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	public void setProducto(Categoria categoria) {
 		this.categoria = categoria;
 	}
@@ -108,6 +112,8 @@ public class Producto implements  Comparable<Producto> {
 	public int compareTo(Producto idPedido){
 		return this.idProducto.compareTo(idPedido.getIdProducto());
 	}
+
+
 
 	
 	
