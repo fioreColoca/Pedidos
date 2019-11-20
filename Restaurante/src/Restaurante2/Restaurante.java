@@ -7,6 +7,7 @@ import java.util.TreeSet;
 public class Restaurante {
 	TreeSet<Producto> productos = new TreeSet<Producto>();
 	TreeSet<Producto> productosPedidos = new TreeSet<Producto>();
+	
 	// NO HACE FALTA NINGUN METODO Q DISTINGA LOS NUMEROS DE IDENTIFICACION PARA Q
 	// HAYA REPETIDOS
 	// PORQ LO HACE EL MISMO TREESET
