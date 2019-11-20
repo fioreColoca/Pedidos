@@ -1,9 +1,9 @@
 package Restaurante2;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Cliente extends Usuario {
+	
 
 		public Cliente(String Id, String nombre, String apellido, String email, String password) {
 			super(Id, nombre, apellido, email, password);
