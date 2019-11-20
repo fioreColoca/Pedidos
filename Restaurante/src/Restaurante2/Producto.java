@@ -1,6 +1,18 @@
 package Restaurante2;
 
 public class Producto implements  Comparable<Producto> {
+	public static Producto instance;
+
+	public Producto() {
+	}
+
+	public static Producto getInstance() {
+		if (instance == null) {
+			instance = new Producto();
+		}
+
+		return instance;
+	}
 	private Categoria categoria;
 	private String descripcion;
 	private Integer precio;
