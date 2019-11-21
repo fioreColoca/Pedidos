@@ -3,18 +3,15 @@ package Restaurante;
 import java.util.TreeSet;
 
 public class Restaurante {
-
+	
 	TreeSet<Producto> productos = new TreeSet<Producto>();
 	TreeSet<Producto> productosPedidos = new TreeSet<Producto>();
+
 	// NO HACE FALTA NINGUN METODO Q DISTINGA LOS NUMEROS DE IDENTIFICACION PARA Q
 	// HAYA REPETIDOS
 	// PORQ LO HACE EL MISMO TREESET
 	// ESTA ORDENADO PARA FACILITAR EL INGRESO DEL PRODUCTO YA QUE SE TIENE QUE
 	// INGRESAR ID
-
-	/*
-	 * public Set<Producto> getProductosSet() { return productosSet; } //NO FUNCIONA
-	 */
 
 	private String nombre2;
 	private String cuit2;

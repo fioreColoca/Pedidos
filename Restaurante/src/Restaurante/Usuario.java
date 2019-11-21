@@ -1,6 +1,8 @@
 package Restaurante;
 
 public abstract class Usuario {
+	public static Usuario instance;
+
 	private String Id;
 	private String nombre;
 	private String apellido;

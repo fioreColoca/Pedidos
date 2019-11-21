@@ -1,6 +1,19 @@
 package Restaurante;
 
 public class Producto implements Comparable<Producto> {
+	public static Producto instance;
+
+	public Producto() {
+	}
+
+	public static Producto getInstance() {
+		if (instance == null) {
+			instance = new Producto();
+		}
+
+		return instance;
+	}
+
 	private Categoria categoria;
 	private String descripcion;
 	private Integer precio;
@@ -15,6 +28,10 @@ public class Producto implements Comparable<Producto> {
 
 	public Categoria getCategoria() {
 		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	public void setProducto(Categoria categoria) {
@@ -98,4 +115,5 @@ public class Producto implements Comparable<Producto> {
 	public int compareTo(Producto idPedido) {
 		return this.idProducto.compareTo(idPedido.getIdProducto());
 	}
+
 }
